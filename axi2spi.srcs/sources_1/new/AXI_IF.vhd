@@ -45,7 +45,7 @@ entity AXI_IF is
            S_AXI_AWVALID : in STD_LOGIC;
            S_AXI_AWREADY : out STD_LOGIC;
            S_AXI_WDATA : in STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
-           S_AXI_WSTB : in STD_LOGIC;
+           S_AXI_WSTB : in STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH)-1) downto 0);
            S_AXI_WVALID : in STD_LOGIC;
            S_AXI_WREADY : out STD_LOGIC;
            S_AXI_BRESP : out STD_LOGIC_VECTOR (1 downto 0);

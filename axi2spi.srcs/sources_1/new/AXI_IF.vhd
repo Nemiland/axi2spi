@@ -74,9 +74,9 @@ entity AXI_IF is
            reg_rdata : in STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
            reg_rerror : in STD_LOGIC := '0';
            reg_wack : in STD_LOGIC := '0';
-           reg_wdata : in STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
+           reg_wdata : out STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
            reg_wstr : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
-           reg_werror : in STD_LOGIC;
+           reg_werror : in STD_LOGIC := '0';
            reg_write_enable : out STD_LOGIC);
 end AXI_IF;
 
@@ -85,8 +85,10 @@ signal srr_cs_temp, spicr_cs_temp, spisr_cs_temp, spidtr_cs_temp,
        spidrr_cs_temp, spissr_cs_temp, tx_fifo_ocy_cs_temp, 
        rx_fifo_ocy_cs_temp, dgier_cs_temp, ipisr_cs_temp,
        ipier_cs_temp, reg_read_enable_temp, reg_write_enable_temp,
-       rerror_temp, werror_temp : std_logic := '0';
-signal module_address_select : std_logic := '0';
+       rerror_temp, werror_temp : STD_LOGIC := '0';
+signal module_address_select : STD_LOGIC := '0';
+signal reg_wdata_temp : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
+signal reg_wstb_temp : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 begin
     module_address_select <= '1' when signed(S_AXI_ARADDR) - signed(C_BASEADDR) > 0 AND
                                       signed(S_AXI_ARADDR) - signed(C_HIGHADDR) < 0 else
@@ -268,6 +270,26 @@ begin
         end if;
     end process;
 
+    process(S_AXI_ACLK, S_AXI_ARESETN)
+    variable states : integer range 0 to 3 := 0;
+    begin
+        if(rising_edge(S_AXI_ACLK)) then
+            if(S_AXI_ARESETN = '0') then   --syncronous reset
+                states := 0;
+            else
+                if(S_AXI_WVALID = '1' AND module_address_select = '1' ) then
+                    if(states = 0) then
+                        --write has started
+                        states := 3;
+                        reg_wdata_temp <= S_AXI_WDATA;
+                        reg_wstb_temp <= S_AXI_WSTB;
+                    elsif(states = 3) then
+                        states := 0;
+                    end if;
+                end if;
+            end if; 
+        end if;
+    end process;
 
 
 
@@ -285,8 +307,8 @@ begin
     ipier_cs         <= ipier_cs_temp;
     reg_read_enable  <= reg_read_enable_temp;
     reg_write_enable <= reg_write_enable_temp;
-    S_AXI_BRESP      <= werror_temp & '0';
-    S_AXI_RRESP      <= rerror_temp & '0';
+    S_AXI_BRESP      <= (werror_temp OR reg_werror) & '0';
+    S_AXI_RRESP      <= (rerror_temp OR reg_rerror) & '0';
 
 
 end Behavioral;

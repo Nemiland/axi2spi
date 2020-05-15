@@ -89,6 +89,8 @@ signal srr_cs_temp, spicr_cs_temp, spisr_cs_temp, spidtr_cs_temp,
 signal module_address_select : STD_LOGIC := '0';
 signal reg_wdata_temp : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
 signal reg_wstb_temp : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
+type State is (S0, S1, S2, S3);
+signal axi_state, nxt_state : State := S0;
 begin
     module_address_select <= '1' when signed(S_AXI_ARADDR) - signed(C_BASEADDR) > 0 AND
                                       signed(S_AXI_ARADDR) - signed(C_HIGHADDR) < 0 else
@@ -271,7 +273,6 @@ begin
     end process;
 
     process(S_AXI_ACLK, S_AXI_ARESETN)
-    variable states : integer range 0 to 3 := 0;
     begin
         if(rising_edge(S_AXI_ACLK)) then
             if(S_AXI_ARESETN = '0') then   --syncronous reset
@@ -291,7 +292,50 @@ begin
         end if;
     end process;
 
-
+    FSM_PROC : process(S_AXI_ACLK, S_AXI_ARESETN)
+    begin
+        if(rising_edge(S_AXI_ACLK)) then
+            if(S_AXI_ARESETN = '0') then
+                axi_state <= S0;
+            else
+                axi_state <= nxt_state;
+            end if;
+        end if;
+    end process FSM_PROC;
+        
+    NEXT_STATE_LOGIC : process(S_AXI_ACLK, S_AXI_ARESETN)
+    begin
+        if(rising_edge(S_AXI_ACLK)) then
+            case axi_state is
+                when S0 =>
+                    if(s_axi_arvalid = '1') then
+                        nxt_state <= S1;
+                    elsif(s_axi_awvalid = '1' and s_axi_wvalid = '1') then
+                        nxt_state <= S3;
+                    else
+                        nxt_state <= S0;
+                    end if;
+                when S1 =>
+                    if(reg_rack = '1') then
+                        nxt_state <= S2;
+                    else
+                        nxt_state <= S1;
+                    end if;
+                when S2 =>
+                    if(reg_rack = '0') then
+                        nxt_state <= S0;
+                    else
+                        nxt_state <= S2;
+                    end if;
+                when S3 =>
+                    if(reg_wack = '1') then
+                        nxt_state <= S0;
+                    else
+                        nxt_state <= S3;
+                    end if;
+            end case;
+        end if;
+    end process NEXT_STATE_LOGIC;
 
     --I/O
     srr_cs           <= srr_cs_temp;

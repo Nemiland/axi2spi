@@ -91,6 +91,8 @@ signal reg_wdata_temp : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := 
 signal reg_wstb_temp : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 type State is (S0, S1, S2, S3);
 signal axi_state, nxt_state : State := S0;
+signal S_AXI_WREADY_temp, S_AXI_AWREADY_temp, S_AXI_BVALID_temp, 
+       S_AXI_ARREADY_temp, S_AXI_RVALID_temp: STD_LOGIC := '0';
 begin
     module_address_select <= '1' when signed(S_AXI_ARADDR) - signed(C_BASEADDR) > 0 AND
                                       signed(S_AXI_ARADDR) - signed(C_HIGHADDR) < 0 else
@@ -279,13 +281,29 @@ begin
                 reg_wdata_temp <= (others => '0');
                 reg_wstb_temp <= (others => '0');
                 reg_write_data_en_temp <= '0';
+                S_AXI_WREADY_temp <= '0'; 
+                S_AXI_AWREADY_temp <= '0'; 
+                S_AXI_BVALID_temp <= '0';
             else
-                if(S_AXI_WVALID = '1' AND module_address_select = '1' ) then
-                    if(axi_state = S3) then
+                S_AXI_WREADY_temp <= reg_wack; 
+                S_AXI_AWREADY_temp <= reg_wack;
+                S_AXI_BVALID_temp <= '0';
+                if(nxt_state = S3) then
+                    if(axi_state = S0) then
                         --write has started
                         reg_wdata_temp <= S_AXI_WDATA;
                         reg_wstb_temp <= S_AXI_WSTB;
                         reg_write_data_en_temp <= '1';
+                    else
+                        --Write is still going
+                        reg_wdata_temp <= S_AXI_WDATA;
+                        reg_wstb_temp <= S_AXI_WSTB;
+                        reg_write_data_en_temp <= '1';
+                    end if;
+                else
+                    if(axi_state = S3) then
+                        --just completed, indicate with bready
+                        S_AXI_BVALID_temp <= '1';
                     else
                         reg_wdata_temp <= (others => '0');
                         reg_wstb_temp <= (others => '0');
@@ -357,6 +375,10 @@ begin
     reg_write_enable <= reg_write_enable_temp AND reg_write_data_en_temp;
     S_AXI_BRESP      <= (werror_temp OR reg_werror) & '0';
     S_AXI_RRESP      <= (rerror_temp OR reg_rerror) & '0';
+    S_AXI_WREADY     <= S_AXI_WREADY_temp; 
+    S_AXI_AWREADY    <= S_AXI_AWREADY_temp;
+    S_AXI_BVALID     <= S_AXI_BVALID_temp;
+    
 
 
 end Behavioral;

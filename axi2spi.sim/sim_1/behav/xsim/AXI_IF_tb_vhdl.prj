@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../axi2spi.srcs/sources_1/new/AXI_IF.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/REG_Wrapper.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/reg_8_bit.vhd" \
+"../../../../axi2spi.srcs/sim_1/new/AXI_IF_tb.vhd" \
+
+# Do not sort compile order
+nosort

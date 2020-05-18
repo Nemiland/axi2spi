@@ -150,15 +150,39 @@ end process;
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_ARVALID <= '0';
 	    --read done, do write
+	    --do write
 	    S_AXI_AWADDR <= reg_to_test;
 	    S_AXI_AWVALID <= '1';
 	    S_AXI_WDATA <= "01010101010101010101010101010101";
         S_AXI_WSTB <= "0101";
         S_AXI_WVALID <= '1';
+        --------------SIMULATES REGISTER BEHAVIOUR------------------------------
+        wait until reg_write_enable = '1';
+        wait until falling_edge(S_AXI_ACLK);
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_wack <= '1';
+        --------------SIMULATES REGISTER BEHAVIOUR END---------------------------
         wait until S_AXI_AWREADY = '1' and S_AXI_WREADY = '1';
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_AWVALID <= '0';
+	    reg_wack <= '0';
+        S_AXI_AWVALID <= '0';
 	    S_AXI_WVALID <= '0';
+	    --write done, run read
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARADDR <= reg_to_test;
+	    S_AXI_ARVALID <= '1';
+	    --------------SIMULATES REGISTER BEHAVIOUR------------------------------
+        wait until reg_read_enable = '1';
+        wait until falling_edge(S_AXI_ACLK);
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rack <= '1';
+        --------------SIMULATES REGISTER BEHAVIOUR END---------------------------
+	    wait until S_AXI_ARREADY = '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rack <= '0';
+	    S_AXI_ARVALID <= '0';
+	    --read done
     end process;
   
    

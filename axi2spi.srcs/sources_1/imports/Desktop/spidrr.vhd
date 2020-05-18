@@ -23,9 +23,7 @@ ENTITY SPIDRR IS
 			reg_rdata			:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 			reg_rack			:	out 	std_logic;
 			
-			reg_rerror			:	out		std_logic;
-			
-			
+			reg_rerror			:	out		std_logic
 			
 			);
 END SPIDRR;

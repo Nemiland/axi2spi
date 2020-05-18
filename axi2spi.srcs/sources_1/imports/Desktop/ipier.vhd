@@ -35,25 +35,24 @@ ENTITY IPIER IS
 			Dtr_underrun_int_en		:	out		std_logic;
 			Dtr_empty_int_en		:	out		std_logic;
 			Slave_mode_fault_int_en	:	out		std_logic;
-			Mode_fault_int_en		:	out		std_logic;
-			
+			Mode_fault_int_en		:	out		std_logic
 			
 			);
 END IPIER;
 
 ARCHITECTURE behave OF IPIER IS
 
-SIGNAL ipier_reg : : std_logic_vector ((C_S_AXI_DATA_WIDTH - 1) downto 0) := x"00000000";
+SIGNAL ipier_reg : std_logic_vector ((C_S_AXI_DATA_WIDTH - 1) downto 0) := x"00000000";
 
 BEGIN
 
 PROCESS (reg_clk, reg_rst)
 BEGIN
 
-	IF (rising_edge(reg_clk) THEN
+	IF (rising_edge(reg_clk) and ipier_cs = '1') THEN
 	
 		IF (reg_rst = '1') THEN
-			ipier_reg <= x"00000000"
+			ipier_reg <= x"00000000";
 			reg_rack <= '0';
 			reg_wack <= '0';
 			reg_rerror <= '0';

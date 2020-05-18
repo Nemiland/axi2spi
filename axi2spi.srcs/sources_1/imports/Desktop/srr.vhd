@@ -22,7 +22,7 @@ ENTITY SRR IS
 			reg_wack			:	out		std_logic;
 			reg_werror			:	out 	std_logic;
 			
-			soft_reset			:	out		std_logic;
+			soft_reset			:	out		std_logic
 						
 			);
 END SRR;

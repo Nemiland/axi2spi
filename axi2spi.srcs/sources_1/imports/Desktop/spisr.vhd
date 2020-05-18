@@ -28,9 +28,7 @@ ENTITY SPISR IS
 			reg_rack			:	out 	std_logic;
 			
 			reg_rerror			:	out		std_logic;
-			reg_werror			:	out		std_logic;
-			
-			
+			reg_werror			:	out		std_logic
 			
 			);
 END SPISR;

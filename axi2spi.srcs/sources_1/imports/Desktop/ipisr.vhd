@@ -35,7 +35,7 @@ ENTITY IPISR IS
 			dtr_underrun			: 	out		std_logic;
 			dtr_empty				: 	out		std_logic;
 			slave_mode_fault_error	: 	out		std_logic;
-			mode_fault_error		: 	out		std_logic;
+			mode_fault_error		: 	out		std_logic
 				
 			);
 END IPISR;
@@ -52,7 +52,7 @@ BEGIN
 	IF (rising_edge(reg_clk) and ipisr_cs = '1') THEN
 	
 		IF (reg_rst = '1') THEN
-			ipisr_reg <= x"00000000"
+			ipisr_reg <= x"00000000";
 			reg_wack <= '0';
 			reg_rack <= '0';
 			reg_werror <= '0';
@@ -63,39 +63,39 @@ BEGIN
 		IF (reg_write_enable = '1') THEN
 		
 			IF (reg_wdata (8) = '1') THEN
-				ipisr_reg (8) = not ipisr_reg (8);
+				ipisr_reg (8) <= not ipisr_reg (8);
 			END IF;
 			
 			IF (reg_wdata (7) = '1') THEN
-				ipisr_reg (7) = not ipisr_reg (7);
+				ipisr_reg (7) <= not ipisr_reg (7);
 			END IF;
 			
 			IF (reg_wdata (6) = '1') THEN
-				ipisr_reg (6) = not ipisr_reg (6);
+				ipisr_reg (6) <= not ipisr_reg (6);
 			END IF;
 			
 			IF (reg_wdata (5) = '1') THEN
-				ipisr_reg (5) = not ipisr_reg (5);
+				ipisr_reg (5) <= not ipisr_reg (5);
 			END IF;
 			
 			IF (reg_wdata (4) = '1') THEN
-				ipisr_reg (4) = not ipisr_reg (4);
+				ipisr_reg (4) <= not ipisr_reg (4);
 			END IF;
 			
 			IF (reg_wdata (3) = '1') THEN
-				ipisr_reg (3) = not ipisr_reg (3);
+				ipisr_reg (3) <= not ipisr_reg (3);
 			END IF;
 			
 			IF (reg_wdata (2) = '1') THEN
-				ipisr_reg (2) = not ipisr_reg (2);
+				ipisr_reg (2) <= not ipisr_reg (2);
 			END IF;
 			
 			IF (reg_wdata (1) = '1') THEN
-				ipisr_reg (1) = not ipisr_reg (1);
+				ipisr_reg (1) <= not ipisr_reg (1);
 			END IF;
 			
 			IF (reg_wdata (0) = '1') THEN
-				ipisr_reg (0) = not ipisr_reg (0);
+				ipisr_reg (0) <= not ipisr_reg (0);
 			END IF;
 			
 			reg_wack <= '1';

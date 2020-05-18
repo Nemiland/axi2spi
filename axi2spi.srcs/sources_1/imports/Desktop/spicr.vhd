@@ -38,7 +38,7 @@ ENTITY SPICR IS
 			Cpol				:	out		std_logic;
 			Spi_master_en		:	out		std_logic;
 			Spi_system_en		:	out		std_logic;
-			Loopback_en			:	out		std_logic;
+			Loopback_en			:	out		std_logic
 		
 			);
 END SPICR;
@@ -56,7 +56,7 @@ BEGIN
 	
 		--reset
 		IF (reg_rst = '1') THEN
-			spicr_reg <= x"00000180"
+			spicr_reg <= x"00000180";
 			reg_rerror <= '0';
 			reg_werror <= '0';
 			reg_rack <= '0';
@@ -64,7 +64,7 @@ BEGIN
 		END IF;
 		
 		--Simultaneous read/write error
-		IF (reg_read_enable and reg_write_enable = '1') THEN
+		IF (reg_read_enable = '1' and reg_write_enable = '1') THEN
 			reg_werror <= '1';
 			reg_rerror <= '1';
 		

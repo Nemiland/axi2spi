@@ -20,9 +20,9 @@ use IEEE.math_real.all;
 entity SPI_BRG is
     Generic (
            C_SCK_RATIO : integer := 32);
-    Port ( S_AXI_ACLK : in STD_LOGIC;
-           resetn : in STD_LOGIC;
-           int_clk : out STD_LOGIC);
+    Port ( S_AXI_ACLK : in STD_LOGIC := '0';
+           resetn : in STD_LOGIC := '0';
+           BRG_SCK_O : out STD_LOGIC);
 end SPI_BRG;
 
 architecture Behavioral of SPI_BRG is
@@ -71,6 +71,6 @@ begin
         end if;
     end process;
     
-    int_clk <= S_AXI_ACLK when clock_div_1_toggle else
+    BRG_SCK_O <= S_AXI_ACLK when clock_div_1_toggle else
                int_clk_temp;
     end Behavioral;

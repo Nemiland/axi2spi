@@ -277,7 +277,7 @@ begin
 	
 	RD_ROUTINE : process(S_AXI_ACLK, S_AXI_ARESETN)
 	begin
-		if(rising_edge(S_AXI_ACLK) then
+		if(rising_edge(S_AXI_ACLK)) then
 			if(S_AXI_ARESETN = '0') then
 				S_AXI_ARREADY_temp <= '0';
 				S_AXI_RVALID_temp <= '0';

@@ -99,7 +99,7 @@ begin
                              '1' when signed(S_AXI_AWADDR) - signed(C_BASEADDR) > 0 AND
                                       signed(S_AXI_AWADDR) - signed(C_HIGHADDR) < 0 else
                              '0';
-    process(S_AXI_ACLK, S_AXI_ARESETN)
+    ADD_SEL : process(S_AXI_ACLK, S_AXI_ARESETN)
     begin
         if(rising_edge(S_AXI_ACLK)) then
             if(S_AXI_ARESETN = '0') then   --syncronous reset
@@ -272,9 +272,20 @@ begin
                 end if;
             end if;
         end if;
-    end process;
+    end process ADD_SEL;
+	
+	RD_ROUTINE : process(S_AXI_ACLK, S_AXI_ARESETN)
+	begin
+		if(rising_edge(S_AXI_ACLK) then
+			if(S_AXI_ARESETN = '0') then
+			else
+				S_AXI_RREADY_temp <= reg_rack;
+				S_AXI_ARREADY_temp <= reg_rack;
+			end if;
+		end if;
+	end process RD_ROUTINE;
 
-    process(S_AXI_ACLK, S_AXI_ARESETN)
+    WR_ROUTINE : process(S_AXI_ACLK, S_AXI_ARESETN)
     begin
         if(rising_edge(S_AXI_ACLK)) then
             if(S_AXI_ARESETN = '0') then   --syncronous reset
@@ -312,7 +323,7 @@ begin
                 end if;
             end if; 
         end if;
-    end process;
+    end process WR_ROUTINE;
 
     FSM_PROC : process(S_AXI_ACLK, S_AXI_ARESETN)
     begin
@@ -329,7 +340,7 @@ begin
     begin
         if(rising_edge(S_AXI_ACLK)) then
             case axi_state is
-                when S0 =>
+                when S0 =>		--IDLE STATE
                     if(s_axi_arvalid = '1') then
                         nxt_state <= S1;
                     elsif(s_axi_awvalid = '1' and s_axi_wvalid = '1' and reg_wack = '0') then
@@ -337,19 +348,19 @@ begin
                     else
                         nxt_state <= S0;
                     end if;
-                when S1 =>
+                when S1 =>		--STORE RD ADDRESS
                     if(reg_rack = '1') then
                         nxt_state <= S2;
                     else
                         nxt_state <= S1;
                     end if;
-                when S2 =>
+                when S2 =>		--BROADCAST
                     if(reg_rack = '0') then
                         nxt_state <= S0;
                     else
                         nxt_state <= S2;
                     end if;
-                when S3 =>
+                when S3 =>		--WR TO REG
                     if(reg_wack = '1') then
                         nxt_state <= S0;
                     else

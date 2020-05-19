@@ -2,6 +2,7 @@
 --Date: May 2020
 --
 --Description: Register Module for AXI to SPI Controller
+--SPI Data Transmit Register    --Write only
 
 
 LIBRARY IEEE;
@@ -20,51 +21,57 @@ ENTITY SPIDTR IS
 			reg_write_enable	:	in		std_logic;
 			reg_wstb			:	in		std_logic_vector (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
 			reg_wdata			:	in		std_logic_vector ((C_S_AXI_DATA_WIDTH - 1) downto 0);
-			reg_wack			:	out		std_logic;
+			spidtr_wack			:	out		std_logic;
 			
-			tx_fifo_data		:	out		std_logic_vecotr ((C_NUM_TRANSFER_BITS - 1) downto 0);
-			
-			reg_werror			:	out 	std_logic;
-			
-			
-			
+			tx_fifo_data		:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0)			
 			);
 END SPIDTR;
 
 ARCHITECTURE behave OF SPIDTR IS
 
-SIGNAL spidtr_reg : std_logic_vector((C_S_AXI_DATA_WIDTH - 1) downto 0) := x"00000000";
+SIGNAL spidtr_reg : std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0) := (others => '0');
+SIGNAL spidtr_wack_temp : std_logic := '0';
 
 BEGIN
+
+--TX FIFO DATA SET TO REGISTER
+tx_fifo_data <= spidtr_reg;
+spidtr_wack <= spidtr_wack_temp;
 
 PROCESS (reg_clk, reg_rst)
+variable i : integer range 0 to ((C_S_AXI_DATA_WIDTH / 8) - 1) := 0;
 BEGIN
 
-	IF (rising_edge(reg_clk) AND spidtr_cs = '1') THEN
-	
+	IF (rising_edge(reg_clk)) THEN
+	    
+	    --reset
 		IF (reg_rst = '1') THEN
-			spidtr_reg <= x"00000000"
-			reg_wack <= '0';
-			reg_werror <= '0';
+			spidtr_reg <= x"00000000";
+			spidtr_wack_temp <= '0';
 		END IF;
 		
-		IF (reg_write_enable = '1') THEN
-			spidtr_reg <= reg_wdata;
+		--write
+		IF (reg_write_enable = '1' and spidtr_cs = '1') THEN
+            i := 0;
+			while (i < 4) loop
+				if(reg_wstb(i) = '1') then
+					--update value
+					spidtr_reg((i*8 + 7) downto i*8) <= reg_wdata((i*8 + 7) downto i*8);
+				else
+					--keep old value
+					spidtr_reg((i*8 + 7) downto i*8) <= spidtr_reg((i*8 + 7) downto i*8);
+				end if;
+				i := i + 1;
+			end loop;
+			spidtr_wack_temp <= not spidtr_wack_temp;
 			
-			reg_wack <= '1';
-			wait until rising_edge(reg_clk);
-			reg_wack <= '0';
+		ELSE
+		spidtr_wack_temp <= '0';
 		END IF;
-		
-		--error condition???
+        
 		
 	END IF;
 
 END PROCESS;
-
-
---tx_fifo_data set to register value
-tx_fifo_data <= spidtr_reg;
-
 
 END behave;

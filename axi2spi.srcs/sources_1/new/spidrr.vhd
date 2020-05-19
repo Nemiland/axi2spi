@@ -2,6 +2,7 @@
 --Date: May 2020
 --
 --Description: Register Module for AXI to SPI Controller
+--SPI Data Receive Register     --read only
 
 
 LIBRARY IEEE;
@@ -20,46 +21,43 @@ ENTITY SPIDRR IS
 			rx_fifo_data		:	in		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 			
 			reg_read_enable		:	in		std_logic;
-			reg_rdata			:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
-			reg_rack			:	out 	std_logic;
-			
-			reg_rerror			:	out		std_logic;
-			
-			
-			
+			spidrr_rdata		:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+			spidrr_rack			:	out 	std_logic
 			);
 END SPIDRR;
 
 ARCHITECTURE behave OF SPIDRR IS
 
-SIGNAL spidrr_reg : std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0) := x"00000000";
+SIGNAL spidrr_reg : std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0) := (others => '0');
+SIGNAL spidrr_rack_temp : std_logic := '0';
 
 BEGIN
+
+--register set to rx_fifo_data
+spidrr_reg <= rx_fifo_data;
+spidrr_rack <= spidrr_rack_temp;
 
 PROCESS (reg_clk, reg_rst)
 BEGIN
 
-	IF (rising_edge(reg_clk) and spidrr_cs = '1') THEN
-	
+	IF (rising_edge(reg_clk)) THEN
+	   
+	   --reset
 		IF (reg_rst = '1') THEN
 			spidrr_reg <= x"00000000";
-			reg_rack <= '0';
-			reg_rerror <= '0';
+			spidrr_rack_temp <= '0';
 		END IF;
 		
-		IF (reg_read_enable = '1') THEN
-			reg_rdata <= spidrr_reg;
-			reg_rack <= '1';
-			wait until rising_edge(reg_clk);
-			reg_rack <= '0';
+		--read only
+		IF (reg_read_enable = '1' and spidrr_cs = '1') THEN
+			spidrr_rdata <= spidrr_reg;
+			spidrr_rack_temp <= not spidrr_rack_temp;
+		
+		ELSE
+		spidrr_rack_temp <= '0';
 		END IF;
-		
-		--error condition
-		
-		
 	END IF;
+	
 END PROCESS;
-
-spidrr_reg <= rx_fifo_data;
 
 END behave;

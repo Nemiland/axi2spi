@@ -296,6 +296,7 @@ begin
 				if(state = S0) then
 					S_AXI_RDATA_temp <= (others <= 'Z');
 				end if;
+			end if;
 		end if;
 	end process RD_ROUTINE;
 

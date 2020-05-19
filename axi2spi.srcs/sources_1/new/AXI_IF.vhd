@@ -276,10 +276,11 @@ begin
 	
 	RD_ROUTINE : process(S_AXI_ACLK, S_AXI_ARESETN)
 	begin
-		if(rising_edge(S_AXI_ACLK) then
+		if(rising_edge(S_AXI_ACLK)) then
 			if(S_AXI_ARESETN = '0') then
+			     S_AXI_ARREADY_temp <= reg_rack;
 			else
-				S_AXI_RREADY_temp <= reg_rack;
+				S_AXI_RVALID_temp <= reg_rack;
 				S_AXI_ARREADY_temp <= reg_rack;
 			end if;
 		end if;

@@ -87,12 +87,13 @@ signal srr_cs_temp, spicr_cs_temp, spisr_cs_temp, spidtr_cs_temp,
        ipier_cs_temp, reg_read_enable_temp, reg_write_enable_temp, reg_write_data_en_temp,
        rerror_temp, werror_temp : STD_LOGIC := '0';
 signal module_address_select : STD_LOGIC := '0';
-signal reg_wdata_temp : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
+signal reg_wdata_temp, reg_rdata, reg_rdata_latch : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
 signal reg_wstb_temp : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 type State is (S0, S1, S2, S3);
 signal axi_state, nxt_state : State := S0;
 signal S_AXI_WREADY_temp, S_AXI_AWREADY_temp, S_AXI_BVALID_temp, 
        S_AXI_ARREADY_temp, S_AXI_RVALID_temp: STD_LOGIC := '0';
+signal S_AXI_RDATA_temp : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
 begin
     module_address_select <= '1' when signed(S_AXI_ARADDR) - signed(C_BASEADDR) > 0 AND
                                       signed(S_AXI_ARADDR) - signed(C_HIGHADDR) < 0 else
@@ -278,10 +279,23 @@ begin
 	begin
 		if(rising_edge(S_AXI_ACLK) then
 			if(S_AXI_ARESETN = '0') then
+				S_AXI_ARREADY_temp <= '0';
+				S_AXI_RVALID_temp <= '0';
+				S_AXI_RDATA_temp <= (others <= 'Z');
+				reg_rdata <= (others <= 'Z');
 			else
-				S_AXI_RREADY_temp <= reg_rack;
 				S_AXI_ARREADY_temp <= reg_rack;
-			end if;
+				S_AXI_RVALID_temp <= '0';
+				if(nxt_state = S2) then 
+					S_AXI_RDATA_temp <= reg_rdata_latch when S_AXI_RREADY = '1';
+					reg_rdata <= reg_rdata_latch when reg_rack = '1';
+				end if;
+				if(state = S2) then
+					S_AXI_RVALID_temp <= '1' when reg_rack = '1';
+				end if;
+				if(state = S0) then
+					S_AXI_RDATA_temp <= (others <= 'Z');
+				end if;
 		end if;
 	end process RD_ROUTINE;
 

@@ -57,7 +57,7 @@ component AXI_IF
            reg_rerror : in STD_LOGIC := '0';
            reg_wack : in STD_LOGIC := '0';
            reg_wdata : out STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
-           reg_wstr : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
+           reg_wstb : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
            reg_werror : in STD_LOGIC := '0';
            reg_write_data_en : out STD_LOGIC;
            reg_write_enable : out STD_LOGIC);
@@ -78,7 +78,7 @@ signal spissr_cs, tx_fifo_ocy_cs, rx_fifo_ocy_cs : STD_LOGIC;
 signal dgier_cs, ipisr_cs, ipier_cs : STD_LOGIC;
 signal reg_rack, reg_read_enable, reg_rerror : STD_LOGIC := '0';
 signal reg_rdata, reg_wdata : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
-signal reg_wstr : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
+signal reg_wstb : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 signal reg_wack, reg_write_data_en, reg_write_enable, reg_werror : STD_LOGIC := '0';
 
 signal reg_to_test : STD_LOGIC_VECTOR ((C_S_AXI_ADDR_WIDTH - 1) downto 0) := X"00000160";
@@ -122,7 +122,7 @@ axi_tb_inst: AXI_IF Port Map(
            reg_rerror => reg_rerror,
            reg_wack => reg_wack,
            reg_wdata => reg_wdata,
-           reg_wstr => reg_wstr,
+           reg_wstb => reg_wstb,
            reg_werror => reg_werror,
            reg_write_data_en => reg_write_data_en,
            reg_write_enable => reg_write_enable);

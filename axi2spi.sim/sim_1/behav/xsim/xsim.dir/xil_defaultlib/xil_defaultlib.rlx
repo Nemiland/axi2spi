@@ -3,10 +3,10 @@
 Nov  6 2019
 21:57:16
 C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/AXI_IF_tb.vhd,1589910145,vhdl,,,,axi_if_tb,,,,,,,,
-C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_CS_tb.vhd,1589988773,vhdl,,,,axi_cs_tb,,,,,,,,
-C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_GEN_tb.vhd,1589987083,vhdl,,,,axi_gen_tb,,,,,,,,
-C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_IF.vhd,1589987083,vhdl,,,,axi_if,,,,,,,,
-C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd,1589987083,vhdl,,,,,,,,,,,,
+C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_CS_tb.vhd,1589993253,vhdl,,,,axi_cs_tb,,,,,,,,
+C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_GEN_tb.vhd,1589993222,vhdl,,,,axi_gen_tb,,,,,,,,
+C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_IF.vhd,1589995925,vhdl,,,,axi_if,,,,,,,,
+C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd,1589996412,vhdl,,,,axi_wr_tb,,,,,,,,
 C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/REG_Wrapper.vhd,1589910145,vhdl,,,,reg_wrapper,,,,,,,,
 C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_BRG.vhd,1589910145,vhdl,,,,spi_brg,,,,,,,,
 C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_IF.vhd,1589910145,vhdl,,,,spi_if,,,,,,,,

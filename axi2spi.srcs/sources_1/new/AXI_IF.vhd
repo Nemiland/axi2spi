@@ -75,7 +75,7 @@ entity AXI_IF is
            reg_rerror : in STD_LOGIC := '0';
            reg_wack : in STD_LOGIC := '0';
            reg_wdata : out STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
-           reg_wstr : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
+           reg_wstb : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
            reg_werror : in STD_LOGIC := '0';
            reg_write_data_en : out STD_LOGIC;
            reg_write_enable : out STD_LOGIC);
@@ -300,7 +300,7 @@ begin
             else
                 S_AXI_WREADY_temp <= reg_wack; 
                 S_AXI_AWREADY_temp <= reg_wack;
-                S_AXI_BVALID_temp <= '0';
+                S_AXI_BVALID_temp <= reg_wack;
                 if(nxt_state = S3) then
                     if(axi_state = S0) then
                         --write has started
@@ -313,6 +313,11 @@ begin
                         reg_wstb_temp <= S_AXI_WSTB;
                         reg_write_data_en_temp <= '1';
                     end if;
+                elsif(nxt_state = S0 AND S_AXI_WVALID = '1') then
+                    --preload bus
+                    reg_wdata_temp <= S_AXI_WDATA;
+                    reg_wstb_temp <= S_AXI_WSTB;
+                    reg_write_data_en_temp <= '1';
                 else
                     if(axi_state = S3) then
                         --just completed, indicate with bready
@@ -341,34 +346,38 @@ begin
     NEXT_STATE_LOGIC : process(S_AXI_ACLK, S_AXI_ARESETN)
     begin
         if(rising_edge(S_AXI_ACLK)) then
-            case axi_state is
-                when S0 =>		--IDLE STATE
-                    if(s_axi_arvalid = '1') then
-                        nxt_state <= S1;
-                    elsif(s_axi_awvalid = '1' and s_axi_wvalid = '1' and reg_wack = '0') then
-                        nxt_state <= S3;
-                    else
-                        nxt_state <= S0;
-                    end if;
-                when S1 =>		--STORE RD ADDRESS
-                    if(reg_rack = '1') then
-                        nxt_state <= S2;
-                    else
-                        nxt_state <= S1;
-                    end if;
-                when S2 =>		--BROADCAST
-                    if(reg_rack = '0') then
-                        nxt_state <= S0;
-                    else
-                        nxt_state <= S2;
-                    end if;
-                when S3 =>		--WR TO REG
-                    if(reg_wack = '1') then
-                        nxt_state <= S0;
-                    else
-                        nxt_state <= S3;
-                    end if;
-            end case;
+            if(S_AXI_ARESETN = '0') then
+                nxt_state <= S0;
+            else
+                case axi_state is
+                    when S0 =>		--IDLE STATE
+                        if(s_axi_arvalid = '1') then
+                            nxt_state <= S1;
+                        elsif(s_axi_awvalid = '1' and s_axi_wvalid = '1' and reg_wack = '0') then
+                            nxt_state <= S3;
+                        else
+                            nxt_state <= S0;
+                        end if;
+                    when S1 =>		--STORE RD ADDRESS
+                        if(reg_rack = '1') then
+                            nxt_state <= S2;
+                        else
+                            nxt_state <= S1;
+                        end if;
+                    when S2 =>		--BROADCAST
+                        if(reg_rack = '0') then
+                            nxt_state <= S0;
+                        else
+                            nxt_state <= S2;
+                        end if;
+                    when S3 =>		--WR TO REG
+                        if(reg_wack = '1') then
+                            nxt_state <= S0;
+                        else
+                            nxt_state <= S3;
+                        end if;
+                end case;
+            end if;
         end if;
     end process NEXT_STATE_LOGIC;
 
@@ -392,7 +401,8 @@ begin
     S_AXI_WREADY      <= S_AXI_WREADY_temp; 
     S_AXI_AWREADY     <= S_AXI_AWREADY_temp;
     S_AXI_BVALID      <= S_AXI_BVALID_temp;
+    reg_wstb          <= reg_wstb_temp;
+    reg_wdata         <= reg_wdata_temp;
     
-
 
 end Behavioral;

@@ -1,0 +1,25 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../axi2spi.srcs/sources_1/new/AXI_IF.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/REG_Wrapper.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/SPI_IF.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/SPI_BRG.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/ipisr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/spisr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/srr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/rx_fifo_ocy.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/ipier.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/tx_fifo_ocy.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/spicr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/spidtr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/dgier.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/spidrr.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/spissr.vhd" \
+"../../../../axi2spi.srcs/sim_1/new/AXI_IF_tb.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/AXI_GEN_tb.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/AXI_CS_tb.vhd" \
+"../../../../axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd" \
+"../../../../axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd" \
+
+# Do not sort compile order
+nosort

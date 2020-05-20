@@ -1,29 +1,17 @@
 Vivado Simulator 2019.2
 Time resolution is 1 ps
-Warning: AXI_WR_01_1 Check nxt_state signal to remain in state S0
-Time: 60 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_2 Check nxt_state signal to remain in state S0
-Time: 100 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_3 Check nxt_state signal to remain in state S0
-Time: 140 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_4 Check nxt_state signal to transition to state S3
-Time: 180 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_02_1 Check nxt_state signal to remain in state S3
-Time: 220 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_02_2 Check nxt_state signal to transition to state S0
-Time: 260 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_1 Check nxt_state signal to remain in state S0
-Time: 60 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_2 Check nxt_state signal to remain in state S0
-Time: 100 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_3 Check nxt_state signal to remain in state S0
-Time: 140 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_01_4 Check nxt_state signal to transition to state S3
-Time: 180 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_02_1 Check nxt_state signal to remain in state S3
-Time: 220 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-Warning: AXI_WR_02_2 Check nxt_state signal to transition to state S0
-Time: 260 ns  Iteration: 1  Process: /AXI_WR_tb/line__141  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
+Warning: SPI_BRG_01_1 Check that SCK_O_1 clock signal has the period of 1ns (total of two cycles generated)
+Time: 3 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+Warning: SPI_BRG_01_2 Check that SCK_O_2 clock signal has the period of 2ns (total of two cycles generated)
+Time: 8 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+Warning: SPI_BRG_01_3 Check that SCK_O_4 clock signal has the period of 4ns (total of two cycles generated)
+Time: 17 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+Warning: SPI_BRG_01_4 Check that SCK_O_8 clock signal has the period of 8ns (total of two cycles generated)
+Time: 34 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+Warning: SPI_BRG_01_5 Check that SCK_O_16 clock signal has the period of 16ns (total of two cycles generated)
+Time: 67 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+Warning: SPI_BRG_01_6 Check that SCK_O_32 clock signal has the period of 32ns (total of two cycles generated)
+Time: 132 ns  Iteration: 1  Process: /SPI_BRG_tb/line__82  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
 Failure: simulation ended
-Time: 1160 ns  Iteration: 0  Process: /AXI_WR_tb/stop_sim  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd
-$finish called at time : 1160 ns : File "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd" Line 419
+Time: 133 ns  Iteration: 0  Process: /SPI_BRG_tb/stop_sim  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd
+$finish called at time : 133 ns : File "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd" Line 152

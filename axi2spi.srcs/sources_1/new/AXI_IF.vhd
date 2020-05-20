@@ -77,6 +77,7 @@ entity AXI_IF is
            reg_wdata : out STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0);
            reg_wstr : out STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0);
            reg_werror : in STD_LOGIC := '0';
+           reg_write_data_en : out STD_LOGIC;
            reg_write_enable : out STD_LOGIC);
 end AXI_IF;
 
@@ -372,24 +373,25 @@ begin
     end process NEXT_STATE_LOGIC;
 
     --I/O
-    srr_cs           <= srr_cs_temp;
-    spicr_cs         <= spicr_cs_temp;
-    spisr_cs         <= spisr_cs_temp;
-    spidtr_cs        <= spidtr_cs_temp;
-    spidrr_cs        <= spidrr_cs_temp;
-    spissr_cs        <= spissr_cs_temp;
-    tx_fifo_ocy_cs   <= tx_fifo_ocy_cs_temp;
-    rx_fifo_ocy_cs   <= rx_fifo_ocy_cs_temp;
-    dgier_cs         <= dgier_cs_temp;
-    ipisr_cs         <= ipisr_cs_temp;
-    ipier_cs         <= ipier_cs_temp;
-    reg_read_enable  <= reg_read_enable_temp;
-    reg_write_enable <= reg_write_enable_temp AND reg_write_data_en_temp;
-    S_AXI_BRESP      <= (werror_temp OR reg_werror) & '0';
-    S_AXI_RRESP      <= (rerror_temp OR reg_rerror) & '0';
-    S_AXI_WREADY     <= S_AXI_WREADY_temp; 
-    S_AXI_AWREADY    <= S_AXI_AWREADY_temp;
-    S_AXI_BVALID     <= S_AXI_BVALID_temp;
+    srr_cs            <= srr_cs_temp;
+    spicr_cs          <= spicr_cs_temp;
+    spisr_cs          <= spisr_cs_temp;
+    spidtr_cs         <= spidtr_cs_temp;
+    spidrr_cs         <= spidrr_cs_temp;
+    spissr_cs         <= spissr_cs_temp;
+    tx_fifo_ocy_cs    <= tx_fifo_ocy_cs_temp;
+    rx_fifo_ocy_cs    <= rx_fifo_ocy_cs_temp;
+    dgier_cs          <= dgier_cs_temp;
+    ipisr_cs          <= ipisr_cs_temp;
+    ipier_cs          <= ipier_cs_temp;
+    reg_read_enable   <= reg_read_enable_temp;
+    reg_write_enable  <= reg_write_enable_temp;
+    reg_write_data_en <= reg_write_data_en_temp;
+    S_AXI_BRESP       <= (werror_temp OR reg_werror) & '0';
+    S_AXI_RRESP       <= (rerror_temp OR reg_rerror) & '0';
+    S_AXI_WREADY      <= S_AXI_WREADY_temp; 
+    S_AXI_AWREADY     <= S_AXI_AWREADY_temp;
+    S_AXI_BVALID      <= S_AXI_BVALID_temp;
     
 
 

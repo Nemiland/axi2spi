@@ -66,6 +66,7 @@ entity SPI_IF is
            slave_select_mode : in STD_LOGIC;
            slave_mode_fault_error : out STD_LOGIC;
            ss_mode_fault_int_en : in STD_LOGIC;
+           mode_fault_error_en : in STD_LOGIC;
            slave_mode_fault_int_en : in STD_LOGIC);
 end SPI_IF;
 

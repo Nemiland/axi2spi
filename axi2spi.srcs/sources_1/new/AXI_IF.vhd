@@ -88,7 +88,7 @@ signal srr_cs_temp, spicr_cs_temp, spisr_cs_temp, spidtr_cs_temp,
        ipier_cs_temp, reg_read_enable_temp, reg_write_enable_temp, reg_write_data_en_temp,
        rerror_temp, werror_temp : STD_LOGIC := '0';
 signal module_address_select : STD_LOGIC := '0';
-signal reg_wdata_temp, reg_rdata, reg_rdata_latch : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
+signal reg_wdata_temp, reg_rdata_temp, reg_rdata_latch : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
 signal reg_wstb_temp : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 type State is (S0, S1, S2, S3);
 signal axi_state, nxt_state : State := S0;
@@ -282,20 +282,24 @@ begin
 			if(S_AXI_ARESETN = '0') then
 				S_AXI_ARREADY_temp <= '0';
 				S_AXI_RVALID_temp <= '0';
-				S_AXI_RDATA_temp <= (others <= 'Z');
-				reg_rdata <= (others <= 'Z');
+				S_AXI_RDATA_temp <= (others => 'Z');
+				reg_rdata_temp <= (others => 'Z');
 			else
 				S_AXI_ARREADY_temp <= reg_rack;
 				S_AXI_RVALID_temp <= '0';
 				if(nxt_state = S2) then 
-					S_AXI_RDATA_temp <= reg_rdata_latch when S_AXI_RREADY = '1';
-					reg_rdata <= reg_rdata_latch when reg_rack = '1';
+					if(S_AXI_RREADY = '1') then
+					   S_AXI_RDATA_temp <= reg_rdata_latch;
+                    end if;
+					if(reg_rack = '1') then
+					   reg_rdata_temp <= reg_rdata_latch;
+                    end if;
 				end if;
-				if(state = S2) then
-					S_AXI_RVALID_temp <= '1' when reg_rack = '1';
+				if(axi_state = S2) then
+					S_AXI_RVALID_temp <= reg_rack;
 				end if;
-				if(state = S0) then
-					S_AXI_RDATA_temp <= (others <= 'Z');
+				if(axi_state = S0) then
+					S_AXI_RDATA_temp <= (others => 'Z');
 				end if;
 			end if;
 		end if;

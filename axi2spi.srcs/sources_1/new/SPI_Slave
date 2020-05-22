@@ -1,11 +1,10 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-\\
-
 entity SPI_Slave is
-    Generic( C_NUM_TRANSFER_BITS : integer := 32; 
-             C_NUM_SS_BITS : integer := 8
+    Generic( 
+			C_NUM_TRANSFER_BITS : integer := 32; 
+            C_NUM_SS_BITS : integer := 8
            );
     Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
            rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
@@ -47,8 +46,43 @@ entity SPI_Slave is
 end SPI_Slave;
 
 architecture Behavioral of SPI_Slave is
+	component shift_reg is
+		Generic (
+			C_NUM_TRANSFER_BITS : integer := 32
+		);
+		Port (  
+			clk			: in STD_LOGIC;
+			resetn 		: in STD_LOGIC;
+			shift_en	: in STD_LOGIC;
+			cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
+			shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+			shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+			Cin 		: in STD_LOGIC;
+			Cout 		: out STD_LOGIC
+		);
+	end component shift_reg;
+
+	signal shift_data : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 
 begin
+
+	shift_data <= tx_data(C_NUM_TRANSFER_BITS - 1 downto 0) when lsb_first = '0' else tx_data(0 to C_NUM_TRANSFER_BITS - 1) when lsb_first = '1';
+	
+	inst_shift_reg : shift_reg
+		Generic Map(
+			C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS
+		)
+		Port Map(
+			clk			=> int_clk,
+			resetn 		=> resetn,
+			shift_en	=> SPISEL,
+			cpha 		=> cpha,
+			shift_in	=> shift_data,
+			shift_out	=> rx_data,
+			Cin 		=> MOSI_I,
+			Cout 		=> MISO_O
+		);
+			
 
 end Behavioral;
 

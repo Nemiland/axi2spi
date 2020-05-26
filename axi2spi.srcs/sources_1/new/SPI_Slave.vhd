@@ -62,11 +62,12 @@ architecture Behavioral of SPI_Slave is
 		);
 	end component shift_reg;
 
-	signal shift_data : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+	signal tx_buff, rx_buff : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+	
+	signal ic : integer range 0 to C_NUM_TRANSFER_BITS := 0;
 
 begin
 
-	shift_data <= tx_data(C_NUM_TRANSFER_BITS - 1 downto 0) when lsb_first = '0' else tx_data(0 to C_NUM_TRANSFER_BITS - 1) when lsb_first = '1';
 	
 	inst_shift_reg : shift_reg
 		Generic Map(
@@ -77,14 +78,31 @@ begin
 			resetn 		=> resetn,
 			shift_en	=> SPISEL,
 			cpha 		=> cpha,
-			shift_in	=> shift_data,
-			shift_out	=> rx_data,
+			shift_in	=> tx_buff,
+			shift_out	=> rx_buff,
 			Cin 		=> MOSI_I,
 			Cout 		=> MISO_O
 		);
 			
-
+	internal_counter : process (int_clk)
+	begin
+		if(int_clk'EVENT and int_clk = not cpha) then
+			if(resetn = '0') then
+				ic <= 0;
+				tx_buff <= (others => 'Z');--Should tx buff be reset to tx data?
+				rx_buff <= (others => 'Z');
+			else
+				if(ic > C_NUM_TRANSFER_BITS) then
+					ic <= ic + 1;
+				elsif(ic = C_NUM_TRANSFER_BITS) then
+					tx_buff <= tx_data;
+					rx_data <= rx_buff;
+					
+					ic <= 0;
+				else
+					ic <= 0;
+				end if;
+			end if;
+		end if;
+	end process internal_counter;
 end Behavioral;
-
-
-

@@ -51,7 +51,7 @@ entity REG_Wrapper is
 				Manual_ss_en		:	out		std_logic;
 				Rx_fifo_reset		:	out		std_logic;
 				Tx_fifo_reset		:	out		std_logic;
-				Chpa				:	out		std_logic;
+				Cpha				:	out		std_logic;
 				Cpol				:	out		std_logic;
 				Spi_master_en		:	out		std_logic;
 				Spi_system_en		:	out		std_logic;
@@ -130,7 +130,7 @@ COMPONENT SPICR IS
 			Manual_ss_en		:	out		std_logic;
 			Rx_fifo_reset		:	out		std_logic;
 			Tx_fifo_reset		:	out		std_logic;
-			Chpa				:	out		std_logic;
+			Cpha				:	out		std_logic;
 			Cpol				:	out		std_logic;
 			Spi_master_en		:	out		std_logic;
 			Spi_system_en		:	out		std_logic;
@@ -345,7 +345,7 @@ port map (
 			Manual_ss_en => Manual_ss_en,
 			Rx_fifo_reset => Rx_fifo_reset,
 			Tx_fifo_reset => Tx_fifo_reset,
-			Chpa => Chpa,
+			Cpha => Cpha,
 			Cpol => Cpol,
 			Spi_master_en => Spi_master_en,
 			Spi_system_en => Spi_system_en,

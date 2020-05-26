@@ -2,12 +2,14 @@
 # Vivado v2019.2.1 (64-bit)
 # SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
 # IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
-# Start of session at: Tue May 26 09:48:14 2020
-# Process ID: 15720
+# Start of session at: Tue May 26 09:32:07 2020
+# Process ID: 20424
 # Current directory: C:/Users/djste/Documents/GitHub/axi2spi
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1128 C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11080 C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.xpr
 # Log file: C:/Users/djste/Documents/GitHub/axi2spi/vivado.log
 # Journal file: C:/Users/djste/Documents/GitHub/axi2spi\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.xpr
+add_files -norecurse -scan_for_includes {C:/Users/djste/Desktop/axi2spi_afifo.vhd C:/Users/djste/Desktop/SYNC_Wrapper.vhd}
+import_files -norecurse {C:/Users/djste/Desktop/axi2spi_afifo.vhd C:/Users/djste/Desktop/SYNC_Wrapper.vhd}

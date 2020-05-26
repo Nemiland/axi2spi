@@ -19,59 +19,144 @@ generic (
 		
 port( 
 	--CLOCK SIGNALS
-	reg_clk 					: in std_logic;
-	spi_clk						: in std_logic;
-	reset						: in std_logic;
+	reg_clk 	: in std_logic;
+	spi_clk		: in std_logic;
+	reset		: in std_logic;
 	
-			
-	--REG to SPI_IF
-	tx_data 					: out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-	lsb_first 					: out STD_LOGIC;
-	master_inhibit 				: out STD_LOGIC;
-	manual_ss_en				: out STD_LOGIC;
-	cpha 						: out STD_LOGIC;
-	cpol 						: out STD_LOGIC;
-	spi_master_en 				: out STD_LOGIC;
-	loopback_en 				: out STD_LOGIC;
-	tx_empty 					: out STD_LOGIC;
-	rx_full 					: out STD_LOGIC;
-	slave_select 				: out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-	gi_en 						: out STD_LOGIC;
-	slave_select_mode 			: out STD_LOGIC;
-	ss_mode_fault_int_en 		: out STD_LOGIC;
-	slave_mode_fault_int_en 	: out STD_LOGIC;
+    --REGISTER I/O
+    --SRR (REG -> SPI)
+    soft_reset : out STD_LOGIC;
+    soft_reset_i : in STD_LOGIC;
+				
+    --SPICR (REG -> SPI)
+    Lsb_first			:	out		std_logic;
+    Master_inhibit		:	out		std_logic;
+    Manual_ss_en		:	out		std_logic;
+    Rx_fifo_reset		:	out		std_logic;
+    Tx_fifo_reset		:	out		std_logic;
+    Cpha				:	out		std_logic;
+    Cpol				:	out		std_logic;
+    Spi_master_en		:	out		std_logic;
+    Spi_system_en		:	out		std_logic;
+    Loopback_en			:	out		std_logic;
+    -----------------------------------------------
+    Lsb_first_i			:	in		std_logic;
+    Master_inhibit_i	:	in		std_logic;
+    Manual_ss_en_i		:	in		std_logic;
+    Rx_fifo_reset_i		:	in		std_logic;
+    Tx_fifo_reset_i		:	in		std_logic;
+    Cpha_i				:	in		std_logic;
+    Cpol_i				:	in		std_logic;
+    Spi_master_en_i		:	in		std_logic;
+    Spi_system_en_i		:	in		std_logic;
+    Loopback_en_i		:	in		std_logic;
+
+    --SPISR (SPI -> REG)
+    --slave_mode_select	:	out 		std_logic;
+    --mode_fault_error	:	out		std_logic;
+    tx_full				:	out		std_logic;
+    tx_empty			:	out		std_logic;
+    rx_full				:	out		std_logic;
+    rx_empty			:	out		std_logic;
+    --slave_mode_select_i	:	in 		std_logic;
+    --mode_fault_error_i	:	in		std_logic;
+    tx_full_i				:	in		std_logic;
+    tx_empty_i			    :	in		std_logic;
+    rx_full_i				:	in		std_logic;
+    rx_empty_i			    :	in		std_logic;
+				
+    --SPISSR (REG -> SPI)
+    slave_select		:	out		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
+    slave_select_i		:	in		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
+
+--SPI INTERFACE PORTS				
+--slave_mode_select : out STD_LOGIC;
+--mode_fault_error : out STD_LOGIC;
+--slave_mode_fault_error : out STD_LOGIC;
+
+    --Interrupt Registers (REG -> SPI)
+    gi_en				    :	out 	std_logic;
+    drr_not_empty			: 	out		std_logic;
+    --slave_mode_select		: 	out		std_logic;
+    tx_fifo_half			: 	out		std_logic;
+    drr_overrun				: 	out		std_logic;
+    drr_full				: 	out		std_logic;
+    dtr_underrun			: 	out		std_logic;
+    dtr_empty				: 	out		std_logic;
+    slave_mode_fault_error	: 	out		std_logic;
+    --mode_fault_error		: 	out		std_logic;
+    Drr_not_empty_int_en	:	out		std_logic;
+    Ss_mode_int_en			:	out		std_logic;
+    Tx_fifo_half_int_en		:	out		std_logic;
+    Drr_overrun_int_en		:	out		std_logic;
+    Drr_full_int_en			:	out		std_logic;
+    Dtr_underrun_int_en		:	out		std_logic;
+    Dtr_empty_int_en		:	out		std_logic;
+    Slave_mode_fault_int_en	:	out		std_logic;
+    Mode_fault_int_en		:	out		std_logic;
+    ------------------------------------------------------
+    gi_en_i				     :	in 	std_logic;
+    drr_not_empty_i			 : 	in		std_logic;
+    --slave_mode_select_i	 : 	in		std_logic;
+    tx_fifo_half_i			 : 	in		std_logic;
+    drr_overrun_i		     : 	in		std_logic;
+    drr_full_i				 : 	in		std_logic;
+    dtr_underrun_i			 : 	in		std_logic;
+    dtr_empty_i				 : 	in		std_logic;
+    slave_mode_fault_error_i : 	in		std_logic;
+    --mode_fault_error_i	 : 	in		std_logic;
+    Drr_not_empty_int_en_i	 :	in		std_logic;
+    Ss_mode_int_en_i		 :	in		std_logic;
+    Tx_fifo_half_int_en_i	 :	in		std_logic;
+    Drr_overrun_int_en_i	 :	in		std_logic;
+    Drr_full_int_en_i		 :	in		std_logic;
+    Dtr_underrun_int_en_i	 :	in		std_logic;
+    Dtr_empty_int_en_i		 :	in		std_logic;
+    Slave_mode_fault_int_en_i   :	in		std_logic;
+    Mode_fault_int_en_i		    :	in		std_logic;
 	
-	tx_data_i 					: in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-	lsb_first_i 				: in STD_LOGIC;
-	master_inhibit_i			: in STD_LOGIC;
-	manual_ss_en_i				: in STD_LOGIC;
-	cpha_i 						: in STD_LOGIC;
-	cpol_i 						: in STD_LOGIC;
-	spi_master_en_i 			: in STD_LOGIC;
-	loopback_en_i 				: in STD_LOGIC;
-	tx_empty_i 					: in STD_LOGIC;
-	rx_full_i 					: in STD_LOGIC;
-	slave_select_i 				: in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-	gi_en_i 					: in STD_LOGIC;
-	slave_select_mode_i 		: in STD_LOGIC;
-	ss_mode_fault_int_en_i 		: in STD_LOGIC;
-	slave_mode_fault_int_en_i 	: in STD_LOGIC;
+
+	--TX DATA (REG -> SPI)
+	tx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+	tx_data_i  : in std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 	
-	--SPI_IF to REG
-	rx_data 					: out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1)  downto 0);
-	mode_fault_error 			: out STD_LOGIC;
-	slave_mode_select 			: out STD_LOGIC;	
-	slave_mode_fault_error 		: out STD_LOGIC;
+	--RX DATA (SPI -> REG)
+	rx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+	rx_data_i  : in std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
 	
-	rx_data_i 					: in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1)  downto 0);
-	mode_fault_error_i 			: in STD_LOGIC;
-	slave_mode_select_i 		: in STD_LOGIC;
-	slave_mode_fault_error_i 	: in STD_LOGIC
+	--FIFO I/O
+	rx_w_enable       : in std_logic;
+	rx_r_enable       : in std_logic;
+	rx_empty_flag     : out std_logic;
+	rx_full_flag      : out std_logic;
+	rx_occupancy      : out std_logic_vector (3 downto 0);		
+	tx_w_enable       : in std_logic;
+	tx_r_enable       : in std_logic;
+    tx_full_flag      : out std_logic;
+    tx_empty_flag     : out std_logic;
+	tx_occupancy      : out std_logic_vector (3 downto 0)
 		);
 		
 end SYNCH_WRAPPER;
 
 architecture behavior of SYNCH_WRAPPER is
+
+--FIFO component
+component AXI2SPI_AFIFO is
+generic (
+			C_NUM_TRANSFER_BITS : integer := 32
+		);
+		
+port( 
+		wdata : 						in std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+		w_enable, r_enable, reset : 	in std_logic;
+		wclk, rclk : 					in std_logic;
+		rdata : 						out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+		full_flag, empty_flag : 		out std_logic;
+		occupancy : 					out std_logic_vector (3 downto 0)
+	);
+end component;
+
 
 --TEMP SIGNALS
 	SIGNAL tx_data_sync 					: STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
@@ -94,8 +179,39 @@ architecture behavior of SYNCH_WRAPPER is
 	SIGNAL mode_fault_error_sync  			: STD_LOGIC;
 	SIGNAL slave_mode_select_sync  			: STD_LOGIC;
 	SIGNAL slave_mode_fault_error_sync  	: STD_LOGIC;
+	
+	SIGNAL rx_data_temp                     : STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1)  downto 0);
+	SIGNAL tx_data_temp                     : STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1)  downto 0);
 
 begin
+
+    --FIFO INSTANTIATIONS
+    RX_FIFO_inst : AXI2SPI_AFIFO
+    generic map (C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS)
+    port map (  wdata => rx_data_i,
+		        w_enable => rx_w_enable, 
+		        r_enable => rx_r_enable, 
+		        reset => reset,
+		        wclk => spi_clk, 
+		        rclk => reg_clk,
+		        rdata => rx_data,
+		        full_flag => rx_full, 
+		        empty_flag => rx_empty_flag,
+		        occupancy => rx_occupancy                             );
+    
+    TX_FIFO_inst : AXI2SPI_AFIFO
+    generic map (C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS)
+    port map ( wdata => tx_data_i,
+		       w_enable => tx_w_enable, 
+		       r_enable => tx_r_enable, 
+		       reset => reset,
+		       wclk => reg_clk, 
+		       rclk => spi_clk,
+		       rdata => tx_data,
+		       full_flag => tx_full_flag, 
+		       empty_flag => tx_empty, 
+		       occupancy => tx_occupancy                              );
+    
 --Synchronization of SPI to REG signals
 process (reg_clk, reset)
 begin
@@ -135,8 +251,6 @@ process (spi_clk, reset)
 begin
 	--reset to default register values
     if reset = '1' then	
-	tx_data <= (others => '0');
-	tx_data_sync <= (others => '0');
 	lsb_first <= '0';
 	lsb_first_sync <= '0';
 	master_inhibit <= '1';
@@ -169,10 +283,7 @@ begin
 	
 		--syncrhonization
         if rising_edge(spi_clk) then
-        
-            tx_data_sync <= tx_data_i;
-			tx_data <= tx_data_sync;
-			
+        	
 			lsb_first_sync <= lsb_first_i;
 			lsb_first <= lsb_first_sync;
 			
@@ -217,6 +328,32 @@ begin
 			
         end if;
     end if;
+end process;
+
+--FIFO GENERATION
+process (spi_clk, reg_clk, reset)
+begin
+
+if (C_FIFO_EXIST = '0') then
+    if reset = '1' then
+        tx_data <= (others => '0');
+	    tx_data_sync <= (others => '0');
+	    rx_data <= (others => '0');
+	    rx_data_sync <= (others => '0');
+	    
+	elsif (rising_edge(spi_clk)) then
+	    tx_data_sync <= tx_data_i;
+		tx_data <= tx_data_sync;
+		
+    elsif (rising_edge(reg_clk)) then
+        rx_data_sync <= rx_data_i;
+		rx_data <= rx_data_sync;
+    end if;
+
+
+elsif (C_FIFO_EXIST = '1') then
+   
+end if;
 end process;
 
 end behavior;

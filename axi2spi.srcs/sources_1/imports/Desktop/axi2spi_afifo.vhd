@@ -25,13 +25,14 @@ port(
 end AXI2SPI_AFIFO;
 
 architecture behavior of AXI2SPI_AFIFO is
+
 type FIFO_array is array (0 to 15) of std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
 signal fifo : FIFO_array;
 signal wpointer, rpointer, wpointer_sync, rpointer_sync, Qr, Qw, ptr_diff : std_logic_vector (4 downto 0);
 signal r_round, Qrr, r_round_sync, w_round, Qrw, w_round_sync: std_logic;
 signal fflag_temp_s, eflag_temp_s: std_logic;
-begin
 
+begin
 -- Write:
 process(wclk, reset)
 begin

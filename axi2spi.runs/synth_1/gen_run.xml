@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1590516327">
   <File Type="PA-TCL" Name="SPI_BRG.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="SPI_BRG_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="SPI_BRG_reports.tcl"/>
   <File Type="RDS-RDS" Name="SPI_BRG.vds"/>
   <File Type="RDS-UTIL" Name="SPI_BRG_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="SPI_BRG_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="SPI_BRG.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="SPI_BRG_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="SPI_BRG_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/AXI_IF.vhd">

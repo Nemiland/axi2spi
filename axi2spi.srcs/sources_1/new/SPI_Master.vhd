@@ -37,6 +37,7 @@ entity SPI_Master is
            );
     Port ( shift_rx_port : out STD_LOGIC;
            shift_tx_port : in STD_LOGIC := '0';
+           shift_enable : out STD_LOGIC;
            MOSI_O : out STD_LOGIC;
            MISO_I : in STD_LOGIC := '0';
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
@@ -55,9 +56,12 @@ type state is (busy, idle, off);
 signal master_state : state := idle;
 signal nxt_state : state := idle;
 signal MOSI_O_temp : STD_LOGIC := '0';
-signal shift_rx_port_temp : STD_LOGIC := '0';
-signal ss_temp : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others=> '0');
+signal shift_enable_temp, shift_rx_port_temp : STD_LOGIC := '0';
+signal ss_temp, slave_select_latch : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others=> '1');
 signal ss_t_temp : STD_LOGIC := '1';
+signal ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
+signal element_count : integer range 0 to (C_NUM_TRANSFER_BITS - 1) := 0;
+    
 begin
 
     SPI_PROC : process(int_clk, resetn)
@@ -66,46 +70,56 @@ begin
            if(resetn = '0') then
                 MOSI_O_temp <= '0';
                 shift_rx_port_temp <= '0';
+                shift_enable_temp <= '0';
             else
-                if(master_state = off) then
-                    MOSI_O_temp <= '0';
-                    shift_rx_port_temp <= '0';
-                elsif(nxt_state = busy) then
+               if(nxt_state = busy) then
                     MOSI_O_temp <= shift_tx_port;
                     shift_rx_port_temp <= MISO_I;
+                    shift_enable_temp <= '1';
                 else
                     MOSI_O_temp <= '0';
                     shift_rx_port_temp <= '0';
+                    shift_enable_temp <= '0';
                 end if;
             end if;
         end if;
     end process;
     
     SS_PROC : process(int_clk, resetn)
-    variable ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
     begin
         if(rising_edge(int_clk)) then
            if(resetn = '0') then
                 ss_temp <= (others => '1');
                 ss_t_temp <= '1';
-                ss_count := 0;
+                ss_count <= 0;
+                element_count <= 0;
             else
                 if(master_state = off) then
                     ss_temp <= (others => '1');
                     ss_t_temp <= '1';
+                    element_count <= 0;
+                    ss_count <= 0;
                 else
                     ss_t_temp <= '0';
-                    if(manual_ss_en = '1') then
-                        ss_temp <= slave_select;
-                    else
-                        ss_temp <= (others => '1');
-                        ss_temp(ss_count) <= '0';
-                        if(ss_count = (C_NUM_SS_BITS - 1)) then
-                            ss_count := 0;
+                    if (element_count = C_NUM_TRANSFER_BITS - 1) then
+                        element_count <= 0;
+                    elsif(element_count = 0) then
+                        element_count <= element_count + 1;
+                        if(manual_ss_en = '1') then
+                            slave_select_latch <= slave_select;
                         else
-                            ss_count := ss_count + 1;
-                        end if;             
+                            slave_select_latch <= (others => '1');
+                            slave_select_latch(ss_count) <= '0';
+                            if(ss_count = (C_NUM_SS_BITS - 1)) then
+                                ss_count <= 0;
+                            else
+                                ss_count <= ss_count + 1;
+                            end if;             
+                        end if;
+                    else
+                        element_count <= element_count + 1;
                     end if;
+                    ss_temp <= slave_select_latch;
                 end if;
             end if;
         end if;
@@ -178,4 +192,5 @@ begin
     SS_O <= ss_temp;
     MOSI_O <= MOSI_O_temp;
     shift_rx_port <= shift_rx_port_temp;
+    shift_enable <= shift_enable_temp;
 end Behavioral;

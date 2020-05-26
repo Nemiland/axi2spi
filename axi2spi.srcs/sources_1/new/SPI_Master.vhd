@@ -37,28 +37,17 @@ entity SPI_Master is
            );
     Port ( shift_rx_port : out STD_LOGIC;
            shift_tx_port : in STD_LOGIC := '0';
-           IP2INTC_Irpt : out STD_LOGIC;
-           MOSI_I : in STD_LOGIC := '0';
            MOSI_O : out STD_LOGIC;
-           MOSI_T : out STD_LOGIC;
            MISO_I : in STD_LOGIC := '0';
-           MISO_O : out STD_LOGIC;
-           MISO_T : out STD_LOGIC;
-           SPISEL : in STD_LOGIC := '1';
-           SS_I : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0');
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           SS_T : out STD_LOGIC;
            resetn : in STD_LOGIC := '1';
            int_clk : in STD_LOGIC := '0';
            master_inhibit : in STD_LOGIC := '1';
            manual_ss_en : in STD_LOGIC := '0';
            spi_master_en : in STD_LOGIC := '0';
-           slave_mode_select : out STD_LOGIC;
-           mode_fault_error : out STD_LOGIC;
            tx_empty : in STD_LOGIC := '0';
            rx_full : in STD_LOGIC := '0';
-           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0');
-           slave_mode_fault_error : out STD_LOGIC);
+           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0'));
 end SPI_Master;
 
 architecture Behavioral of SPI_Master is

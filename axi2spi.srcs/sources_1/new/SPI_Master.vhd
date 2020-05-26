@@ -35,8 +35,8 @@ entity SPI_Master is
     Generic( C_NUM_TRANSFER_BITS : integer := 32; 
              C_NUM_SS_BITS : integer := 8
            );
-    Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-           rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
+    Port ( shift_rx_port : out STD_LOGIC;
+           shift_tx_port : in STD_LOGIC;
            IP2INTC_Irpt : out STD_LOGIC;
            SCK_I : in STD_LOGIC;
            SCK_O : out STD_LOGIC;
@@ -78,11 +78,33 @@ architecture Behavioral of SPI_Master is
 type state is (busy, idle, off);
 signal master_state : state := idle;
 signal nxt_state : state := idle;
-
+signal MOSI_O_temp : STD_LOGIC := '0';
+signal shift_rx_port_temp : STD_LOGIC := '0';
 signal ss_temp : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others=> '0');
 signal ss_t_temp : STD_LOGIC := '1';
 begin
 
+    SPI_PROC : process(int_clk, resetn)
+    begin
+        if(rising_edge(int_clk)) then
+           if(resetn = '0') then
+                MOSI_O_temp <= '0';
+                shift_rx_port_temp <= '0';
+            else
+                if(master_state = off) then
+                    MOSI_O_temp <= '0';
+                    shift_rx_port_temp <= '0';
+                elsif(nxt_state = busy) then
+                    MOSI_O_temp <= shift_tx_port;
+                    shift_rx_port_temp <= MISO_I;
+                else
+                    MOSI_O_temp <= '0';
+                    shift_rx_port_temp <= '0';
+                end if;
+            end if;
+        end if;
+    end process;
+    
     SS_PROC : process(int_clk, resetn)
     variable ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
     begin
@@ -178,4 +200,6 @@ begin
 
     --I/O
     SS_O <= ss_temp;
+    MOSI_O <= MOSI_O_temp;
+    shift_rx_port <= shift_rx_port_temp;
 end Behavioral;

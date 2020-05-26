@@ -1,10 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_IF.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'AXI_IF'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_IF.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'SPI_IF'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Master.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'SPI_Master'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_CU.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'SPI_CU'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'SPI_BRG_tb'

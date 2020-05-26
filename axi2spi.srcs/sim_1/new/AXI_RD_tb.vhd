@@ -196,17 +196,137 @@ axi_tb_inst: AXI_IF Port Map(
             severity warning;
             
         --Current State is S0
+        
+        wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';
         --------------------------------------AXI_RD_04--------------------------------------------------
+        --AXI_RD_04_1
+        wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARVALID <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert reg_read_enable = '0'
+	       report "AXI_RD_04_1 FAIL, reg_read_enable = 1"
+	       severity error;
+	       
+	    --AXI_RD_04_2
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARVALID <= '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert reg_write_enable = '1'
+	       report "AXI_RD_04_2 FAIL, reg_read_enable = 0"
+	       severity error;
+	       
+	    S_AXI_ARVALID <= '0';	       
+        
+        wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';
         --------------------------------------AXI_RD_05--------------------------------------------------
-        --------------------------------------AXI_RD_06--------------------------------------------------
+        --AXI_RD_05_1
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rack <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_ARREADY = '0'
+	       report "AXI_RD_05_1 FAIL, S_AXI_ARREADY = 1"
+	       severity error;
+	       
+	    --AXI_RD_05_2
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rack <= '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_ARREADY = '1'
+	       report "AXI_RD_05_2 FAIL, S_AXI_ARREADY = 0"
+	       severity error;
+	    
+	    reg_rack <= '0';
+	    
+	    wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';
         --------------------------------------AXI_RD_07--------------------------------------------------
+        --AXI_RD_07_1
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rdata <= X"AAAAAAAA";
+	    reg_rack <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    report "AXI_RD_07_1 Check reg_rdata_latch is 0x00000000"
+            severity warning;
+	       
+	    --AXI_RD_07_2
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rdata <= X"AAAAAAAA";
+	    reg_rack <= '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    report "AXI_RD_07_2 Check reg_rdata_latch is 0xAAAAAAAA"
+            severity warning;
+
+        reg_rack <= '0';
+        --reg_rdata_latch now equals 0xAAAAAAAA        
+        --------------------------------------AXI_RD_06--------------------------------------------------
+        --prep
+        S_AXI_RREADY <= '1';
+        
+        --AXI_RD_06_1
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARREADY <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_RDATA = X"00000000"
+	       report "AXI_RD_06_1 FAIL, S_AXI_RDATA = 0xAAAAAAAA"
+	       severity error;
+	       
+	    --AXI_RD_06_2
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARREADY <= '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_RDATA = X"AAAAAAAA"
+	       report "AXI_RD_06_2 FAIL, S_AXI_RDATA != 0xAAAAAAAA"
+	       severity error;
+
+        reg_rdata <= (others => '0');
+        S_AXI_RREADY <= '0';
+        S_AXI_ARREADY <= '0';
+	    
+	    wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';        
         --------------------------------------AXI_RD_08--------------------------------------------------
+        --AXI_RD_08_1
+        wait until falling_edge(S_AXI_ACLK);
+	    reg_rerror <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_RRESP = "00"
+	       report "AXI_RD_08_1 FAIL, S_AXI_RRESP = 10"
+	       severity error;
+	       
+	    --AXI_RD_08_2
+	    wait until falling_edge(S_AXI_ACLK);
+	    reg_rerror <= '1';
+	    wait until falling_edge(S_AXI_ACLK);
+	    assert S_AXI_RRESP = "10"
+	       report "AXI_RD_08_2 FAIL, S_AXI_RRESP = 00"
+	       severity error;
+	    reg_rerror <= '0';
+	    
+	    wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';
         
     end process;
     
     stop_sim : process
     begin
-        wait for 1160 ns; --run
+        wait for 1000 ns; --run
         assert false
             report "simulation ended"
             severity failure;

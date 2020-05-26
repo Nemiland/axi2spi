@@ -1,0 +1,9 @@
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+Error: SPI_CU_04_1 Check that system is on
+Time: 15 ns  Iteration: 1  Process: /SPI_CU_tb/line__100  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_CU_tb.vhd
+Error: SPI_CU_04_2 Check that system is off
+Time: 17 ns  Iteration: 1  Process: /SPI_CU_tb/line__100  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_CU_tb.vhd
+Failure: simulation ended
+Time: 22 ns  Iteration: 0  Process: /SPI_CU_tb/stop_sim  File: C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_CU_tb.vhd
+$finish called at time : 22 ns : File "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_CU_tb.vhd" Line 215

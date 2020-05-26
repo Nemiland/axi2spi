@@ -56,6 +56,7 @@ entity SPI_IF is
            cpha : in STD_LOGIC;
            cpol : in STD_LOGIC;
            spi_master_en : in STD_LOGIC;
+           spi_system_en : in STD_LOGIC;
            loopback_en : in STD_LOGIC;
            slave_mode_select : out STD_LOGIC;
            mode_fault_error : out STD_LOGIC;

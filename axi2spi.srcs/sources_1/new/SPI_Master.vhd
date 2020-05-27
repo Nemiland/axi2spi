@@ -35,79 +35,129 @@ entity SPI_Master is
     Generic( C_NUM_TRANSFER_BITS : integer := 32; 
              C_NUM_SS_BITS : integer := 8
            );
-    Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-           rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-           IP2INTC_Irpt : out STD_LOGIC;
-           SCK_I : in STD_LOGIC;
-           SCK_O : out STD_LOGIC;
-           SCK_T : out STD_LOGIC;
-           MOSI_I : in STD_LOGIC;
+    Port ( shift_rx : out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+           shift_tx : in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0) := (others => '0');
            MOSI_O : out STD_LOGIC;
-           MOSI_T : out STD_LOGIC;
-           MISO_I : in STD_LOGIC;
-           MISO_O : out STD_LOGIC;
-           MISO_T : out STD_LOGIC;
-           SPISEL : in STD_LOGIC;
-           SS_I : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
+           MISO_I : in STD_LOGIC := '0';
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           SS_T : out STD_LOGIC;
-           resetn : in STD_LOGIC;
-           S_AXI_ACLK : in STD_LOGIC;
-           int_clk : in STD_LOGIC;
-           lsb_first : in STD_LOGIC;
-           master_inhibit : in STD_LOGIC;
-           manual_ss_en : in STD_LOGIC;
-           cpha : in STD_LOGIC;
-           cpol : in STD_LOGIC;
-           spi_master_en : in STD_LOGIC;
-           loopback_en : in STD_LOGIC;
-           slave_mode_select : out STD_LOGIC;
-           mode_fault_error : out STD_LOGIC;
-           tx_empty : in STD_LOGIC;
-           rx_full : in STD_LOGIC;
-           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           gi_en : in STD_LOGIC;
-           slave_select_mode : in STD_LOGIC;
-           slave_mode_fault_error : out STD_LOGIC;
-           ss_mode_fault_int_en : in STD_LOGIC;
-           mode_fault_error_en : in STD_LOGIC;
-           slave_mode_fault_int_en : in STD_LOGIC);
+           fifo_rw : out STD_LOGIC := '0';
+           resetn : in STD_LOGIC := '1';
+           int_clk : in STD_LOGIC := '0';
+           master_inhibit : in STD_LOGIC := '1';
+           manual_ss_en : in STD_LOGIC := '0';
+           spi_master_en : in STD_LOGIC := '0';
+           tx_empty : in STD_LOGIC := '0';
+           rx_full : in STD_LOGIC := '0';
+           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0'));
 end SPI_Master;
 
 architecture Behavioral of SPI_Master is
+
+component shift_reg is
+    Generic (
+        C_NUM_TRANSFER_BITS : integer := C_NUM_TRANSFER_BITS
+    );
+    Port (  
+        clk			: in STD_LOGIC;
+        resetn 		: in STD_LOGIC;
+        shift_en	: in STD_LOGIC;
+        cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
+        shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+        shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+        Cin 		: in STD_LOGIC;
+        Cout 		: out STD_LOGIC
+    );
+end component shift_reg;
+
 type state is (busy, idle, off);
 signal master_state : state := idle;
 signal nxt_state : state := idle;
-
-signal ss_temp : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others=> '0');
+signal MOSI_O_temp : STD_LOGIC := '0';
+signal shift_enable_temp, shift_rx_port_temp : STD_LOGIC := '0';
+signal ss_temp, slave_select_latch : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others=> '1');
 signal ss_t_temp : STD_LOGIC := '1';
+signal ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
+signal element_count : integer range 0 to (C_NUM_TRANSFER_BITS - 1) := 0;
+
+signal shift_rx_port, shift_tx_port, shift_enable, fifo_rw_temp : STD_LOGIC;
+
 begin
 
+    inst_shift_reg : shift_reg
+		Generic Map(
+			C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS
+		)
+		Port Map(
+			clk			=> int_clk,
+			resetn 		=> resetn,
+			shift_en	=> shift_enable,
+			cpha 		=> '0',
+			shift_in	=> shift_tx,
+			shift_out	=> shift_rx,
+			Cin 		=> shift_rx_port,
+			Cout 		=> shift_tx_port
+        );
+
+    SPI_PROC : process(int_clk, resetn)
+    begin
+        if(rising_edge(int_clk)) then
+           if(resetn = '0') then
+                MOSI_O_temp <= '0';
+                shift_rx_port_temp <= '0';
+                shift_enable_temp <= '0';
+            else
+               if(nxt_state = busy) then
+                    MOSI_O_temp <= shift_tx_port;
+                    shift_rx_port_temp <= MISO_I;
+                    shift_enable_temp <= '1';
+                else
+                    MOSI_O_temp <= '0';
+                    shift_rx_port_temp <= '0';
+                    shift_enable_temp <= '0';
+                end if;
+            end if;
+        end if;
+    end process;
+    
     SS_PROC : process(int_clk, resetn)
-    variable ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
     begin
         if(rising_edge(int_clk)) then
            if(resetn = '0') then
                 ss_temp <= (others => '1');
                 ss_t_temp <= '1';
-                ss_count := 0;
+                ss_count <= 0;
+                element_count <= 0;
+                fifo_rw_temp <= '0';
             else
                 if(master_state = off) then
                     ss_temp <= (others => '1');
                     ss_t_temp <= '1';
+                    element_count <= 0;
+                    ss_count <= 0;
+                    fifo_rw_temp <= '0';
                 else
                     ss_t_temp <= '0';
-                    if(manual_ss_en = '1') then
-                        ss_temp <= slave_select;
-                    else
-                        ss_temp <= (others => '1');
-                        ss_temp(ss_count) <= '0';
-                        if(ss_count = (C_NUM_SS_BITS - 1)) then
-                            ss_count := 0;
+                    if (element_count = C_NUM_TRANSFER_BITS - 1) then
+                        element_count <= 0;
+                        fifo_rw_temp <= '1';
+                    elsif(element_count = 0) then
+                        element_count <= element_count + 1;
+                        fifo_rw_temp <= '0';
+                        if(manual_ss_en = '1') then
+                            slave_select_latch <= slave_select;
                         else
-                            ss_count := ss_count + 1;
-                        end if;             
+                            slave_select_latch <= (others => '1');
+                            slave_select_latch(ss_count) <= '0';
+                            if(ss_count = (C_NUM_SS_BITS - 1)) then
+                                ss_count <= 0;
+                            else
+                                ss_count <= ss_count + 1;
+                            end if;             
+                        end if;
+                    else
+                        element_count <= element_count + 1;
                     end if;
+                    ss_temp <= slave_select_latch;
                 end if;
             end if;
         end if;
@@ -177,5 +227,9 @@ begin
     end process;
 
     --I/O
-    SS_O <= ss_temp;
+    SS_O          <= ss_temp;
+    MOSI_O        <= MOSI_O_temp;
+    shift_rx_port <= shift_rx_port_temp;
+    shift_enable  <= shift_enable_temp;
+    fifo_rw       <= fifo_rw_temp;
 end Behavioral;

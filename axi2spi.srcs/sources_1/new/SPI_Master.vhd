@@ -55,7 +55,7 @@ architecture Behavioral of SPI_Master is
 
 component shift_reg is
     Generic (
-        C_NUM_TRANSFER_BITS : integer := 32
+        C_NUM_TRANSFER_BITS : integer := C_NUM_TRANSFER_BITS
     );
     Port (  
         clk			: in STD_LOGIC;

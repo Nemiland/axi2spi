@@ -39,6 +39,7 @@ entity SPI_IF is
     Port ( tx_data : in STD_LOGIC_VECTOR (0 downto 0);
            rx_data : out STD_LOGIC_VECTOR (0 downto 0);
            IP2INTC_Irpt : out STD_LOGIC;
+           int_clk : out STD_LOGIC;
            SCK_I : in STD_LOGIC;
            SCK_O : out STD_LOGIC;
            SCK_T : out STD_LOGIC;
@@ -140,7 +141,7 @@ component SPI_Master is
 end component;
 
 signal BRG_SCK_O, int_MOSI_I, int_MOSI_O, int_MISO_I, int_MISO_O, slave_mode_fault_error_sig : STD_LOGIC := '0';
-signal int_clk : STD_LOGIC := '1';
+signal int_clk_temp : STD_LOGIC := '1';
 
 begin
 
@@ -196,7 +197,7 @@ SPI_CU_inst: SPI_CU
                    SS_O => SS_O,
                    fifo_rw => fifo_rw,
                    resetn => resetn,
-                   int_clk => int_clk,
+                   int_clk => int_clk_temp,
                    master_inhibit => master_inhibit,
                    manual_ss_en => manual_ss_en,
                    spi_master_en => spi_master_en,
@@ -205,5 +206,5 @@ SPI_CU_inst: SPI_CU
                    slave_select => slave_select
                  ); 
                  
-    
+    int_clk <= int_clk_temp;
 end Behavioral;

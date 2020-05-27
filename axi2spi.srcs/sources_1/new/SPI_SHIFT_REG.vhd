@@ -18,7 +18,7 @@ Port (
 		clk			: in STD_LOGIC;
 		resetn 		: in STD_LOGIC;
 		shift_en	: in STD_LOGIC;
-		cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
+		--cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
 		shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 		shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 		Cin 		: in STD_LOGIC;
@@ -32,7 +32,7 @@ architecture Behavioral of shift_reg is
 begin
 	process(clk)
 	begin
-		if(clk'EVENT and clk = not cpha) then
+		if(clk'EVENT and clk = '1') then
 			if(resetn = '0') then
 				shift_out_temp <= (others => '0');
 				cout_temp <= '0';

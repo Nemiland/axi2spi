@@ -91,7 +91,7 @@ begin
 				ic <= 0;
 				tx_buff <= (others => 'Z');--Should tx buff be reset to tx data?
 				rx_buff <= (others => 'Z');
-			else
+			elsif(SPISEL = '1') then
 				if(ic > C_NUM_TRANSFER_BITS) then
 					ic <= ic + 1;
 				elsif(ic = C_NUM_TRANSFER_BITS) then

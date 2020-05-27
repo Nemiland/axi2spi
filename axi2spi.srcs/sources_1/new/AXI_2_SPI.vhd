@@ -407,6 +407,7 @@ signal reg_soft_reset, reg_Lsb_first, reg_Master_inhibit, reg_Manual_ss_en, reg_
 signal reg_slave_select: STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0');
 signal reg_tx_fifo_data, reg_rx_fifo_data: std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0) := (others => '0');
 signal reg_tx_fifo_occupancy, reg_rx_fifo_occupancy: std_logic_vector (3 downto 0) := (others => '0');
+signal reg_slave_mode_select, reg_mode_fault_error : std_logic := '0';
 
 --SYNCH signals (going towards SPI)
 signal resetn, int_clk : STD_LOGIC := '0';
@@ -418,6 +419,7 @@ signal gi_en, drr_not_empty, tx_fifo_half, drr_overrun, drr_full, dtr_underrun, 
        Dtr_underrun_int_en, Dtr_empty_int_en, Slave_mode_fault_int_en, Mode_fault_int_en: STD_LOGIC := '0';
 signal rx_w_enable, rx_r_enable, rx_empty_flag, rx_full_flag, tx_w_enable, tx_r_enable, tx_full_flag, tx_empty_flag: STD_LOGIC := '0';
 signal tx_data, rx_data: std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0) := (others => '0');
+signal slave_mode_select, mode_fault_error : std_logic := '0';
 
 --SPI signals
 signal fifo_rw : STD_LOGIC := '0';
@@ -523,8 +525,8 @@ REG_Wrapper_inst: REG_Wrapper
 				Loopback_en			=> reg_Loopback_en,
 
 				--SPISR inputs
-				--slave_mode_select	:	in 		std_logic;
-				--mode_fault_error	:	in		std_logic;
+				--slave_mode_select	  => reg_slave_mode_select,
+				--mode_fault_error	  => reg_mode_fault_error, 
 				tx_full				=> reg_tx_full,
 				tx_empty			=> reg_tx_empty,
 				rx_full				=> reg_rx_full,
@@ -603,14 +605,14 @@ port map(
             Loopback_en_i		=> reg_Loopback_en,
         
             --SPISR (SPI -> REG)
-            --slave_mode_select	:	out 		std_logic;
-            --mode_fault_error	:	out		std_logic;
+            --slave_mode_select	  => reg_slave_mode_select, 
+            --mode_fault_error	  => reg_mode_fault_error,
             tx_full				=> reg_tx_full,
             tx_empty			=> reg_tx_empty,
             rx_full				=> reg_rx_full,
             rx_empty			=> reg_rx_empty,
-            --slave_mode_select_i	:	in 		std_logic;
-            --mode_fault_error_i	:	in		std_logic;
+            --slave_mode_select_i	=> slave_mode_select,
+            --mode_fault_error_i	=> mode_fault_error,
             tx_full_i				=> tx_full,
             tx_empty_i			    => tx_empty,
             rx_full_i				=> rx_full,
@@ -725,10 +727,10 @@ SPI_IF_inst: SPI_IF
                rx_full => rx_full,
                slave_select => slave_select,
                gi_en => gi_en,
-               slave_select_mode => slave_select_mode,
+               slave_select_mode => '0', --to-do
                slave_mode_fault_error => slave_mode_fault_error,
-               ss_mode_fault_int_en => ss_mode_fault_int_en,
-               mode_fault_error_en => mode_fault_error_en,
+               ss_mode_fault_int_en => '0', --to-do
+               mode_fault_error_en => Mode_fault_int_en,
                fifo_rw => fifo_rw,
                slave_mode_fault_int_en => slave_mode_fault_int_en 
             );

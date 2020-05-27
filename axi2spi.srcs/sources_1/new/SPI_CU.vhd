@@ -48,7 +48,7 @@ entity SPI_CU is
            slave_mode_select : out STD_LOGIC;
            mode_fault_error : out STD_LOGIC;
            gi_en : in STD_LOGIC := '0';
-           slave_select_mode : in STD_LOGIC;
+           slave_select_mode : in STD_LOGIC; --(IPISR)ss mode fault error generation, to be implemented
            slave_mode_fault_error : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
            ss_mode_fault_int_en : in STD_LOGIC;

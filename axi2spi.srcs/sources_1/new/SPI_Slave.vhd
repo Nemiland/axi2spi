@@ -4,45 +4,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity SPI_Slave is
     Generic( 
 			C_NUM_TRANSFER_BITS : integer := 32; 
-            C_NUM_SS_BITS : integer := 8
            );
     Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
            rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
-           IP2INTC_Irpt : out STD_LOGIC;
-           SCK_I : in STD_LOGIC;
-           SCK_O : out STD_LOGIC;
-           SCK_T : out STD_LOGIC;
            MOSI_I : in STD_LOGIC;
-           MOSI_O : out STD_LOGIC;
-           MOSI_T : out STD_LOGIC;
-           MISO_I : in STD_LOGIC;
            MISO_O : out STD_LOGIC;
-           MISO_T : out STD_LOGIC;
            SPISEL : in STD_LOGIC;
-           SS_I : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           SS_T : out STD_LOGIC;
            resetn : in STD_LOGIC;
            S_AXI_ACLK : in STD_LOGIC;
            int_clk : in STD_LOGIC;
            lsb_first : in STD_LOGIC;
-           master_inhibit : in STD_LOGIC;
-           manual_ss_en : in STD_LOGIC;
            cpha : in STD_LOGIC;
-           cpol : in STD_LOGIC;
-           spi_master_en : in STD_LOGIC;
-           loopback_en : in STD_LOGIC;
-           slave_mode_select : out STD_LOGIC;
-           mode_fault_error : out STD_LOGIC;
            tx_empty : in STD_LOGIC;
            rx_full : in STD_LOGIC;
-           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           gi_en : in STD_LOGIC;
-           slave_select_mode : in STD_LOGIC;
-           slave_mode_fault_error : out STD_LOGIC;
-           ss_mode_fault_int_en : in STD_LOGIC;
-           mode_fault_error_en : in STD_LOGIC;
-           slave_mode_fault_int_en : in STD_LOGIC;
 		   fifo_rw : out STD_LOGIC
 		   );
 end SPI_Slave;
@@ -56,7 +30,6 @@ architecture Behavioral of SPI_Slave is
 			clk			: in STD_LOGIC;
 			resetn 		: in STD_LOGIC;
 			shift_en	: in STD_LOGIC;
-			cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
 			shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 			shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 			Cin 		: in STD_LOGIC;
@@ -79,7 +52,6 @@ begin
 			clk			=> int_clk,
 			resetn 		=> resetn,
 			shift_en	=> SPISEL,
-			cpha 		=> cpha,
 			shift_in	=> tx_buff,
 			shift_out	=> rx_buff,
 			Cin 		=> MOSI_I,
@@ -100,8 +72,17 @@ begin
 				elsif(ic = C_NUM_TRANSFER_BITS) then
 					fifo_rw <= '1';
 					
-					if(tx_empty = '0') then tx_buff <= tx_data;
-					if(rx_full = '0') then rx_data <= rx_buff;
+					if(tx_empty = '0') then
+						if(lsb_first = '0') then
+							tx_buff <= tx_data(C_NUM_TRANSFER_BITS down to 0);
+						else
+							tx_buff <= tx_data(0 to C_NUM_TRANSFER_BITS);
+						end if;
+					end if;
+					
+					if(rx_full = '0') then 
+						rx_data <= rx_buff;
+					end if;
 					
 					ic <= 0;
 				else

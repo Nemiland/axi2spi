@@ -321,7 +321,31 @@ axi_tb_inst: AXI_IF Port Map(
 	    S_AXI_ARESETN <= '0';
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_ARESETN <= '1';
-        
+		--------------------------------------AXI_RD_09--------------------------------------------------
+        --AXI_RD_09_1
+		wait until falling_edge(S_AXI_ACLK);
+		reg_rack <= '0';
+		wait until falling_edge(S_AXI_ACLK);
+		wait until falling_edge(S_AXI_ACLK);--Wait for one whole clock cyle
+		assert S_AXI_RVALID = '0'
+			report "AXI_RD_09_01 FAIL, S_AXI_RVALID = 1"
+			severity error;
+			
+		--AXI_RD_09_2
+		wait until falling_edge(S_AXI_ACLK);
+		reg_rack <= '1';
+		wait until falling_edge(S_AXI_ACLK);
+		wait until falling_edge(S_AXI_ACLK);--Wait for one whole clock cyle
+		assert S_AXI_RVALID = '1'
+			report "AXI_RD_09_02 FAIL, S_AXI_RVALID = 0"
+			severity error;		
+		
+		reg_rack <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    --reset process
+	    S_AXI_ARESETN <= '0';
+	    wait until falling_edge(S_AXI_ACLK);
+	    S_AXI_ARESETN <= '1';			
     end process;
     
     stop_sim : process

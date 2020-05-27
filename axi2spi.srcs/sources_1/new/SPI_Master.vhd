@@ -40,6 +40,7 @@ entity SPI_Master is
            MOSI_O : out STD_LOGIC;
            MISO_I : in STD_LOGIC := '0';
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
+           fifo_rw : out STD_LOGIC := '0';
            resetn : in STD_LOGIC := '1';
            int_clk : in STD_LOGIC := '0';
            master_inhibit : in STD_LOGIC := '1';
@@ -78,8 +79,8 @@ signal ss_t_temp : STD_LOGIC := '1';
 signal ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
 signal element_count : integer range 0 to (C_NUM_TRANSFER_BITS - 1) := 0;
 
-signal shift_rx_port, shift_tx_port, shift_enable : STD_LOGIC;
-    
+signal shift_rx_port, shift_tx_port, shift_enable, fifo_rw_temp : STD_LOGIC;
+
 begin
 
     inst_shift_reg : shift_reg
@@ -126,18 +127,22 @@ begin
                 ss_t_temp <= '1';
                 ss_count <= 0;
                 element_count <= 0;
+                fifo_rw_temp <= '0';
             else
                 if(master_state = off) then
                     ss_temp <= (others => '1');
                     ss_t_temp <= '1';
                     element_count <= 0;
                     ss_count <= 0;
+                    fifo_rw_temp <= '0';
                 else
                     ss_t_temp <= '0';
                     if (element_count = C_NUM_TRANSFER_BITS - 1) then
                         element_count <= 0;
+                        fifo_rw_temp <= '1';
                     elsif(element_count = 0) then
                         element_count <= element_count + 1;
+                        fifo_rw_temp <= '0';
                         if(manual_ss_en = '1') then
                             slave_select_latch <= slave_select;
                         else
@@ -222,8 +227,9 @@ begin
     end process;
 
     --I/O
-    SS_O <= ss_temp;
-    MOSI_O <= MOSI_O_temp;
+    SS_O          <= ss_temp;
+    MOSI_O        <= MOSI_O_temp;
     shift_rx_port <= shift_rx_port_temp;
-    shift_enable <= shift_enable_temp;
+    shift_enable  <= shift_enable_temp;
+    fifo_rw       <= fifo_rw_temp;
 end Behavioral;

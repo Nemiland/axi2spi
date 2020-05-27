@@ -35,9 +35,8 @@ entity SPI_Master is
     Generic( C_NUM_TRANSFER_BITS : integer := 32; 
              C_NUM_SS_BITS : integer := 8
            );
-    Port ( shift_rx_port : out STD_LOGIC;
-           shift_tx_port : in STD_LOGIC := '0';
-           shift_enable : out STD_LOGIC;
+    Port ( shift_rx : out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+           shift_tx : in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0) := (others => '0');
            MOSI_O : out STD_LOGIC;
            MISO_I : in STD_LOGIC := '0';
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
@@ -52,6 +51,23 @@ entity SPI_Master is
 end SPI_Master;
 
 architecture Behavioral of SPI_Master is
+
+component shift_reg is
+    Generic (
+        C_NUM_TRANSFER_BITS : integer := 32
+    );
+    Port (  
+        clk			: in STD_LOGIC;
+        resetn 		: in STD_LOGIC;
+        shift_en	: in STD_LOGIC;
+        cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
+        shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+        shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
+        Cin 		: in STD_LOGIC;
+        Cout 		: out STD_LOGIC
+    );
+end component shift_reg;
+
 type state is (busy, idle, off);
 signal master_state : state := idle;
 signal nxt_state : state := idle;
@@ -61,8 +77,25 @@ signal ss_temp, slave_select_latch : STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downt
 signal ss_t_temp : STD_LOGIC := '1';
 signal ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
 signal element_count : integer range 0 to (C_NUM_TRANSFER_BITS - 1) := 0;
+
+signal shift_rx_port, shift_tx_port, shift_enable : STD_LOGIC;
     
 begin
+
+    inst_shift_reg : shift_reg
+		Generic Map(
+			C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS
+		)
+		Port Map(
+			clk			=> int_clk,
+			resetn 		=> resetn,
+			shift_en	=> shift_enable,
+			cpha 		=> '0',
+			shift_in	=> shift_tx,
+			shift_out	=> shift_rx,
+			Cin 		=> shift_rx_port,
+			Cout 		=> shift_tx_port
+        );
 
     SPI_PROC : process(int_clk, resetn)
     begin

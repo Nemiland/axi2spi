@@ -14,7 +14,6 @@ entity SPI_Slave is
            S_AXI_ACLK : in STD_LOGIC;
            int_clk : in STD_LOGIC;
            lsb_first : in STD_LOGIC;
-           cpha : in STD_LOGIC;
            tx_empty : in STD_LOGIC;
            rx_full : in STD_LOGIC;
 		   fifo_rw : out STD_LOGIC
@@ -60,7 +59,7 @@ begin
 			
 	internal_counter : process (int_clk)
 	begin
-		if(int_clk'EVENT and int_clk = not cpha) then
+		if(int_clk'EVENT and int_clk = '1') then
 		fifo_rw <= '0';
 			if(resetn = '0') then
 				ic <= 0;

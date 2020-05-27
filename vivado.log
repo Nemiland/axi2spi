@@ -2,25 +2,40 @@
 # Vivado v2019.2.1 (64-bit)
 # SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
 # IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
-# Start of session at: Mon May 18 09:43:44 2020
-# Process ID: 10176
+# Start of session at: Tue May 26 09:48:14 2020
+# Process ID: 15720
 # Current directory: C:/Users/djste/Documents/GitHub/axi2spi
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15288 C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1128 C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.xpr
 # Log file: C:/Users/djste/Documents/GitHub/axi2spi/vivado.log
 # Journal file: C:/Users/djste/Documents/GitHub/axi2spi\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.xpr
-INFO: [Project 1-313] Project file moved from 'C:/Users/40010377/Documents/GitHub/axi2spi' since last save.
-CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/reg_8_bit.vhd', nor could it be found using path 'C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/reg_8_bit.vhd'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'.
-open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 875.941 ; gain = 204.316
-export_ip_user_files -of_objects  [get_files C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/reg_8_bit.vhd] -no_script -reset -force -quiet
-remove_files  C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/reg_8_bit.vhd
-add_files -norecurse -scan_for_includes {C:/Users/djste/Desktop/tx_fifo_ocy.vhd C:/Users/djste/Desktop/spissr.vhd C:/Users/djste/Desktop/srr.vhd C:/Users/djste/Desktop/ipisr.vhd C:/Users/djste/Desktop/spicr.vhd C:/Users/djste/Desktop/spidtr.vhd C:/Users/djste/Desktop/spisr.vhd C:/Users/djste/Desktop/dgier.vhd C:/Users/djste/Desktop/rx_fifo_ocy.vhd C:/Users/djste/Desktop/spidrr.vhd C:/Users/djste/Desktop/ipier.vhd}
-import_files -norecurse {C:/Users/djste/Desktop/tx_fifo_ocy.vhd C:/Users/djste/Desktop/spissr.vhd C:/Users/djste/Desktop/srr.vhd C:/Users/djste/Desktop/ipisr.vhd C:/Users/djste/Desktop/spicr.vhd C:/Users/djste/Desktop/spidtr.vhd C:/Users/djste/Desktop/spisr.vhd C:/Users/djste/Desktop/dgier.vhd C:/Users/djste/Desktop/rx_fifo_ocy.vhd C:/Users/djste/Desktop/spidrr.vhd C:/Users/djste/Desktop/ipier.vhd}
-save_project_as axi2spi C:/Users/djste/Desktop/axi2spi -force
+open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:05 . Memory (MB): peak = 874.230 ; gain = 210.230
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\spicr.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\REG_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\axi2spi_afifo.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\SYNC_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\SPI_IF.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\spicr.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\REG_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\axi2spi_afifo.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\SYNC_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\SPI_IF.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\spicr.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\REG_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\axi2spi_afifo.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\SYNC_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\SPI_IF.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\spicr.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\REG_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\axi2spi_afifo.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\imports\Desktop\SYNC_Wrapper.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.srcs\sources_1\new\SPI_IF.vhd:]
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue May 26 17:00:16 2020...

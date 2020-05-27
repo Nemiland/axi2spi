@@ -42,7 +42,9 @@ entity SPI_Slave is
            slave_mode_fault_error : out STD_LOGIC;
            ss_mode_fault_int_en : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
-           slave_mode_fault_int_en : in STD_LOGIC);
+           slave_mode_fault_int_en : in STD_LOGIC;
+		   fifo_rw : out STD_LOGIC
+		   );
 end SPI_Slave;
 
 architecture Behavioral of SPI_Slave is
@@ -87,16 +89,19 @@ begin
 	internal_counter : process (int_clk)
 	begin
 		if(int_clk'EVENT and int_clk = not cpha) then
+		fifo_rw <= '0';
 			if(resetn = '0') then
 				ic <= 0;
-				tx_buff <= (others => 'Z');--Should tx buff be reset to tx data?
+				tx_buff <= (others => 'Z');
 				rx_buff <= (others => 'Z');
 			elsif(SPISEL = '1') then
-				if(ic > C_NUM_TRANSFER_BITS) then
+				if(ic < C_NUM_TRANSFER_BITS) then
 					ic <= ic + 1;
 				elsif(ic = C_NUM_TRANSFER_BITS) then
-					tx_buff <= tx_data;
-					rx_data <= rx_buff;
+					fifo_rw <= '1';
+					
+					if(tx_empty = '0') then tx_buff <= tx_data;
+					if(rx_full = '0') then rx_data <= rx_buff;
 					
 					ic <= 0;
 				else

@@ -32,7 +32,7 @@ ENTITY SPICR IS
 			Manual_ss_en		:	out		std_logic;
 			Rx_fifo_reset		:	out		std_logic;
 			Tx_fifo_reset		:	out		std_logic;
-			Chpa				:	out		std_logic;
+			Cpha				:	out		std_logic;
 			Cpol				:	out		std_logic;
 			Spi_master_en		:	out		std_logic;
 			Spi_system_en		:	out		std_logic;
@@ -53,7 +53,7 @@ BEGIN
 			Manual_ss_en 	<= spicr_reg(7);
 			Rx_fifo_reset 	<= spicr_reg(6);
 			Tx_fifo_reset 	<= spicr_reg(5);
-			Chpa			<= spicr_reg(4);
+			Cpha			<= spicr_reg(4);
 			Cpol			<= spicr_reg(3);
 			Spi_master_en	<= spicr_reg(2);
 			Spi_system_en	<= spicr_reg(1);

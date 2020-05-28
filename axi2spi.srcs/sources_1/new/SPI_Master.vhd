@@ -80,7 +80,7 @@ signal ss_count : integer range 0 to (C_NUM_SS_BITS - 1) := 0;
 signal element_count : integer range 0 to (C_NUM_TRANSFER_BITS - 1) := 0;
 
 signal shift_rx_port, shift_tx_port, shift_enable, fifo_rw_temp : STD_LOGIC;
-
+signal shift_tx_temp, shift_rx_temp : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0) := (others => '0');
 begin
 
     inst_shift_reg : shift_reg
@@ -92,8 +92,8 @@ begin
 			resetn 		=> resetn,
 			shift_en	=> shift_enable,
 			cpha 		=> '0',
-			shift_in	=> shift_tx,
-			shift_out	=> shift_rx,
+			shift_in	=> shift_tx_temp,
+			shift_out	=> shift_rx_temp,
 			Cin 		=> shift_rx_port,
 			Cout 		=> shift_tx_port
         );
@@ -105,15 +105,18 @@ begin
                 MOSI_O_temp <= '0';
                 shift_rx_port_temp <= '0';
                 shift_enable_temp <= '0';
+                shift_tx_temp <= (others => 'Z');
             else
                if(nxt_state = busy) then
                     MOSI_O_temp <= shift_tx_port;
                     shift_rx_port_temp <= MISO_I;
                     shift_enable_temp <= '1';
+                    shift_tx_temp <= shift_tx;
                 else
                     MOSI_O_temp <= '0';
                     shift_rx_port_temp <= '0';
                     shift_enable_temp <= '0';
+                    shift_tx_temp <= (others => 'Z');
                 end if;
             end if;
         end if;
@@ -232,4 +235,5 @@ begin
     shift_rx_port <= shift_rx_port_temp;
     shift_enable  <= shift_enable_temp;
     fifo_rw       <= fifo_rw_temp;
+    shift_rx      <= shift_rx_temp;
 end Behavioral;

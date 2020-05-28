@@ -48,12 +48,13 @@ entity SPI_CU is
            slave_mode_select : out STD_LOGIC;
            mode_fault_error : out STD_LOGIC;
            gi_en : in STD_LOGIC := '0';
-           slave_select_mode : in STD_LOGIC; --(IPISR)ss mode fault error generation, to be implemented
+           --slave_select_mode : in STD_LOGIC; --(IPISR)ss mode fault error generation, to be implemented
            slave_mode_fault_error : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
-           ss_mode_fault_int_en : in STD_LOGIC;
+           --ss_mode_fault_int_en : in STD_LOGIC;
            loopback_en : in STD_LOGIC := '0';
-           slave_mode_fault_int_en : in STD_LOGIC);
+           slave_mode_fault_int_en : in STD_LOGIC
+           );
 end SPI_CU;
 
 architecture Behavioral of SPI_CU is
@@ -67,9 +68,9 @@ begin
                     '0'                 when resetn = '0'        else
                     irpt_temp and gi_en;
                     
-    irpt_temp <= (not spi_system_en) and (      
-                                          (slave_select_mode and ss_mode_fault_int_en) 
-                                          or
+    irpt_temp <= (not spi_system_en) and (
+                                          --(slave_select_mode and ss_mode_fault_int_en) 
+                                          --or      
                                           (slave_mode_fault_int_en and slave_mode_fault_error) 
                                           or
                                           (mode_fault_error_temp and mode_fault_error_en)

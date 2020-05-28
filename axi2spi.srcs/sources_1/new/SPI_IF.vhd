@@ -69,9 +69,9 @@ entity SPI_IF is
            rx_full : in STD_LOGIC;
            slave_select : in STD_LOGIC_VECTOR (0 downto 0);
            gi_en : in STD_LOGIC;
-           slave_select_mode : in STD_LOGIC;
+           --slave_select_mode : in STD_LOGIC;
            slave_mode_fault_error : out STD_LOGIC;
-           ss_mode_fault_int_en : in STD_LOGIC;
+           --ss_mode_fault_int_en : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
            fifo_rw : out STD_LOGIC;
            slave_mode_fault_int_en : in STD_LOGIC);
@@ -104,10 +104,10 @@ component SPI_CU
            slave_mode_select : out STD_LOGIC;
            mode_fault_error : out STD_LOGIC;
            gi_en : in STD_LOGIC := '0';
-           slave_select_mode : in STD_LOGIC;
+           --slave_select_mode : in STD_LOGIC;
            slave_mode_fault_error : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
-           ss_mode_fault_int_en : in STD_LOGIC;
+           --ss_mode_fault_int_en : in STD_LOGIC;
            loopback_en : in STD_LOGIC := '0';
            slave_mode_fault_int_en : in STD_LOGIC);
 end component;
@@ -179,10 +179,10 @@ SPI_CU_inst: SPI_CU
                slave_mode_select => slave_mode_select,
                mode_fault_error => mode_fault_error,
                gi_en => gi_en,
-               slave_select_mode => slave_select_mode,
+               --slave_select_mode => slave_select_mode,
                slave_mode_fault_error => slave_mode_fault_error_sig,
                mode_fault_error_en => mode_fault_error_en,
-               ss_mode_fault_int_en => ss_mode_fault_int_en,
+               --ss_mode_fault_int_en => ss_mode_fault_int_en,
                loopback_en => loopback_en,
                slave_mode_fault_int_en => slave_mode_fault_int_en
                );

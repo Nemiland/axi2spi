@@ -1,6 +1,3 @@
---Author: Devon Stedronsky
---Date: April 2020
---
 --Description : AXI2SPI ASYNCH FIFO MODULE
 
 
@@ -20,7 +17,8 @@ port(
 		wclk, rclk : 					in std_logic;
 		rdata : 						out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
 		full_flag, empty_flag : 		out std_logic;
-		occupancy : 					out std_logic_vector (3 downto 0)
+		occupancy : 					out std_logic_vector (3 downto 0);
+		fifo_half :                     out std_logic
 		);
 end AXI2SPI_AFIFO;
 
@@ -31,6 +29,8 @@ signal fifo : FIFO_array;
 signal wpointer, rpointer, wpointer_sync, rpointer_sync, Qr, Qw, ptr_diff : std_logic_vector (4 downto 0);
 signal r_round, Qrr, r_round_sync, w_round, Qrw, w_round_sync: std_logic;
 signal fflag_temp_s, eflag_temp_s: std_logic;
+signal occupancy_temp : std_logic_vector (3 downto 0);
+signal fifo_half_temp : std_logic;
 
 begin
 -- Write:
@@ -94,13 +94,24 @@ begin
 end process;
 
 --occupancy output
+process (wpointer, rpointer)
+begin
+    if (wpointer(4) = rpointer(4)) then
+        occupancy_temp <= wpointer(3 downto 0) - rpointer(3 downto 0);
+    elsif (wpointer(4) /= rpointer(4)) then
+        occupancy_temp <= 16 - rpointer(3 downto 0) - wpointer(3 downto 0);
+    end if;   
+end process;
 
+--fifo_half
+fifo_half_temp <= '1' when occupancy_temp = "1000" else '0';
 
 fflag_temp_s  <= '1' when ((wpointer(3 downto 0) = rpointer_sync(4 downto 0)) and (wpointer (4) /= rpointer_sync(4))) else '0';
 eflag_temp_s  <= '1' when ((wpointer_sync - rpointer) = "00000")  else '0';
 
 full_flag <= fflag_temp_s;
 empty_flag <= eflag_temp_s;
+occupancy <= occupancy_temp;
 
 end behavior;
 

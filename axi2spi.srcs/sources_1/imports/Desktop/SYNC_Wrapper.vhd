@@ -219,9 +219,9 @@ begin
     if reset = '1' then
 		rx_data <= (others => '0');
 		rx_data_sync <= (others => '0');
-		mode_fault_error <= '0';
+		--mode_fault_error <= '0';
 		mode_fault_error_sync <= '0';
-		slave_mode_select <= '1';
+		--slave_mode_select <= '1';
 		slave_mode_select_sync <= '1';
 		slave_mode_fault_error <= '0';
 		slave_mode_fault_error_sync <= '0';
@@ -233,11 +233,11 @@ begin
             rx_data_sync <= rx_data_i;
 			rx_data <= rx_data_sync;
 			
-			mode_fault_error_sync <= mode_fault_error_i;
-			mode_fault_error <= mode_fault_error_sync;
+			--mode_fault_error_sync <= mode_fault_error_i;
+			--mode_fault_error <= mode_fault_error_sync;
 			
-			slave_mode_select_sync <= slave_mode_select_i;
-			slave_mode_select <= slave_mode_select_sync;
+			--slave_mode_select_sync <= slave_mode_select_i;
+			--slave_mode_select <= slave_mode_select_sync;
 			
 			slave_mode_fault_error_sync <= slave_mode_fault_error_i;
 			slave_mode_fault_error <= slave_mode_fault_error_sync;
@@ -273,9 +273,9 @@ begin
 	slave_select_sync <= (others => '1');
 	gi_en <= '0';
 	gi_en_sync <= '0';
-	slave_select_mode <= '1';
+	--slave_select_mode <= '1';
 	slave_select_mode_sync <= '1';
-	ss_mode_fault_int_en <= '0';
+	--ss_mode_fault_int_en <= '0';
 	ss_mode_fault_int_en_sync <= '0';
 	slave_mode_fault_int_en <= '0';
 	slave_mode_fault_int_en_sync <= '0';
@@ -317,11 +317,11 @@ begin
 			gi_en_sync <= gi_en_i;
 			gi_en <= gi_en_sync;
 			
-			slave_select_mode_sync <= slave_select_mode_i;
-			slave_select_mode <= slave_select_mode_sync;
+			--slave_select_mode_sync <= slave_select_mode_i;
+			--slave_select_mode <= slave_select_mode_sync;
 			
-			ss_mode_fault_int_en_sync <= ss_mode_fault_int_en_i;
-			ss_mode_fault_int_en <= ss_mode_fault_int_en_sync;
+			--ss_mode_fault_int_en_sync <= ss_mode_fault_int_en_i;
+			--ss_mode_fault_int_en <= ss_mode_fault_int_en_sync;
 			
 			slave_mode_fault_int_en_sync <= slave_mode_fault_int_en_i;
 			slave_mode_fault_int_en <= slave_mode_fault_int_en_sync;

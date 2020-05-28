@@ -54,8 +54,8 @@ entity AXI_2_SPI is
            MISO_O : out STD_LOGIC;
            MISO_T : out STD_LOGIC;
            SPISEL : in STD_LOGIC;
-           SS_I : in STD_LOGIC_VECTOR (0 downto 0);
-           SS_O : out STD_LOGIC_VECTOR (0 downto 0);
+           SS_I : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
+           SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
            SS_T : out STD_LOGIC;
            S_AXI_ACLK : in STD_LOGIC := '0';
            S_AXI_ARESETN : in STD_LOGIC := '0';

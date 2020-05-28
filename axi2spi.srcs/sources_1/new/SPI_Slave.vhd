@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity SPI_Slave is
     Generic( 
-			C_NUM_TRANSFER_BITS : integer := 32; 
+			C_NUM_TRANSFER_BITS : integer := 32
            );
     Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
            rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
@@ -73,7 +73,7 @@ begin
 					
 					if(tx_empty = '0') then
 						if(lsb_first = '0') then
-							tx_buff <= tx_data(C_NUM_TRANSFER_BITS down to 0);
+							tx_buff <= tx_data(C_NUM_TRANSFER_BITS downto 0);
 						else
 							tx_buff <= tx_data(0 to C_NUM_TRANSFER_BITS);
 						end if;

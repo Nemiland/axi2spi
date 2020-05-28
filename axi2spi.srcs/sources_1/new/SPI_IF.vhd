@@ -78,6 +78,7 @@ entity SPI_IF is
 end SPI_IF;
 
 architecture Behavioral of SPI_IF is
+
 component SPI_CU
     Port ( SCK_I : in STD_LOGIC;
            SCK_O : out STD_LOGIC;
@@ -138,6 +139,25 @@ component SPI_Master is
            tx_empty : in STD_LOGIC := '0';
            rx_full : in STD_LOGIC := '0';
            slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0) := (others => '0'));
+end component;
+
+component SPI_Slave
+    Generic( 
+			C_NUM_TRANSFER_BITS : integer := 32
+           );
+    Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
+           rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
+           MOSI_I : in STD_LOGIC;
+           MISO_O : out STD_LOGIC;
+           SPISEL : in STD_LOGIC;
+           resetn : in STD_LOGIC;
+           S_AXI_ACLK : in STD_LOGIC;
+           int_clk : in STD_LOGIC;
+           lsb_first : in STD_LOGIC;
+           tx_empty : in STD_LOGIC;
+           rx_full : in STD_LOGIC;
+		   fifo_rw : out STD_LOGIC
+		   );
 end component;
 
 signal BRG_SCK_O, int_MOSI_I, int_MOSI_O, int_MISO_I, int_MISO_O, slave_mode_fault_error_sig : STD_LOGIC := '0';
@@ -206,5 +226,24 @@ SPI_CU_inst: SPI_CU
                    slave_select => slave_select
                  ); 
                  
+    SPI_Slave_temp: SPI_Slave
+    Generic Map ( 
+			      C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS
+                )
+    Port Map ( 
+                tx_data => tx_data,
+                rx_data => rx_data,
+                MOSI_I => MOSI_I,
+                MISO_O => MISO_O,
+                SPISEL => SPISEL,
+                resetn => resetn,
+                S_AXI_ACLK => '0',
+                int_clk => int_clk_temp,
+                lsb_first => lsb_first,
+                tx_empty => tx_empty,
+                rx_full => rx_full,
+                fifo_rw => fifo_rw
+		     );
+    
     int_clk <= int_clk_temp;
 end Behavioral;

@@ -39,6 +39,10 @@ begin
 			elsif(shift_en = '1') then
 				cout_temp <= shift_in(C_NUM_TRANSFER_BITS - 1);
 				shift_out_temp <= shift_in(C_NUM_TRANSFER_BITS - 2 downto 0) & cin;
+			else
+			    cout_temp <= 'Z';
+				shift_out_temp <= (others => 'Z');
+			
 			end if;
 		end if;
 	end process;

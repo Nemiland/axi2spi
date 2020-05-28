@@ -36,8 +36,8 @@ entity SPI_IF is
              C_NUM_SS_BITS : integer := 8;
              C_SCK_RATIO : integer := 32
            );
-    Port ( tx_data : in STD_LOGIC_VECTOR (0 downto 0);
-           rx_data : out STD_LOGIC_VECTOR (0 downto 0);
+    Port ( tx_data : in STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
+           rx_data : out STD_LOGIC_VECTOR ((C_NUM_TRANSFER_BITS - 1) downto 0);
            IP2INTC_Irpt : out STD_LOGIC;
            int_clk : out STD_LOGIC;
            SCK_I : in STD_LOGIC;
@@ -50,8 +50,8 @@ entity SPI_IF is
            MISO_O : out STD_LOGIC;
            MISO_T : out STD_LOGIC;
            SPISEL : in STD_LOGIC;
-           SS_I : in STD_LOGIC_VECTOR (0 downto 0);
-           SS_O : out STD_LOGIC_VECTOR (0 downto 0);
+           SS_I : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
+           SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
            SS_T : out STD_LOGIC;
            resetn : in STD_LOGIC;
            S_AXI_ACLK : in STD_LOGIC;
@@ -67,7 +67,7 @@ entity SPI_IF is
            mode_fault_error : out STD_LOGIC;
            tx_empty : in STD_LOGIC;
            rx_full : in STD_LOGIC;
-           slave_select : in STD_LOGIC_VECTOR (0 downto 0);
+           slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
            gi_en : in STD_LOGIC;
            --slave_select_mode : in STD_LOGIC;
            slave_mode_fault_error : out STD_LOGIC;

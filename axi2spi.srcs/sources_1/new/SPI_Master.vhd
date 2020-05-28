@@ -61,7 +61,7 @@ component shift_reg is
         clk			: in STD_LOGIC;
         resetn 		: in STD_LOGIC;
         shift_en	: in STD_LOGIC;
-        cpha 		: in STD_LOGIC; --0 for rising edge, 1 for falling edge
+        
         shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
         shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
         Cin 		: in STD_LOGIC;
@@ -91,7 +91,7 @@ begin
 			clk			=> int_clk,
 			resetn 		=> resetn,
 			shift_en	=> shift_enable,
-			cpha 		=> '0',
+			
 			shift_in	=> shift_tx_temp,
 			shift_out	=> shift_rx_temp,
 			Cin 		=> shift_rx_port,

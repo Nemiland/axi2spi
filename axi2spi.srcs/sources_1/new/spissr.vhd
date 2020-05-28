@@ -34,7 +34,7 @@ END SPISSR;
 
 ARCHITECTURE behave OF SPISSR IS
 
-SIGNAL spissr_reg : std_logic_vector (31 downto 0) := x"0000001";
+SIGNAL spissr_reg : std_logic_vector (31 downto 0) := x"11111111";
 SIGNAL spissr_rack_temp, spissr_wack_temp : std_logic := '0';
 
 BEGIN
@@ -52,7 +52,7 @@ BEGIN
 	   
 	   --reset
 		IF (reg_rst = '1') THEN
-			spissr_reg <= x"0000001";
+			spissr_reg <= x"11111111";
 			spissr_rack_temp <= '0';
 			spissr_wack_temp <= '0';
 		END IF;

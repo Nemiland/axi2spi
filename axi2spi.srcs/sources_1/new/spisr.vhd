@@ -33,8 +33,7 @@ END SPISR;
 
 ARCHITECTURE behave OF SPISR IS
 
-SIGNAL spisr_reg : std_logic_vector (31 downto 0) := "00000000000000000000000000" 
-    & slave_mode_select & mode_fault_error & tx_full & tx_empty & rx_full & rx_empty;
+SIGNAL spisr_reg : std_logic_vector (31 downto 0) := X"00000000";
 
 SIGNAL spisr_rack_temp : std_logic := '0';
 

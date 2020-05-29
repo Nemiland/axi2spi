@@ -1,5 +1,5 @@
 --Author: Devon Stedronsky
---Date: April 2020
+--Date: April/May 2020
 --
 --Description : AXI2SPI FIFO/DOUBLE SYNCHRONIZER WRAPPER
 
@@ -21,7 +21,7 @@ port(
 	--CLOCK SIGNALS
 	reg_clk 	: in std_logic;
 	spi_clk		: in std_logic;
-	reset		: in std_logic;
+	reset		: in std_logic := '1';
 	
     --REGISTER I/O
     --SRR (REG -> SPI)
@@ -166,6 +166,7 @@ end component;
 	SIGNAL cpha_sync  						: STD_LOGIC;
 	SIGNAL cpol_sync  						: STD_LOGIC;
 	SIGNAL spi_master_en_sync  				: STD_LOGIC;
+	SIGNAL spi_system_en_sync  				: STD_LOGIC;
 	SIGNAL loopback_en_sync  				: STD_LOGIC;
 	SIGNAL tx_empty_sync  					: STD_LOGIC;
 	SIGNAL rx_full_sync  					: STD_LOGIC;
@@ -263,6 +264,8 @@ begin
 	cpol_sync <= '0';
 	spi_master_en <= '0';
 	spi_master_en_sync <= '0';
+	spi_system_en <= '0';
+	spi_system_en_sync <= '0';
 	loopback_en <= '0';
 	loopback_en_sync <= '0';
 	tx_empty <= '1';
@@ -301,6 +304,9 @@ begin
 			
 			spi_master_en_sync <= spi_master_en_i;
 			spi_master_en <= spi_master_en_sync;
+			
+			spi_system_en_sync <= spi_system_en_i;
+			spi_system_en <= spi_system_en_sync;
 			
 			loopback_en_sync <= loopback_en_i;
 			loopback_en <= loopback_en_sync;

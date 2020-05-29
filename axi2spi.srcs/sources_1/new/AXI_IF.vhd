@@ -1,23 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05/12/2020 10:42:56 AM
--- Design Name: 
--- Module Name: AXI_IF - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
+--Author: Andrew Newman, Eric Wagner
+--Date: April/May 2020
+--
+--Description : AXI2SPI AXI INTERFACE
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -121,7 +105,23 @@ begin
                 rerror_temp           <= '0';
                 werror_temp           <= '0';
             else
-                if(S_AXI_ARVALID = '1') then
+                if(reg_rack = '1' or reg_wack = '1') then
+                    srr_cs_temp           <= '0';
+                    spicr_cs_temp         <= '0';
+                    spisr_cs_temp         <= '0';
+                    spidtr_cs_temp        <= '0';
+                    spidrr_cs_temp        <= '0';
+                    spissr_cs_temp        <= '0';
+                    tx_fifo_ocy_cs_temp   <= '0';
+                    rx_fifo_ocy_cs_temp   <= '0';
+                    dgier_cs_temp         <= '0';
+                    ipisr_cs_temp         <= '0';
+                    ipier_cs_temp         <= '0';
+                    reg_read_enable_temp  <= '0';
+                    reg_write_enable_temp <= '0';
+                    rerror_temp           <= '0';
+                    werror_temp           <= '0';
+                elsif(S_AXI_ARVALID = '1') then
                     srr_cs_temp           <= '0';
                     spicr_cs_temp         <= '0';
                     spisr_cs_temp         <= '0';

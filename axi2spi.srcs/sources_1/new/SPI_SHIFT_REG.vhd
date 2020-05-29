@@ -1,3 +1,8 @@
+--Author: Eric Wagner, Andrew Newman
+--Date: May 2020
+--
+--Description : AXI2SPI SPI SHIFT REGISTER
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -18,7 +23,7 @@ Port (
 		clk			: in STD_LOGIC;
 		resetn 		: in STD_LOGIC;
 		shift_en	: in STD_LOGIC;
-
+        reg_write   : in STD_LOGIC;
 		shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 		shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 		Cin 		: in STD_LOGIC;
@@ -27,6 +32,7 @@ Port (
 end shift_reg;
 
 architecture Behavioral of shift_reg is
+	signal int_reg : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS - 1 downto 0) := (others => '0');
 	signal cout_temp : STD_LOGIC := '0';
 	signal shift_out_temp : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS - 1 downto 0) := (others => '0');
 begin
@@ -36,13 +42,18 @@ begin
 			if(resetn = '0') then
 				shift_out_temp <= (others => '0');
 				cout_temp <= '0';
-			elsif(shift_en = '1') then
-				cout_temp <= shift_in(C_NUM_TRANSFER_BITS - 1);
-				shift_out_temp <= shift_in(C_NUM_TRANSFER_BITS - 2 downto 0) & cin;
 			else
-			    cout_temp <= 'Z';
-				shift_out_temp <= (others => 'Z');
-			
+                if(reg_write = '1') then
+                    int_reg <= shift_in;
+                elsif(shift_en = '1') then
+                    cout_temp <= int_reg(C_NUM_TRANSFER_BITS - 1);
+                    shift_out_temp  <= int_reg;
+                    int_reg <= int_reg(C_NUM_TRANSFER_BITS - 2 downto 0) & cin;
+                    
+                else
+                    cout_temp <= 'Z';
+                    shift_out_temp <= (others => 'Z');
+			    end if;
 			end if;
 		end if;
 	end process;

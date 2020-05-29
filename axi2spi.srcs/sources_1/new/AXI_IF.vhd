@@ -283,7 +283,7 @@ begin
 				S_AXI_ARREADY_temp <= '0';
 				S_AXI_RVALID_temp <= '0';
 				S_AXI_RDATA_temp <= (others => 'Z');
-				reg_rdata_temp <= (others => 'Z');
+				--reg_rdata_temp <= (others => 'Z');
 			else
 				S_AXI_ARREADY_temp <= reg_rack;
 				S_AXI_RVALID_temp <= '0';
@@ -292,7 +292,7 @@ begin
 					   S_AXI_RDATA_temp <= reg_rdata_latch;
                     end if;
 					if(reg_rack = '1') then
-					   reg_rdata_temp <= reg_rdata_latch;
+					   reg_rdata_latch <= reg_rdata;
                     end if;
 				end if;
 				if(axi_state = S2) then
@@ -419,6 +419,8 @@ begin
     S_AXI_WREADY      <= S_AXI_WREADY_temp; 
     S_AXI_AWREADY     <= S_AXI_AWREADY_temp;
     S_AXI_BVALID      <= S_AXI_BVALID_temp;
+    S_AXI_ARREADY     <= S_AXI_ARREADY_temp;
+    S_AXI_RVALID      <= S_AXI_RVALID_temp;
     reg_wstb          <= reg_wstb_temp;
     reg_wdata         <= reg_wdata_temp;
     

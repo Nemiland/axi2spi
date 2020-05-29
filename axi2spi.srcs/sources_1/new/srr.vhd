@@ -1,6 +1,3 @@
---Author: Devon Stedronsky
---Date: May 2020
---
 --Description: SRR Module for AXI to SPI Controller
 --Software reset register
 --Write only --accepts 0000 000A to set soft reset signal
@@ -58,7 +55,7 @@ srr_werror <= srr_werror_temp;
 			srr_wack_temp <= '0';
 		END IF;
 		
-		--soft reset value error check
+		--write strobe
 		IF (reg_write_enable = '1' and srr_cs = '1') THEN  
 			i := 0;
 			while (i < 4) loop
@@ -73,7 +70,8 @@ srr_werror <= srr_werror_temp;
 			end loop;
 			
 			srr_wack_temp <= not srr_wack_temp;
-		
+		      
+		      --soft reset value error check
 		      IF (srr_reg_temp (31 downto 0) = x"0000000A") THEN
 		        srr_reg <= srr_reg_temp;
 				soft_reset <= '1';

@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: DGIER Module for AXI to SPI Controller
 --Global Interrupt Enable Register --R/W
+--Global interrupt enable bit output to SPI
 
 
 LIBRARY IEEE;

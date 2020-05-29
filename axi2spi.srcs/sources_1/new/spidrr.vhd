@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: SPIDRR Module for AXI to SPI Controller
 --SPI Data Receive Register     --read only
+--Rx data input from Rx FIFO
 
 
 LIBRARY IEEE;

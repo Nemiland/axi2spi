@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: SPIDTR Module for AXI to SPI Controller
 --SPI Data Transmit Register    --Write only
+--Reg output to Tx FIFO write data
 
 
 LIBRARY IEEE;

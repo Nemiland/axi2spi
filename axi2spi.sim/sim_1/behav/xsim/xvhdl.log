@@ -1,2 +1,58 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_IF.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_IF'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/REG_Wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'REG_Wrapper'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_IF.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_IF'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_BRG.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_BRG'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/ipisr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'IPISR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/spisr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPISR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/srr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SRR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/rx_fifo_ocy.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'RX_FIFO_OCY'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/ipier.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'IPIER'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/tx_fifo_ocy.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TX_FIFO_OCY'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/spicr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPICR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/spidtr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPIDTR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/dgier.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'DGIER'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/spidrr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPIDRR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/spissr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPISSR'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Master.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_Master'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_CU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_CU'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_SHIFT_REG.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'shift_reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_2_SPI'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Slave.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_Slave'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI_tb.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'AXI_2_SPI_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SYNCH_Wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SYNCH_WRAPPER'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/axi2spi_afifo.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI2SPI_AFIFO'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/AXI_IF_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_IF_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_GEN_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_GEN_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_CS_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_CS_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_WR_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AXI_WR_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_BRG_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_BRG_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sim_1/new/SPI_CU_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_CU_tb'

@@ -8,7 +8,8 @@ use ieee.numeric_std.all;
 
 entity AXI2SPI_AFIFO is
 generic (
-			C_NUM_TRANSFER_BITS : integer := 32
+			C_NUM_TRANSFER_BITS : integer := 32;
+			C_FIFO_EXIST : std_logic := '0'
 		);
 		
 port( 
@@ -31,8 +32,11 @@ signal r_round, Qrr, r_round_sync, w_round, Qrw, w_round_sync: std_logic;
 signal fflag_temp_s, eflag_temp_s: std_logic;
 signal occupancy_temp : std_logic_vector (3 downto 0);
 signal fifo_half_temp : std_logic;
+signal rdata_temp_f, rdata_sync, rdata_temp_s: std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 
 begin
+--STANDARD FIFO
+-----------------------------------------------------------------------------
 -- Write:
 process(wclk, reset)
 begin
@@ -58,7 +62,7 @@ begin
     else
          if rising_edge(rclk) then
             if r_enable = '1' and eflag_temp_s /= '1' then
-                rdata <= fifo(conv_integer(rpointer(3 downto 0)));
+                rdata_temp_f <= fifo(conv_integer(rpointer(3 downto 0)));
 				rpointer <= rpointer + "00001";
             end if;
         end if;
@@ -77,6 +81,8 @@ begin
 			wpointer_sync <= Qw;
         end if;
     end if;
+    
+    
 end process;
 
 -- rd_ptr Synchronization:
@@ -93,6 +99,8 @@ begin
     end if;
 end process;
 
+--ADDED AXI2SPI FUNCTIONALITY
+----------------------------------------------------------------------------------------
 --occupancy output
 process (wpointer, rpointer)
 begin
@@ -103,22 +111,37 @@ begin
     end if;   
 end process;
 
+--sync bypass
+process (rclk,  reset)
+begin
+    if (reset = '1') then	
+		rdata_sync <= (others => '0');
+		rdata_temp_s <= (others => '0');
+	else
+	   if (rising_edge(rclk)) then
+	       rdata_sync <= wdata;
+	       rdata_temp_s <= rdata_sync;
+	   end if;
+	end if;
+end process;
+
 --fifo_half
 fifo_half_temp <= '1' when occupancy_temp = "1000" else '0';
-
+-------------------------------------------------------------------------------------
+--empty and full flags
 fflag_temp_s  <= '1' when ((wpointer(3 downto 0) = rpointer_sync(4 downto 0)) and (wpointer (4) /= rpointer_sync(4))) else '0';
 eflag_temp_s  <= '1' when ((wpointer_sync - rpointer) = "00000")  else '0';
-
 full_flag <= fflag_temp_s;
 empty_flag <= eflag_temp_s;
+--------------------------------------------------------------------------------------------
+
 occupancy <= occupancy_temp;
+fifo_half <= fifo_half_temp;
+
+--SYNC BYPASS
+rdata <= rdata_temp_f when C_FIFO_EXIST = '1' else rdata_temp_s;
 
 end behavior;
-
-
-
-
-
 
 
 

@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
---SPI Slave Select Register     --R/W   --One Hot Encoded Slave Select
+--Description: SPISSR Module for AXI to SPI Controller
+--SPI Slave Select Register     --R/W   
+--One Hot Encoded Slave Select  --low active
 
 
 LIBRARY IEEE;

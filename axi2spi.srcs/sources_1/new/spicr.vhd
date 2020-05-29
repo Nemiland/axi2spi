@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
 --Description: SPICR Module for AXI to SPI Controller
 --SPI Control Register --R/W
+--Writes SPI control signals from AXI bus
 
 
 LIBRARY IEEE;

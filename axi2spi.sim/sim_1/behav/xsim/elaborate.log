@@ -3,39 +3,20 @@ Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto d220ceb62744474398b86c17d8afd055 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot AXI_2_SPI_tb_behav xil_defaultlib.AXI_2_SPI_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-1378] slice direction differs from its index type range [C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Slave.vhd:78]
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.std_logic_arith
-Compiling package ieee.std_logic_unsigned
-Compiling package ieee.numeric_std
-Compiling package ieee.math_real
-Compiling architecture behavioral of entity xil_defaultlib.AXI_IF [\AXI_IF(0,11)(0,11)\]
-Compiling architecture behave of entity xil_defaultlib.SRR [srr_default]
-Compiling architecture behave of entity xil_defaultlib.SPICR [spicr_default]
-Compiling architecture behave of entity xil_defaultlib.SPISR [spisr_default]
-Compiling architecture behave of entity xil_defaultlib.SPISSR [\SPISSR(c_num_ss_bits=8)\]
-Compiling architecture behave of entity xil_defaultlib.SPIDTR [spidtr_default]
-Compiling architecture behave of entity xil_defaultlib.SPIDRR [spidrr_default]
-Compiling architecture behave of entity xil_defaultlib.TX_FIFO_OCY [tx_fifo_ocy_default]
-Compiling architecture behave of entity xil_defaultlib.RX_FIFO_OCY [rx_fifo_ocy_default]
-Compiling architecture behave of entity xil_defaultlib.DGIER [dgier_default]
-Compiling architecture behave of entity xil_defaultlib.IPISR [ipisr_default]
-Compiling architecture behave of entity xil_defaultlib.IPIER [ipier_default]
-Compiling architecture behavioral of entity xil_defaultlib.REG_Wrapper [\REG_Wrapper(c_num_ss_bits=8)\]
-Compiling architecture behavior of entity xil_defaultlib.AXI2SPI_AFIFO [axi2spi_afifo_default]
-Compiling architecture behavior of entity xil_defaultlib.SYNCH_WRAPPER [\SYNCH_WRAPPER(c_num_ss_bits=8)\]
-Compiling architecture behavioral of entity xil_defaultlib.SPI_BRG [spi_brg_default]
-Compiling architecture behavioral of entity xil_defaultlib.SPI_CU [spi_cu_default]
-Compiling architecture behavioral of entity xil_defaultlib.shift_reg [shift_reg_default]
-Compiling architecture behavioral of entity xil_defaultlib.SPI_Master [spi_master_default]
-Compiling architecture behavioral of entity xil_defaultlib.SPI_Slave [spi_slave_default]
-Compiling architecture behavioral of entity xil_defaultlib.SPI_IF [spi_if_default]
-Compiling architecture behavioral of entity xil_defaultlib.AXI_2_SPI [\AXI_2_SPI(0,11)(0,11)\]
-Compiling architecture behave of entity xil_defaultlib.axi_2_spi_tb
-Built simulation snapshot AXI_2_SPI_tb_behav
+ERROR: [VRFC 10-3354] formal port 'drr_not_empty' of mode in cannot be associated with actual port 'drr_not_empty' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:201]
+ERROR: [VRFC 10-3354] formal port 'tx_fifo_half' of mode in cannot be associated with actual port 'tx_fifo_half' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:203]
+ERROR: [VRFC 10-3354] formal port 'drr_overrun' of mode in cannot be associated with actual port 'drr_overrun' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:204]
+ERROR: [VRFC 10-3354] formal port 'drr_full' of mode in cannot be associated with actual port 'drr_full' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:205]
+ERROR: [VRFC 10-3354] formal port 'dtr_underrun' of mode in cannot be associated with actual port 'dtr_underrun' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:206]
+ERROR: [VRFC 10-3354] formal port 'dtr_empty' of mode in cannot be associated with actual port 'dtr_empty' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:207]
+ERROR: [VRFC 10-3354] formal port 'slave_mode_fault_error' of mode in cannot be associated with actual port 'slave_mode_fault_error' of mode out [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:208]
+ERROR: [VRFC 10-718] formal port <Drr_not_empty_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:210]
+ERROR: [VRFC 10-718] formal port <Ss_mode_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:211]
+ERROR: [VRFC 10-718] formal port <Tx_fifo_half_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:212]
+ERROR: [VRFC 10-718] formal port <Drr_overrun_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:213]
+ERROR: [VRFC 10-718] formal port <Drr_full_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:214]
+ERROR: [VRFC 10-718] formal port <Dtr_underrun_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:215]
+ERROR: [VRFC 10-718] formal port <Dtr_empty_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:216]
+ERROR: [VRFC 10-718] formal port <Slave_mode_fault_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:217]
+ERROR: [VRFC 10-718] formal port <Mode_fault_int_en> does not exist in entity <REG_Wrapper>.  Please compare the definition of block <REG_Wrapper> to its component declaration and its instantion to detect the mismatch. [C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_2_SPI.vhd:218]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit axi_2_spi_tb in library work failed.

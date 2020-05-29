@@ -58,42 +58,43 @@ entity REG_Wrapper is
 				Loopback_en			:	out		std_logic;
 
 				--SPISR inputs
-				--slave_mode_select	:	in 		std_logic;
-				--mode_fault_error	:	in		std_logic;
-				tx_full				:	in		std_logic;
-				tx_empty			:	in		std_logic;
-				rx_full				:	in		std_logic;
-				rx_empty			:	in		std_logic;
+				--slave_mode_select	:	in 		std_logic;     --IPISR
+				--mode_fault_error	:	in		std_logic;     --IPISR
+				tx_full				:	in		std_logic;     --from FIFO
+				tx_empty			:	in		std_logic;     --from FIFO
+				rx_full				:	in		std_logic;     --from FIFO
+				rx_empty			:	in		std_logic;     --from FIFO
 				
 				--SPISSR output
 				slave_select		:	out		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
 				
-				--FIFO Data
+				--SPIDTR
 				tx_fifo_data		:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+				
+				--SPIDRR
 				rx_fifo_data		:	in		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+				
+				--FIFO_OCY
 				tx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
 				rx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
 				
-				--Interrupt Outputs
+				--DGIER
 				gi_en				:	out 	std_logic;
-				drr_not_empty			: 	out		std_logic;
-				--slave_mode_select		: 	out		std_logic;
-				tx_fifo_half			: 	out		std_logic;
-				drr_overrun				: 	out		std_logic;
-				drr_full				: 	out		std_logic;
-				dtr_underrun			: 	out		std_logic;
-				dtr_empty				: 	out		std_logic;
-				slave_mode_fault_error	: 	out		std_logic;
-				--mode_fault_error		: 	out		std_logic;
-				Drr_not_empty_int_en	:	out		std_logic;
-				Ss_mode_int_en			:	out		std_logic;
-				Tx_fifo_half_int_en		:	out		std_logic;
-				Drr_overrun_int_en		:	out		std_logic;
-				Drr_full_int_en			:	out		std_logic;
-				Dtr_underrun_int_en		:	out		std_logic;
-				Dtr_empty_int_en		:	out		std_logic;
-				Slave_mode_fault_int_en	:	out		std_logic;
-				Mode_fault_int_en		:	out		std_logic			);
+				
+				--IPISR     --Syncrhonized from SPI
+				drr_not_empty			: 	in		std_logic;
+				slave_mode_select		: 	in		std_logic;
+				tx_fifo_half			: 	in		std_logic;
+				drr_overrun				: 	in		std_logic;
+				drr_full				: 	in		std_logic;
+				dtr_underrun			: 	in		std_logic;
+				dtr_empty				: 	in		std_logic;
+				slave_mode_fault_error	: 	in		std_logic;
+				mode_fault_error		: 	in		std_logic
+				
+				--IPIER INTERNALLY MAPPED
+				
+							);
 end REG_Wrapper;
 
 architecture Behavioral of REG_Wrapper is
@@ -232,8 +233,10 @@ COMPONENT DGIER IS
 END COMPONENT;
 ---------------------------------------------------------------------------------------------------
 COMPONENT IPISR IS
-	Generic	(	C_S_AXI_DATA_WIDTH : integer := 32	);		
-    Port (	reg_clk		:	in	std_logic;
+	Generic	(	C_S_AXI_DATA_WIDTH : integer := 32	);
+				
+    Port (
+			reg_clk		:	in	std_logic;
 			reg_rst		:	in 	std_logic;
 			ipisr_cs		:	in	std_logic;
 			reg_write_enable	:	in		std_logic;
@@ -244,15 +247,27 @@ COMPONENT IPISR IS
 			ipisr_rack			:	out 	std_logic;
 			ipisr_rdata         :   out     std_logic_vector ((C_S_AXI_DATA_WIDTH - 1) downto 0);
 			
-			drr_not_empty			: 	out		std_logic;
-			slave_mode_select		: 	out		std_logic;
-			tx_fifo_half			: 	out		std_logic;
-			drr_overrun				: 	out		std_logic;
-			drr_full				: 	out		std_logic;
-			dtr_underrun			: 	out		std_logic;
-			dtr_empty				: 	out		std_logic;
-			slave_mode_fault_error	: 	out		std_logic;
-			mode_fault_error		: 	out		std_logic		);
+			--interrupt inputs from SPI
+			drr_not_empty			: 	in		std_logic;
+			slave_mode_select		: 	in		std_logic;
+			tx_fifo_half			: 	in		std_logic;
+			drr_overrun				: 	in		std_logic;
+			drr_full				: 	in		std_logic;
+			dtr_underrun			: 	in		std_logic;
+			dtr_empty				: 	in		std_logic;
+			slave_mode_fault_error	: 	in		std_logic;
+			mode_fault_error		: 	in		std_logic;
+			
+			--interrupt enable inputs from IPIER
+			Drr_not_empty_int_en	:	in		std_logic;
+			Ss_mode_int_en			:	in		std_logic;
+			Tx_fifo_half_int_en		:	in		std_logic;
+			Drr_overrun_int_en		:	in		std_logic;
+			Drr_full_int_en			:	in		std_logic;
+			Dtr_underrun_int_en		:	in		std_logic;
+			Dtr_empty_int_en		:	in		std_logic;
+			Slave_mode_fault_int_en	:	in		std_logic;
+			Mode_fault_int_en		:	in		std_logic			);
 END COMPONENT;
 ---------------------------------------------------------------------------------------------------
 COMPONENT IPIER IS
@@ -309,7 +324,17 @@ signal ipier_wack : std_logic := '0';
 signal cs_vector : std_logic_vector (10 downto 0) := (others => '0');
 
 signal slave_mode_select_temp : std_logic := '0';
-signal mode_fault_error_temp : std_logic := '0';	
+signal mode_fault_error_temp : std_logic := '0';
+
+signal Drr_not_empty_int_en_temp	:			std_logic := '0';
+signal Ss_mode_int_en_temp			:			std_logic := '0';
+signal Tx_fifo_half_int_en_temp	    :			std_logic := '0';
+signal Drr_overrun_int_en_temp		:			std_logic := '0';
+signal Drr_full_int_en_temp			:			std_logic := '0';
+signal Dtr_underrun_int_en_temp		:			std_logic := '0';
+signal Dtr_empty_int_en_temp		:			std_logic := '0';
+signal Slave_mode_fault_int_en_temp	:			std_logic := '0';
+signal Mode_fault_int_en_temp		:			std_logic := '0';	
 ---------------------------------------------------------------------------------------------------
 begin
 
@@ -357,8 +382,8 @@ port map (
 			reg_clk => reg_clock,
 			reg_rst => reg_reset,
 			spisr_cs => spisr_cs,
-			slave_mode_select => slave_mode_select_temp,
-			mode_fault_error => mode_fault_error_temp,
+			slave_mode_select => slave_mode_select,  --coming from spi synchronized
+			mode_fault_error => mode_fault_error,    --coming from spi synchronized
 			tx_full => tx_full,
 			tx_empty => tx_empty,
 			rx_full	 => rx_full,
@@ -467,7 +492,17 @@ port map (
 			dtr_underrun => dtr_underrun,
 			dtr_empty => dtr_empty,
 			slave_mode_fault_error => slave_mode_fault_error,
-			mode_fault_error => mode_fault_error_temp			);
+			mode_fault_error => mode_fault_error_temp, 
+			
+			Drr_not_empty_int_en => Drr_not_empty_int_en_temp,
+			Ss_mode_int_en => Ss_mode_int_en_temp,
+			Tx_fifo_half_int_en => Tx_fifo_half_int_en_temp,
+			Drr_overrun_int_en => Drr_overrun_int_en_temp,
+			Drr_full_int_en => Drr_full_int_en_temp,
+			Dtr_underrun_int_en => Dtr_underrun_int_en_temp, 
+			Dtr_empty_int_en => Dtr_empty_int_en_temp,
+			Slave_mode_fault_int_en => Slave_mode_fault_int_en_temp,
+			Mode_fault_int_en => Mode_fault_int_en_temp      			);
 
 ipier_inst : IPIER
 generic map (C_S_AXI_DATA_WIDTH => C_S_AXI_DATA_WIDTH)
@@ -483,17 +518,17 @@ port map (
 			ipier_rack => ipier_rack,
 			ipier_rdata => ipier_rdata,
 			
-			Drr_not_empty_int_en => Drr_not_empty_int_en,
-			Ss_mode_int_en => Ss_mode_int_en,
-			Tx_fifo_half_int_en	 => Tx_fifo_half_int_en,
-			Drr_overrun_int_en => Drr_overrun_int_en,
-			Drr_full_int_en	 => Drr_full_int_en,
-			Dtr_underrun_int_en	 => Dtr_underrun_int_en,
-			Dtr_empty_int_en => Dtr_empty_int_en,
-			Slave_mode_fault_int_en => Slave_mode_fault_int_en,
-			Mode_fault_int_en => Mode_fault_int_en			);
+			Drr_not_empty_int_en => Drr_not_empty_int_en_temp,
+			Ss_mode_int_en => Ss_mode_int_en_temp,
+			Tx_fifo_half_int_en	 => Tx_fifo_half_int_en_temp,
+			Drr_overrun_int_en => Drr_overrun_int_en_temp,
+			Drr_full_int_en	 => Drr_full_int_en_temp,
+			Dtr_underrun_int_en	 => Dtr_underrun_int_en_temp,
+			Dtr_empty_int_en => Dtr_empty_int_en_temp,
+			Slave_mode_fault_int_en => Slave_mode_fault_int_en_temp,
+			Mode_fault_int_en => Mode_fault_int_en_temp			);
 
-
+------------------------------------------------------------------------------------------------
 --ACK and RDATA Assignment Based on CS
 cs_vector <= ipier_cs & ipisr_cs & dgier_cs & rx_fifo_ocy_cs & tx_fifo_ocy_cs & spidrr_cs & spidtr_cs & spissr_cs & spisr_cs & spicr_cs & srr_cs;
 

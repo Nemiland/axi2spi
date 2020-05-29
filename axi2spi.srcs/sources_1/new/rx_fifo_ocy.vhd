@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
 --Description: Register Module for AXI to SPI Controller
 --RX_FIFO Occupancy Register    --read only
+--Records fifo occupancy value
 
 
 LIBRARY IEEE;

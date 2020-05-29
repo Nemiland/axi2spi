@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: IPIER Module for AXI to SPI Controller
 --IP Interrupt Enable Register  --R/W
+--Individual interrupt enable signals written from AXI to enable latching in IPISR
 
 
 LIBRARY IEEE;

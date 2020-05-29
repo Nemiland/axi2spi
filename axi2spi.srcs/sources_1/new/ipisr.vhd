@@ -1,7 +1,4 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: IPISR Module for AXI to SPI Controller
 --IP Interrupt Status Register      --R/TOW
 
 
@@ -26,16 +23,27 @@ ENTITY IPISR IS
 			ipisr_rack			:	out 	std_logic;
 			ipisr_rdata         :   out     std_logic_vector ((C_S_AXI_DATA_WIDTH - 1) downto 0);
 			
-			drr_not_empty			: 	out		std_logic;
-			slave_mode_select		: 	out		std_logic;
-			tx_fifo_half			: 	out		std_logic;
-			drr_overrun				: 	out		std_logic;
-			drr_full				: 	out		std_logic;
-			dtr_underrun			: 	out		std_logic;
-			dtr_empty				: 	out		std_logic;
-			slave_mode_fault_error	: 	out		std_logic;
-			mode_fault_error		: 	out		std_logic
-				
+			--interrupt inputs from SPI
+			drr_not_empty			: 	in		std_logic;
+			slave_mode_select		: 	in		std_logic;
+			tx_fifo_half			: 	in		std_logic;
+			drr_overrun				: 	in		std_logic;
+			drr_full				: 	in		std_logic;
+			dtr_underrun			: 	in		std_logic;
+			dtr_empty				: 	in		std_logic;
+			slave_mode_fault_error	: 	in		std_logic;
+			mode_fault_error		: 	in		std_logic;
+			
+			--interrupt enable inputs from IPIER
+			Drr_not_empty_int_en	:	in		std_logic;
+			Ss_mode_int_en			:	in		std_logic;
+			Tx_fifo_half_int_en		:	in		std_logic;
+			Drr_overrun_int_en		:	in		std_logic;
+			Drr_full_int_en			:	in		std_logic;
+			Dtr_underrun_int_en		:	in		std_logic;
+			Dtr_empty_int_en		:	in		std_logic;
+			Slave_mode_fault_int_en	:	in		std_logic;
+			Mode_fault_int_en		:	in		std_logic	
 			);
 END IPISR;
 
@@ -43,29 +51,43 @@ ARCHITECTURE behave OF IPISR IS
 
 SIGNAL ipisr_reg, ipisr_reg_temp : std_logic_vector (31 downto 0) := x"00000000";
 SIGNAL ipisr_rack_temp, ipisr_wack_temp : std_logic := '0';
+SIGNAL enable_vector, interrupt_vector : std_logic_vector (8 downto 0) := (others => '0');
+
 
 BEGIN
-        --output signals set to register bits
-		drr_not_empty 		<= ipisr_reg (8);
-		slave_mode_select 	<= ipisr_reg (7);
-		tx_fifo_half		<= ipisr_reg (6);
-		drr_overrun			<= ipisr_reg (5);
-		drr_full			<= ipisr_reg (4);
-		dtr_underrun		<= ipisr_reg (3);
-		dtr_empty				 <= ipisr_reg (2);
-		slave_mode_fault_error	 <= ipisr_reg (1);
-		mode_fault_error		 <= ipisr_reg (0);
 		
 ipisr_rack <= ipisr_rack_temp;
 ipisr_wack <= ipisr_wack_temp;
 
+--interrupt enable signals vector
+enable_vector <= Drr_not_empty_int_en & Ss_mode_int_en & Tx_fifo_half_int_en &
+                 Drr_overrun_int_en & Drr_full_int_en & Dtr_underrun_int_en &
+                 Dtr_empty_int_en & Slave_mode_fault_int_en & Mode_fault_int_en;
+
+--vector of SPI interrupt signals                 
+interrupt_vector <= drr_not_empty & slave_mode_select & tx_fifo_half & drr_overrun & drr_full &
+                        dtr_underrun & dtr_empty & slave_mode_fault_error & mode_fault_error;
+
+
 PROCESS (reg_clk, reg_rst)
 variable i : integer range 0 to ((C_S_AXI_DATA_WIDTH / 8) - 1) := 0;
-variable k : integer range 0 to 8 := 0;
+variable k, j : integer range 0 to 8 := 0;
 BEGIN
 
 	IF (rising_edge(reg_clk)) THEN
 	
+	   --TOW from SPI inputs
+	    j := 0;
+	    while (j < 9) loop
+	       if (enable_vector(j) = '1' and interrupt_vector(j) = '1') then
+	           ipisr_reg (j) <= not ipisr_reg (j);
+	       else
+	           ipisr_reg (j) <= ipisr_reg (j);
+	       end if;
+	       j := j + 1;
+	    end loop;
+	    
+	    
 		IF (reg_rst = '1') THEN
 			ipisr_reg <= x"00000000";
 			ipisr_wack_temp <= '0';
@@ -88,7 +110,7 @@ BEGIN
 				i := i + 1;
 			end loop;
 			
-			--TOW loop
+			--TOW from AXI BUS
 			k := 0;
 			while (k < 9) loop
 			     if (ipisr_reg_temp (k) = '1') THEN

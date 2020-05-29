@@ -1,8 +1,6 @@
---Author: Devon Stedronsky
---Date: May 2020
---
---Description: Register Module for AXI to SPI Controller
+--Description: SPISR module for AXI to SPI Controller
 --SPI Status Register --Read only 
+--Records SPI status bits
 
 
 LIBRARY IEEE;

@@ -1,22 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05/18/2020 12:55:29 PM
--- Design Name: 
--- Module Name: SPI_IF - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+--Author: Andrew Newman
+--Date: May 2020
+--
+--Description : AXI2SPI SPI WRAPPER
 
 
 library IEEE;
@@ -190,7 +175,7 @@ SPI_CU_inst: SPI_CU
                SPISEL => SPISEL,
                IP2INTC_Irpt => IP2INTC_Irpt,
                resetn => resetn,
-               int_clk => int_clk,
+               int_clk => int_clk_temp,
                BRG_SCK_O => BRG_SCK_O,
                cpha => cpha,
                cpol => cpol,

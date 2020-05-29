@@ -1,13 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: L&T Technology Services Ltd.
--- Engineer: Andrew Newman
--- 
--- Create Date: 05/18/2020 12:55:29 PM
--- Design Name: Baud Rate Generator
--- Module Name: SPI_BRG - Behavioral
--- Project Name: AXI-to-SPI Interface
-----------------------------------------------------------------------------------
-
+--Author: Andrew Newman
+--Date: May 2020
+--
+--Description : AXI2SPI BAUD RATE GENERATOR
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

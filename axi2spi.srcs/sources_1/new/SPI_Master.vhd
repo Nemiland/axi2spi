@@ -1,23 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05/18/2020 12:55:29 PM
--- Design Name: 
--- Module Name: SPI_IF - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
+--Author: Andrew Newman
+--Date: May 2020
+--
+--Description : AXI2SPI SPI MASTER CONTROLLER
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

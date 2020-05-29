@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="105018fs"></ZoomEndTime>
-      <Cursor1Time time="150000fs"></Cursor1Time>
+      <ZoomEndTime time="818878fs"></ZoomEndTime>
+      <Cursor1Time time="2113829fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="112"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="195"></NameColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="51" />
+   <WVObjectSize size="72" />
    <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ACLK" type="logic">
       <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
       <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
@@ -66,7 +66,6 @@
    <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BRESP" type="array">
       <obj_property name="ElementShortName">S_AXI_BRESP[1:0]</obj_property>
       <obj_property name="ObjectShortName">S_AXI_BRESP[1:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARADDR" type="array">
       <obj_property name="ElementShortName">S_AXI_ARADDR[31:0]</obj_property>
@@ -199,6 +198,282 @@
    <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg" type="array">
       <obj_property name="ElementShortName">spicr_reg[31:0]</obj_property>
       <obj_property name="ObjectShortName">spicr_reg[31:0]</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[31]" type="logic">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[30]" type="logic">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[29]" type="logic">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[28]" type="logic">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[27]" type="logic">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[26]" type="logic">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[25]" type="logic">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[24]" type="logic">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[23]" type="logic">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[22]" type="logic">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[21]" type="logic">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[20]" type="logic">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[19]" type="logic">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[18]" type="logic">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[17]" type="logic">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[16]" type="logic">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[15]" type="logic">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[14]" type="logic">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[13]" type="logic">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[12]" type="logic">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[11]" type="logic">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[10]" type="logic">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[9]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">[9]</obj_property>
+         <obj_property name="label">[9] LSB FIRST</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[8]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">[8]</obj_property>
+         <obj_property name="label">[8] MASTER INHIBIT</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[7]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+         <obj_property name="label">[7] MANUAL SS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[6]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+         <obj_property name="label">[6] RX FIFO RESET</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[5]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+         <obj_property name="label">[5] TX FIFO RESET</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[4]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="label">[4] CPHA</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[3]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="label">[3] CPOL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[2]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="label">[2] MASTER</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[1]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="label">[1] SPE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[0]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="label">[0] LOOP</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[31]" type="logic">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[30]" type="logic">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[29]" type="logic">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[28]" type="logic">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[27]" type="logic">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[26]" type="logic">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[25]" type="logic">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[24]" type="logic">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[23]" type="logic">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[22]" type="logic">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[21]" type="logic">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[20]" type="logic">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[19]" type="logic">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[18]" type="logic">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[17]" type="logic">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[16]" type="logic">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[15]" type="logic">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[14]" type="logic">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[13]" type="logic">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[12]" type="logic">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[11]" type="logic">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[10]" type="logic">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[9]" type="logic">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[8]" type="logic">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_rdata" type="array">
       <obj_property name="ElementShortName">reg_rdata[31:0]</obj_property>
@@ -267,5 +542,101 @@
    <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/fifo" type="array">
       <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
       <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/reg_read_enable" type="logic">
+      <obj_property name="ElementShortName">reg_read_enable</obj_property>
+      <obj_property name="ObjectShortName">reg_read_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/spidtr_cs_temp" type="logic">
+      <obj_property name="ElementShortName">spidtr_cs_temp</obj_property>
+      <obj_property name="ObjectShortName">spidtr_cs_temp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/spidrr_cs_temp" type="logic">
+      <obj_property name="ElementShortName">spidrr_cs_temp</obj_property>
+      <obj_property name="ObjectShortName">spidrr_cs_temp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidrr_rack" type="logic">
+      <obj_property name="ElementShortName">spidrr_rack</obj_property>
+      <obj_property name="ObjectShortName">spidrr_rack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidtr_wack" type="logic">
+      <obj_property name="ElementShortName">spidtr_wack</obj_property>
+      <obj_property name="ObjectShortName">spidtr_wack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/tx_w_enable" type="logic">
+      <obj_property name="ElementShortName">tx_w_enable</obj_property>
+      <obj_property name="ObjectShortName">tx_w_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/tx_r_enable" type="logic">
+      <obj_property name="ElementShortName">tx_r_enable</obj_property>
+      <obj_property name="ObjectShortName">tx_r_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/rx_w_enable" type="logic">
+      <obj_property name="ElementShortName">rx_w_enable</obj_property>
+      <obj_property name="ObjectShortName">rx_w_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/rx_r_enable" type="logic">
+      <obj_property name="ElementShortName">rx_r_enable</obj_property>
+      <obj_property name="ObjectShortName">rx_r_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/reg_write_enable" type="logic">
+      <obj_property name="ElementShortName">reg_write_enable</obj_property>
+      <obj_property name="ObjectShortName">reg_write_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/spi_master_en" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">spi_master_en</obj_property>
+      <obj_property name="ObjectShortName">spi_master_en</obj_property>
+      <obj_property name="label">spi_master_en (SPI)</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/spi_system_en" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">spi_system_en</obj_property>
+      <obj_property name="ObjectShortName">spi_system_en</obj_property>
+      <obj_property name="label">spi_system_en (SPI)</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/loopback_en" type="logic">
+      <obj_property name="ElementShortName">loopback_en</obj_property>
+      <obj_property name="ObjectShortName">loopback_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/fifo_rw" type="logic">
+      <obj_property name="ElementShortName">fifo_rw</obj_property>
+      <obj_property name="ObjectShortName">fifo_rw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/BRG_SCK_O" type="logic">
+      <obj_property name="ElementShortName">BRG_SCK_O</obj_property>
+      <obj_property name="ObjectShortName">BRG_SCK_O</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/resetn" type="logic">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/reg_reset" type="logic">
+      <obj_property name="ElementShortName">reg_reset</obj_property>
+      <obj_property name="ObjectShortName">reg_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/Spi_master_en" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Spi_master_en</obj_property>
+      <obj_property name="ObjectShortName">Spi_master_en</obj_property>
+      <obj_property name="label">Spi_master_en (REG)</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/Spi_system_en" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Spi_system_en</obj_property>
+      <obj_property name="ObjectShortName">Spi_system_en</obj_property>
+      <obj_property name="label">Spi_system_en (REG)</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_clk" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+      <obj_property name="label">int_clk (SPI CU)</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/int_clk" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+      <obj_property name="label">int_clk (TOP)</obj_property>
    </wvobject>
 </wave_config>

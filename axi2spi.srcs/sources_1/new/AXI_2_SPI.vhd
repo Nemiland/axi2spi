@@ -1,23 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05/27/2020 01:23:44 PM
--- Design Name: 
--- Module Name: AXI_2_SPI - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
+--Author: Andrew Newman
+--Date: April/May 2020
+--
+--Description : AXI2SPI TOP MODULE WRAPPER
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -195,6 +179,10 @@ component REG_Wrapper is
 				rx_fifo_data		:	in		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 				tx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
 				rx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
+				
+				--FIFO access signals
+				rx_r_enable			:	out		std_logic;
+				tx_w_enable 		:	out		std_logic;
 				
 				--Interrupt Outputs
 				gi_en				:	out 	std_logic;
@@ -396,6 +384,7 @@ end component;
 signal srr_cs, spicr_cs, spisr_cs, spidtr_cs, spidrr_cs, spissr_cs, tx_fifo_ocy_cs, rx_fifo_ocy_cs, 
        dgier_cs, ipisr_cs, ipier_cs, reg_rack, reg_read_enable, reg_rerror, reg_wack, 
        reg_werror, reg_write_data_en, reg_write_enable: STD_LOGIC := '0';
+signal reg_reset : STD_LOGIC := '1';
 signal reg_wdata, reg_rdata : STD_LOGIC_VECTOR ((C_S_AXI_DATA_WIDTH - 1) downto 0) := (others => '0');
 signal reg_wstb : STD_LOGIC_VECTOR (((C_S_AXI_DATA_WIDTH / 8) - 1) downto 0) := (others => '0');
 
@@ -474,7 +463,6 @@ AXI_IF_inst: AXI_IF
        reg_write_data_en => reg_write_data_en,
        reg_write_enable => reg_write_enable
         );   
-
 REG_Wrapper_inst: REG_Wrapper
     Generic Map(
 				C_S_AXI_DATA_WIDTH => C_S_AXI_DATA_WIDTH,
@@ -483,7 +471,7 @@ REG_Wrapper_inst: REG_Wrapper
             )
 	
 	Port Map(   reg_clock => S_AXI_ACLK,
-				reg_reset => S_AXI_ARESETN,
+				reg_reset => reg_reset,
 			
 				reg_read_enable => reg_read_enable,
 				reg_rack => reg_rack,
@@ -541,6 +529,10 @@ REG_Wrapper_inst: REG_Wrapper
 				tx_fifo_occupancy	=> reg_tx_fifo_occupancy,
 				rx_fifo_occupancy	=> reg_rx_fifo_occupancy,
 				
+				--FIFO access signals
+				rx_r_enable			=> rx_r_enable,
+				tx_w_enable 		=> tx_w_enable,
+				
 				--Interrupt Outputs
 				gi_en				=> reg_gi_en,
 				drr_not_empty			=> reg_drr_not_empty,
@@ -574,7 +566,7 @@ port map(
             --CLOCK SIGNALS
             reg_clk 	=> S_AXI_ACLK,
             spi_clk		=> int_clk,
-            reset		=> S_AXI_ARESETN,
+            reset		=> reg_reset,
             
             --REGISTER I/O
             --SRR (REG -> SPI)
@@ -736,4 +728,5 @@ SPI_IF_inst: SPI_IF
             );
 rx_w_enable <= fifo_rw;
 tx_r_enable <= fifo_rw;
+reg_reset <= (not S_AXI_ARESETN) or reg_soft_reset;
 end Behavioral;

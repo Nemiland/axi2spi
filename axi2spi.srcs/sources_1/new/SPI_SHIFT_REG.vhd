@@ -1,3 +1,8 @@
+--Author: Eric Wagner
+--Date: May 2020
+--
+--Description : AXI2SPI SPI SHIFT REGISTER
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

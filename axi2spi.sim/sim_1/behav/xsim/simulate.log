@@ -1,26 +1,24 @@
 Vivado Simulator 2019.2
 Time resolution is 1 ps
 Warning: AXI_RD_01_1 Check nxt_state signal to remain in state S0
-Time: 60 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 60 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_01_2 Check nxt_state signal to transition to state S1
-Time: 100 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 100 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_02_1 Check nxt_state signal to remain in state S1
-Time: 140 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 140 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_02_2 Check nxt_state signal to transition to state S2
-Time: 180 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 180 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_03_1 Check nxt_state signal to remain in state S2
-Time: 220 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 220 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_03_2 Check nxt_state signal to transition to state S0
-Time: 260 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 260 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Error: AXI_RD_04_2 FAIL, reg_read_enable = 0
-Time: 380 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 380 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_07_1 Check reg_rdata_latch is 0xZZZZZZZZ
-Time: 580 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 580 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Warning: AXI_RD_07_2 Check reg_rdata_latch is 0xAAAAAAAA
-Time: 620 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 620 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Error: AXI_RD_06_2 FAIL, S_AXI_RDATA != 0xAAAAAAAA
-Time: 700 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 700 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
 Error: AXI_RD_09_02 FAIL, S_AXI_RVALID = 0
-Time: 980 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
-Warning: AXI_RD_01_1 Check nxt_state signal to remain in state S0
-Time: 1080 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/40010371/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd
+Time: 980 ns  Iteration: 1  Process: /AXI_RD_tb/line__141  File: C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/AXI_RD_tb.vhd

@@ -164,46 +164,42 @@ component REG_Wrapper is
 				Loopback_en			:	out		std_logic;
 
 				--SPISR inputs
-				--slave_mode_select	:	in 		std_logic;
-				--mode_fault_error	:	in		std_logic;
-				tx_full				:	in		std_logic;
-				tx_empty			:	in		std_logic;
-				rx_full				:	in		std_logic;
-				rx_empty			:	in		std_logic;
+				--slave_mode_select	:	in 		std_logic;     --IPISR
+				--mode_fault_error	:	in		std_logic;     --IPISR
+				tx_full				:	in		std_logic;     --from FIFO
+				tx_empty			:	in		std_logic;     --from FIFO
+				rx_full				:	in		std_logic;     --from FIFO
+				rx_empty			:	in		std_logic;     --from FIFO
 				
 				--SPISSR output
 				slave_select		:	out		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
 				
-				--FIFO Data
+				--SPIDTR
 				tx_fifo_data		:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+				
+				--SPIDRR
 				rx_fifo_data		:	in		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+				
+				--FIFO_OCY
 				tx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
 				rx_fifo_occupancy	:	in		std_logic_vector (3 downto 0);
 				
-				--FIFO access signals
-				rx_r_enable			:	out		std_logic;
-				tx_w_enable 		:	out		std_logic;
-				
-				--Interrupt Outputs
+				--DGIER
 				gi_en				:	out 	std_logic;
-				drr_not_empty			: 	out		std_logic;
-				--slave_mode_select		: 	out		std_logic;
-				tx_fifo_half			: 	out		std_logic;
-				drr_overrun				: 	out		std_logic;
-				drr_full				: 	out		std_logic;
-				dtr_underrun			: 	out		std_logic;
-				dtr_empty				: 	out		std_logic;
-				slave_mode_fault_error	: 	out		std_logic;
-				--mode_fault_error		: 	out		std_logic;
-				Drr_not_empty_int_en	:	out		std_logic;
-				Ss_mode_int_en			:	out		std_logic;
-				Tx_fifo_half_int_en		:	out		std_logic;
-				Drr_overrun_int_en		:	out		std_logic;
-				Drr_full_int_en			:	out		std_logic;
-				Dtr_underrun_int_en		:	out		std_logic;
-				Dtr_empty_int_en		:	out		std_logic;
-				Slave_mode_fault_int_en	:	out		std_logic;
-				Mode_fault_int_en		:	out		std_logic			);
+				
+				--IPISR     --Syncrhonized from SPI
+				drr_not_empty			: 	in		std_logic;
+				slave_mode_select		: 	in		std_logic;
+				tx_fifo_half			: 	in		std_logic;
+				drr_overrun				: 	in		std_logic;
+				drr_full				: 	in		std_logic;
+				dtr_underrun			: 	in		std_logic;
+				dtr_empty				: 	in		std_logic;
+				slave_mode_fault_error	: 	in		std_logic;
+				mode_fault_error		: 	in		std_logic
+				
+				--IPIER INTERNALLY MAPPED			
+				);
 end component;
 
 component SYNCH_WRAPPER is
@@ -219,7 +215,7 @@ port(
 	spi_clk		: in std_logic;
 	reset		: in std_logic;
 	
-    --REGISTER I/O
+--REGISTER / SPI IO
     --SRR (REG -> SPI)
     soft_reset : out STD_LOGIC;
     soft_reset_i : in STD_LOGIC;
@@ -228,8 +224,8 @@ port(
     Lsb_first			:	out		std_logic;
     Master_inhibit		:	out		std_logic;
     Manual_ss_en		:	out		std_logic;
-    Rx_fifo_reset		:	out		std_logic;
-    Tx_fifo_reset		:	out		std_logic;
+    --Rx_fifo_reset		:	out		std_logic;      --Reg input bit mapped to FIFO
+    --Tx_fifo_reset		:	out		std_logic;      --Reg input bit mapped to FIFO
     Cpha				:	out		std_logic;
     Cpol				:	out		std_logic;
     Spi_master_en		:	out		std_logic;
@@ -240,96 +236,64 @@ port(
     Master_inhibit_i	:	in		std_logic;
     Manual_ss_en_i		:	in		std_logic;
     Rx_fifo_reset_i		:	in		std_logic;
-    Tx_fifo_reset_i		:	in		std_logic;
-    Cpha_i				:	in		std_logic;
+    Tx_fifo_reset_i		:	in		std_logic;      --mapped to FIFO
+    Cpha_i				:	in		std_logic;      --mapped to FIFO
     Cpol_i				:	in		std_logic;
     Spi_master_en_i		:	in		std_logic;
     Spi_system_en_i		:	in		std_logic;
     Loopback_en_i		:	in		std_logic;
-
-    --SPISR (SPI -> REG)
-    --slave_mode_select	:	out 		std_logic;
-    --mode_fault_error	:	out		std_logic;
+    
+    --SPISR (FIFO outputs to REG and SPI)
     tx_full				:	out		std_logic;
     tx_empty			:	out		std_logic;
     rx_full				:	out		std_logic;
     rx_empty			:	out		std_logic;
-    --slave_mode_select_i	:	in 		std_logic;
-    --mode_fault_error_i	:	in		std_logic;
-    tx_full_i				:	in		std_logic;
-    tx_empty_i			    :	in		std_logic;
-    rx_full_i				:	in		std_logic;
-    rx_empty_i			    :	in		std_logic;
-				
+    
+    --TX DATA (REG -> SPI) SYNC HANDLED BY FIFO
+	tx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+	tx_data_i  : in std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
+	
+	--RX DATA (SPI -> REG) SYNC HANDLED BY FIFO
+	rx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+	rx_data_i  : in std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
+    		
     --SPISSR (REG -> SPI)
     slave_select		:	out		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
     slave_select_i		:	in		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
 
---SPI INTERFACE PORTS				
---slave_mode_select : out STD_LOGIC;
---mode_fault_error : out STD_LOGIC;
---slave_mode_fault_error : out STD_LOGIC;
-
-    --Interrupt Registers (REG -> SPI)
-    gi_en				    :	out 	std_logic;
-    drr_not_empty			: 	out		std_logic;
-    --slave_mode_select		: 	out		std_logic;
-    tx_fifo_half			: 	out		std_logic;
-    drr_overrun				: 	out		std_logic;
-    drr_full				: 	out		std_logic;
-    dtr_underrun			: 	out		std_logic;
-    dtr_empty				: 	out		std_logic;
-    slave_mode_fault_error	: 	out		std_logic;
-    --mode_fault_error		: 	out		std_logic;
-    Drr_not_empty_int_en	:	out		std_logic;
-    Ss_mode_int_en			:	out		std_logic;
-    Tx_fifo_half_int_en		:	out		std_logic;
-    Drr_overrun_int_en		:	out		std_logic;
-    Drr_full_int_en			:	out		std_logic;
-    Dtr_underrun_int_en		:	out		std_logic;
-    Dtr_empty_int_en		:	out		std_logic;
-    Slave_mode_fault_int_en	:	out		std_logic;
-    Mode_fault_int_en		:	out		std_logic;
-    ------------------------------------------------------
+    --DGIER (REG -> SPI)
+    gi_en				     :	out 	std_logic;
     gi_en_i				     :	in 	std_logic;
-    drr_not_empty_i			 : 	in		std_logic;
-    --slave_mode_select_i	 : 	in		std_logic;
-    tx_fifo_half_i			 : 	in		std_logic;
-    drr_overrun_i		     : 	in		std_logic;
-    drr_full_i				 : 	in		std_logic;
-    dtr_underrun_i			 : 	in		std_logic;
-    dtr_empty_i				 : 	in		std_logic;
-    slave_mode_fault_error_i : 	in		std_logic;
-    --mode_fault_error_i	 : 	in		std_logic;
-    Drr_not_empty_int_en_i	 :	in		std_logic;
-    Ss_mode_int_en_i		 :	in		std_logic;
-    Tx_fifo_half_int_en_i	 :	in		std_logic;
-    Drr_overrun_int_en_i	 :	in		std_logic;
-    Drr_full_int_en_i		 :	in		std_logic;
-    Dtr_underrun_int_en_i	 :	in		std_logic;
-    Dtr_empty_int_en_i		 :	in		std_logic;
-    Slave_mode_fault_int_en_i   :	in		std_logic;
-    Mode_fault_int_en_i		    :	in		std_logic;
-	
-
-	--TX DATA (REG -> SPI)
-	tx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
-	tx_data_i  : in std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
-	
-	--RX DATA (SPI -> REG)
-	rx_data    : out std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
-	rx_data_i  : in std_logic_vector((C_NUM_TRANSFER_BITS - 1) downto 0);
-	
+    
+    --IPISR     (SPI -> REG)
+	drr_not_empty_i			    : 	in		std_logic;
+	slave_mode_select_i		    : 	in		std_logic;
+	--tx_fifo_half_i			: 	in		std_logic;       --reg output mapped from FIFO
+	drr_overrun_i				: 	in		std_logic;
+	drr_full_i				    : 	in		std_logic;
+	dtr_underrun_i			    : 	in		std_logic;
+	dtr_empty_i				    : 	in		std_logic;
+	slave_mode_fault_error_i	: 	in		std_logic;
+	mode_fault_error_i		    : 	in		std_logic;
+	------------------------------------------------
+	drr_not_empty			: 	out		std_logic;
+	slave_mode_select		: 	out		std_logic;
+	tx_fifo_half			: 	out		std_logic;      --mapped from FIFO
+	drr_overrun				: 	out		std_logic;
+	drr_full				: 	out		std_logic;
+	dtr_underrun			: 	out		std_logic;
+	dtr_empty				: 	out		std_logic;
+	slave_mode_fault_error	: 	out		std_logic;
+	mode_fault_error		: 	out		std_logic;
+    
+            --IPIER MAPPED INTERNAL IN REG_WRAPPER
+    
 	--FIFO I/O
 	rx_w_enable       : in std_logic;
 	rx_r_enable       : in std_logic;
-	rx_empty_flag     : out std_logic;
-	rx_full_flag      : out std_logic;
 	rx_occupancy      : out std_logic_vector (3 downto 0);		
 	tx_w_enable       : in std_logic;
 	tx_r_enable       : in std_logic;
-    tx_full_flag      : out std_logic;
-    tx_empty_flag     : out std_logic;
 	tx_occupancy      : out std_logic_vector (3 downto 0)
 		);
 end component;
@@ -372,9 +336,9 @@ component SPI_IF is
            rx_full : in STD_LOGIC;
            slave_select : in STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
            gi_en : in STD_LOGIC;
-           --slave_select_mode : in STD_LOGIC;
+           --slave_select_mode : in STD_LOGIC;          --Is this the same signal as slave_mode_select? In/out?
            slave_mode_fault_error : out STD_LOGIC;
-           --ss_mode_fault_int_en : in STD_LOGIC;
+           ss_mode_fault_int_en : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
            fifo_r : out STD_LOGIC;
            fifo_w : out STD_LOGIC;
@@ -513,47 +477,39 @@ REG_Wrapper_inst: REG_Wrapper
 				Spi_system_en		=> reg_Spi_system_en,
 				Loopback_en			=> reg_Loopback_en,
 
-				--SPISR inputs
-				--slave_mode_select	  => reg_slave_mode_select,
-				--mode_fault_error	  => reg_mode_fault_error, 
-				tx_full				=> reg_tx_full,
-				tx_empty			=> reg_tx_empty,
-				rx_full				=> reg_rx_full,
-				rx_empty			=> reg_rx_empty,
+				--SPISR input
+				--slave_mode_select	  => reg_slave_mode_select,     --IPISR
+				--mode_fault_error	  => reg_mode_fault_error,      --IPISR
+				tx_full				=> tx_full,
+				tx_empty			=> tx_empty,
+				rx_full				=> rx_full,
+				rx_empty			=> rx_empty,
 				
 				--SPISSR output
 				slave_select		=> reg_slave_select,
 				
-				--FIFO Data
+				--FIFO Data/Occupancy
 				tx_fifo_data		=> reg_tx_fifo_data,
 				rx_fifo_data		=> reg_rx_fifo_data,
 				tx_fifo_occupancy	=> reg_tx_fifo_occupancy,
 				rx_fifo_occupancy	=> reg_rx_fifo_occupancy,
 				
-				--FIFO access signals
-				rx_r_enable			=> rx_r_enable,
-				tx_w_enable 		=> tx_w_enable,
-				
-				--Interrupt Outputs
+				--DGIER
 				gi_en				=> reg_gi_en,
+				
+				--IPISR
 				drr_not_empty			=> reg_drr_not_empty,
-				--slave_mode_select		: 	out		std_logic;
+				slave_mode_select	    => reg_slave_mode_select,
 				tx_fifo_half			=> reg_tx_fifo_half,
 				drr_overrun				=> reg_drr_overrun,
 				drr_full				=> reg_drr_full,
 				dtr_underrun			=> reg_dtr_underrun,
 				dtr_empty				=> reg_dtr_empty,
 				slave_mode_fault_error  => reg_slave_mode_fault_error,
-				--mode_fault_error		: 	out		std_logic;
-				Drr_not_empty_int_en	=> reg_Drr_not_empty_int_en,
-				Ss_mode_int_en			=> reg_Ss_mode_int_en,
-				Tx_fifo_half_int_en		=> reg_Tx_fifo_half_int_en,
-				Drr_overrun_int_en		=> reg_Drr_overrun_int_en,
-				Drr_full_int_en			=> reg_Drr_full_int_en,
-				Dtr_underrun_int_en		=> reg_Dtr_underrun_int_en,
-				Dtr_empty_int_en		=> reg_Dtr_empty_int_en,
-				Slave_mode_fault_int_en	=> reg_Slave_mode_fault_int_en,
-				Mode_fault_int_en		=> reg_Mode_fault_int_en	
+				mode_fault_error	    => reg_mode_fault_error 
+				
+				--IPIER MAPPED INTERNALLY
+				
             );
             
 SYNCH_WRAPPER_inst: SYNCH_WRAPPER
@@ -569,7 +525,6 @@ port map(
             spi_clk		=> int_clk,
             reset		=> reg_reset,
             
-            --REGISTER I/O
             --SRR (REG -> SPI)
             soft_reset => resetn,
             soft_reset_i => reg_soft_reset,
@@ -578,8 +533,8 @@ port map(
             Lsb_first			=> Lsb_first,
             Master_inhibit		=> Master_inhibit,
             Manual_ss_en		=> Manual_ss_en,
-            Rx_fifo_reset		=> Rx_fifo_reset,
-            Tx_fifo_reset		=> Tx_fifo_reset,
+            --Rx_fifo_reset		=> Rx_fifo_reset,      --INPUT FROM REG WRAPPER INTERNALLY MAPPED
+            --Tx_fifo_reset		=> Tx_fifo_reset,      --INPUT FROM REG WRAPPER INTERNALLY MAPPED
             Cpha				=> Cpha,
             Cpol				=> Cpol,
             Spi_master_en		=> Spi_master_en,
@@ -589,7 +544,7 @@ port map(
             Lsb_first_i			=> reg_Lsb_first,
             Master_inhibit_i	=> reg_Master_inhibit,
             Manual_ss_en_i		=> reg_Manual_ss_en,
-            Rx_fifo_reset_i		=> reg_Rx_fifo_reset,
+            Rx_fifo_reset_i		=> reg_Rx_fifo_reset,      --
             Tx_fifo_reset_i		=> reg_Tx_fifo_reset,
             Cpha_i				=> reg_Cpha,
             Cpol_i				=> reg_Cpol,
@@ -597,71 +552,12 @@ port map(
             Spi_system_en_i		=> reg_Spi_system_en,
             Loopback_en_i		=> reg_Loopback_en,
         
-            --SPISR (SPI -> REG)
-            --slave_mode_select	  => reg_slave_mode_select, 
-            --mode_fault_error	  => reg_mode_fault_error,
-            tx_full				=> reg_tx_full,
-            tx_empty			=> reg_tx_empty,
-            rx_full				=> reg_rx_full,
-            rx_empty			=> reg_rx_empty,
-            --slave_mode_select_i	=> slave_mode_select,
-            --mode_fault_error_i	=> mode_fault_error,
-            tx_full_i				=> tx_full,
-            tx_empty_i			    => tx_empty,
-            rx_full_i				=> rx_full,
-            rx_empty_i			    => rx_empty,
-                        
-            --SPISSR (REG -> SPI)
-            slave_select		=> slave_select,
-            slave_select_i		=> reg_slave_select,
-        
-        --SPI INTERFACE PORTS				
-        --slave_mode_select : out STD_LOGIC;
-        --mode_fault_error : out STD_LOGIC;
-        --slave_mode_fault_error : out STD_LOGIC;
-        
-            --Interrupt Registers (REG -> SPI)
-            gi_en				    => gi_en,
-            drr_not_empty			=> drr_not_empty,
-            --slave_mode_select		: 	out		std_logic;
-            tx_fifo_half			=> tx_fifo_half,
-            drr_overrun				=> drr_overrun,
-            drr_full				=> drr_full,
-            dtr_underrun			=> dtr_underrun,
-            dtr_empty				=> dtr_empty,
-            slave_mode_fault_error	=> slave_mode_fault_error,
-            --mode_fault_error		: 	out		std_logic;
-            Drr_not_empty_int_en	=> Drr_not_empty_int_en,
-            Ss_mode_int_en			=> Ss_mode_int_en,
-            Tx_fifo_half_int_en		=> Tx_fifo_half_int_en,
-            Drr_overrun_int_en		=> Drr_overrun_int_en,
-            Drr_full_int_en			=> Drr_full_int_en,
-            Dtr_underrun_int_en		=> Dtr_underrun_int_en,
-            Dtr_empty_int_en		=> Dtr_empty_int_en,
-            Slave_mode_fault_int_en	=> Slave_mode_fault_int_en,
-            Mode_fault_int_en		=> Mode_fault_int_en,
-            ------------------------------------------------------
-            gi_en_i				     => reg_gi_en,
-            drr_not_empty_i			 => reg_drr_not_empty,
-            --slave_mode_select_i	 : 	in		std_logic;
-            tx_fifo_half_i			 => reg_tx_fifo_half,
-            drr_overrun_i		     => reg_drr_overrun,
-            drr_full_i				 => reg_drr_full,
-            dtr_underrun_i		     => reg_dtr_underrun,
-            dtr_empty_i				 => reg_dtr_empty,
-            slave_mode_fault_error_i => reg_slave_mode_fault_error,
-            --mode_fault_error_i	 : 	in		std_logic;
-            Drr_not_empty_int_en_i	 => reg_Drr_not_empty_int_en,
-            Ss_mode_int_en_i		 => reg_Ss_mode_int_en,
-            Tx_fifo_half_int_en_i	 => reg_Tx_fifo_half_int_en,
-            Drr_overrun_int_en_i	 => reg_Drr_overrun_int_en,
-            Drr_full_int_en_i		 => reg_Drr_full_int_en,
-            Dtr_underrun_int_en_i	 => reg_Dtr_underrun_int_en,
-            Dtr_empty_int_en_i		 => reg_Dtr_empty_int_en,
-            Slave_mode_fault_int_en_i   => reg_Slave_mode_fault_int_en,
-            Mode_fault_int_en_i		    => reg_Mode_fault_int_en,
+            --SPISR (FIFO -> REG and SPI)  MAP THESE OUTPUTS TO SPI FIFO FLAGS AS NEEDED
+            tx_full				=> tx_full,
+            tx_empty			=> tx_empty,
+            rx_full				=> rx_full,
+            rx_empty			=> rx_empty,
             
-        
             --TX DATA (REG -> SPI)
             tx_data    => tx_data,
             tx_data_i  => reg_tx_fifo_data,
@@ -669,19 +565,49 @@ port map(
             --RX DATA (SPI -> REG)
             rx_data    => reg_rx_fifo_data,
             rx_data_i  => rx_data,
+               
+            --SPISSR (REG -> SPI)
+            slave_select		=> slave_select,
+            slave_select_i		=> reg_slave_select,
+        
+            --DGIER (REG -> SPI)
+            gi_en => gi_en,
+            gi_en_i => reg_gi_en,
+            
+            --IPISR (SPI -> REG)
+            drr_not_empty			=> reg_drr_not_empty,
+            slave_mode_select		=> reg_slave_mode_select,
+            tx_fifo_half			=> reg_tx_fifo_half,
+            drr_overrun				=> reg_drr_overrun,
+            drr_full				=> reg_drr_full,
+            dtr_underrun			=> reg_dtr_underrun,
+            dtr_empty				=> reg_dtr_empty,
+            slave_mode_fault_error	=> reg_slave_mode_fault_error,
+            mode_fault_error		=> reg_mode_fault_error,
+            ------------------------------------------------------
+            drr_not_empty_i			 => drr_not_empty,
+            slave_mode_select_i	     => slave_mode_select,
+            --tx_fifo_half_i	     => tx_fifo_half,        --REG value mapped from FIFO internally
+            drr_overrun_i		     => drr_overrun,
+            drr_full_i				 => drr_full,
+            dtr_underrun_i		     => dtr_underrun,
+            dtr_empty_i				 => dtr_empty,
+            slave_mode_fault_error_i => slave_mode_fault_error,
+            mode_fault_error_i	     => mode_fault_error,
             
             --FIFO I/O
             rx_w_enable       => rx_w_enable,
             rx_r_enable       => rx_r_enable,
-            rx_empty_flag     => rx_empty_flag,
-            rx_full_flag      => rx_full_flag,
+            --rx_empty_flag     => rx_empty_flag,       --FLAGS Mapped out directly from FIFO
+            --rx_full_flag      => rx_full_flag,
             rx_occupancy      => reg_rx_fifo_occupancy,		
             tx_w_enable       => tx_w_enable,
             tx_r_enable       => tx_r_enable,
-            tx_full_flag      => tx_full_flag,
-            tx_empty_flag     => tx_empty_flag,
+            --tx_full_flag      => tx_full_flag,
+            --tx_empty_flag     => tx_empty_flag,
             tx_occupancy      => reg_tx_fifo_occupancy
 		);
+		
 SPI_IF_inst: SPI_IF
     Generic Map( C_NUM_TRANSFER_BITS => C_NUM_TRANSFER_BITS, 
                  C_NUM_SS_BITS => C_NUM_SS_BITS,
@@ -720,14 +646,16 @@ SPI_IF_inst: SPI_IF
                rx_full => rx_full,
                slave_select => slave_select,
                gi_en => gi_en,
-               --slave_select_mode => '0', --to-do
+               --slave_select_mode => slave_mode_select,                  --name mismatch between synch wrapper and spi_if
                slave_mode_fault_error => slave_mode_fault_error,
-               --ss_mode_fault_int_en => '0', --to-do
-               mode_fault_error_en => Mode_fault_int_en,
+               ss_mode_fault_int_en => '0',     --to-do                 --Interrupt enable is handled in the register
+               mode_fault_error_en => Mode_fault_int_en,                --Do these interrupt enables need to be output from the register as well?
                fifo_r => tx_r_enable,
                fifo_w => rx_w_enable,
-               slave_mode_fault_int_en => slave_mode_fault_int_en 
+               slave_mode_fault_int_en => slave_mode_fault_int_en       --Interrupt enable needed from reg to spi or ok to transfer within reg wrapper?
             );
+            
+            
 resetn <= not reg_reset;
 reg_reset <= (not S_AXI_ARESETN) or reg_soft_reset;
 end Behavioral;

@@ -1,4 +1,6 @@
 --Description : AXI2SPI ASYNCH FIFO MODULE
+--Typical AFIFO module with added flags
+--Built in double synchronized bypass for no-fifo-mode operation
 
 
 library ieee;

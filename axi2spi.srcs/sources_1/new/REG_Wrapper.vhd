@@ -1,8 +1,3 @@
---Author : Devon Stedronsky
---Date : May 2020
---
---Description : AXI2SPI Controller
---
 --REGISTER INTERFACE WRAPPER
 
 
@@ -68,12 +63,7 @@ entity REG_Wrapper is
 				--SPISSR output
 				slave_select		:	out		std_logic_vector ((C_NUM_SS_BITS - 1) downto 0);
 				
-
-				--FIFO access signals
-				rx_r_enable			:	out		std_logic;
-				tx_w_enable 		:	out		std_logic;
-				
-				--FIFO Data
+				--SPIDTR
 				tx_fifo_data		:	out		std_logic_vector ((C_NUM_TRANSFER_BITS - 1) downto 0);
 				
 				--SPIDRR
@@ -640,9 +630,5 @@ reg_werror <= '1';
 
 END CASE;
 END PROCESS;
-
---I/O 
-rx_r_enable <= spidrr_cs and reg_read_enable and (NOT spidrr_rack);
-tx_w_enable <= spidtr_wack;
 
 end Behavioral;

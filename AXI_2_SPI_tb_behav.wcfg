@@ -10,211 +10,218 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="105018fs"></ZoomEndTime>
-      <Cursor1Time time="150000fs"></Cursor1Time>
+      <ZoomStartTime time="4210500fs"></ZoomStartTime>
+      <ZoomEndTime time="34210501fs"></ZoomEndTime>
+      <Cursor1Time time="26550000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="112"></NameColumnWidth>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="51" />
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ACLK" type="logic">
-      <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="group3561" type="group">
+      <obj_property name="label">Main I/O</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ACLK" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARESETN" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARESETN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWREADY" type="logic">
+         <obj_property name="ElementShortName">S_AXI_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWADDR" type="array">
+         <obj_property name="ElementShortName">S_AXI_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WDATA" type="array">
+         <obj_property name="ElementShortName">S_AXI_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WSTB" type="array">
+         <obj_property name="ElementShortName">S_AXI_WSTB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WSTB[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_WVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WREADY" type="logic">
+         <obj_property name="ElementShortName">S_AXI_WREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_BVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BREADY" type="logic">
+         <obj_property name="ElementShortName">S_AXI_BREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BRESP" type="array">
+         <obj_property name="ElementShortName">S_AXI_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARADDR" type="array">
+         <obj_property name="ElementShortName">S_AXI_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_RVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RREADY" type="logic">
+         <obj_property name="ElementShortName">S_AXI_RREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARREADY" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RDATA" type="array">
+         <obj_property name="ElementShortName">S_AXI_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RRESP" type="array">
+         <obj_property name="ElementShortName">S_AXI_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/IP2INTC_Irpt" type="logic">
+         <obj_property name="ElementShortName">IP2INTC_Irpt</obj_property>
+         <obj_property name="ObjectShortName">IP2INTC_Irpt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SCK_I" type="logic">
+         <obj_property name="ElementShortName">SCK_I</obj_property>
+         <obj_property name="ObjectShortName">SCK_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SCK_O" type="logic">
+         <obj_property name="ElementShortName">SCK_O</obj_property>
+         <obj_property name="ObjectShortName">SCK_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SCK_T" type="logic">
+         <obj_property name="ElementShortName">SCK_T</obj_property>
+         <obj_property name="ObjectShortName">SCK_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MOSI_I" type="logic">
+         <obj_property name="ElementShortName">MOSI_I</obj_property>
+         <obj_property name="ObjectShortName">MOSI_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MOSI_O" type="logic">
+         <obj_property name="ElementShortName">MOSI_O</obj_property>
+         <obj_property name="ObjectShortName">MOSI_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MOSI_T" type="logic">
+         <obj_property name="ElementShortName">MOSI_T</obj_property>
+         <obj_property name="ObjectShortName">MOSI_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MISO_I" type="logic">
+         <obj_property name="ElementShortName">MISO_I</obj_property>
+         <obj_property name="ObjectShortName">MISO_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MISO_O" type="logic">
+         <obj_property name="ElementShortName">MISO_O</obj_property>
+         <obj_property name="ObjectShortName">MISO_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/MISO_T" type="logic">
+         <obj_property name="ElementShortName">MISO_T</obj_property>
+         <obj_property name="ObjectShortName">MISO_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SPISEL" type="logic">
+         <obj_property name="ElementShortName">SPISEL</obj_property>
+         <obj_property name="ObjectShortName">SPISEL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SS_T" type="logic">
+         <obj_property name="ElementShortName">SS_T</obj_property>
+         <obj_property name="ObjectShortName">SS_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SS_I" type="array">
+         <obj_property name="ElementShortName">SS_I[7:0]</obj_property>
+         <obj_property name="ObjectShortName">SS_I[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/SS_O" type="array">
+         <obj_property name="ElementShortName">SS_O[7:0]</obj_property>
+         <obj_property name="ObjectShortName">SS_O[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_BASEADDR" type="array">
+         <obj_property name="ElementShortName">C_BASEADDR[0:11]</obj_property>
+         <obj_property name="ObjectShortName">C_BASEADDR[0:11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_HIGHADDR" type="array">
+         <obj_property name="ElementShortName">C_HIGHADDR[0:11]</obj_property>
+         <obj_property name="ObjectShortName">C_HIGHADDR[0:11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_FIFO_EXIST" type="logic">
+         <obj_property name="ElementShortName">C_FIFO_EXIST</obj_property>
+         <obj_property name="ObjectShortName">C_FIFO_EXIST</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_S_AXI_ADDR_WIDTH" type="other">
+         <obj_property name="ElementShortName">C_S_AXI_ADDR_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">C_S_AXI_ADDR_WIDTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_S_AXI_DATA_WIDTH" type="other">
+         <obj_property name="ElementShortName">C_S_AXI_DATA_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">C_S_AXI_DATA_WIDTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_NUM_TRANSFER_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_NUM_SS_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_SS_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_SS_BITS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/C_SCK_RATIO" type="other">
+         <obj_property name="ElementShortName">C_SCK_RATIO</obj_property>
+         <obj_property name="ObjectShortName">C_SCK_RATIO</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARESETN" type="logic">
-      <obj_property name="ElementShortName">S_AXI_ARESETN</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_ARESETN</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWVALID" type="logic">
-      <obj_property name="ElementShortName">S_AXI_AWVALID</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_AWVALID</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWREADY" type="logic">
-      <obj_property name="ElementShortName">S_AXI_AWREADY</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_AWREADY</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_AWADDR" type="array">
-      <obj_property name="ElementShortName">S_AXI_AWADDR[31:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_AWADDR[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WDATA" type="array">
-      <obj_property name="ElementShortName">S_AXI_WDATA[31:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_WDATA[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WSTB" type="array">
-      <obj_property name="ElementShortName">S_AXI_WSTB[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_WSTB[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WVALID" type="logic">
-      <obj_property name="ElementShortName">S_AXI_WVALID</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_WVALID</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_WREADY" type="logic">
-      <obj_property name="ElementShortName">S_AXI_WREADY</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_WREADY</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BVALID" type="logic">
-      <obj_property name="ElementShortName">S_AXI_BVALID</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_BVALID</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BREADY" type="logic">
-      <obj_property name="ElementShortName">S_AXI_BREADY</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_BREADY</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_BRESP" type="array">
-      <obj_property name="ElementShortName">S_AXI_BRESP[1:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_BRESP[1:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARADDR" type="array">
-      <obj_property name="ElementShortName">S_AXI_ARADDR[31:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_ARADDR[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARVALID" type="logic">
-      <obj_property name="ElementShortName">S_AXI_ARVALID</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_ARVALID</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RVALID" type="logic">
-      <obj_property name="ElementShortName">S_AXI_RVALID</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_RVALID</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RREADY" type="logic">
-      <obj_property name="ElementShortName">S_AXI_RREADY</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_RREADY</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_ARREADY" type="logic">
-      <obj_property name="ElementShortName">S_AXI_ARREADY</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_ARREADY</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RDATA" type="array">
-      <obj_property name="ElementShortName">S_AXI_RDATA[31:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_RDATA[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/S_AXI_RRESP" type="array">
-      <obj_property name="ElementShortName">S_AXI_RRESP[1:0]</obj_property>
-      <obj_property name="ObjectShortName">S_AXI_RRESP[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/IP2INTC_Irpt" type="logic">
-      <obj_property name="ElementShortName">IP2INTC_Irpt</obj_property>
-      <obj_property name="ObjectShortName">IP2INTC_Irpt</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SCK_I" type="logic">
-      <obj_property name="ElementShortName">SCK_I</obj_property>
-      <obj_property name="ObjectShortName">SCK_I</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SCK_O" type="logic">
-      <obj_property name="ElementShortName">SCK_O</obj_property>
-      <obj_property name="ObjectShortName">SCK_O</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SCK_T" type="logic">
-      <obj_property name="ElementShortName">SCK_T</obj_property>
-      <obj_property name="ObjectShortName">SCK_T</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MOSI_I" type="logic">
-      <obj_property name="ElementShortName">MOSI_I</obj_property>
-      <obj_property name="ObjectShortName">MOSI_I</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MOSI_O" type="logic">
-      <obj_property name="ElementShortName">MOSI_O</obj_property>
-      <obj_property name="ObjectShortName">MOSI_O</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MOSI_T" type="logic">
-      <obj_property name="ElementShortName">MOSI_T</obj_property>
-      <obj_property name="ObjectShortName">MOSI_T</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MISO_I" type="logic">
-      <obj_property name="ElementShortName">MISO_I</obj_property>
-      <obj_property name="ObjectShortName">MISO_I</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MISO_O" type="logic">
-      <obj_property name="ElementShortName">MISO_O</obj_property>
-      <obj_property name="ObjectShortName">MISO_O</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/MISO_T" type="logic">
-      <obj_property name="ElementShortName">MISO_T</obj_property>
-      <obj_property name="ObjectShortName">MISO_T</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SPISEL" type="logic">
-      <obj_property name="ElementShortName">SPISEL</obj_property>
-      <obj_property name="ObjectShortName">SPISEL</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SS_T" type="logic">
-      <obj_property name="ElementShortName">SS_T</obj_property>
-      <obj_property name="ObjectShortName">SS_T</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SS_I" type="array">
-      <obj_property name="ElementShortName">SS_I[7:0]</obj_property>
-      <obj_property name="ObjectShortName">SS_I[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/SS_O" type="array">
-      <obj_property name="ElementShortName">SS_O[7:0]</obj_property>
-      <obj_property name="ObjectShortName">SS_O[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_BASEADDR" type="array">
-      <obj_property name="ElementShortName">C_BASEADDR[0:11]</obj_property>
-      <obj_property name="ObjectShortName">C_BASEADDR[0:11]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_HIGHADDR" type="array">
-      <obj_property name="ElementShortName">C_HIGHADDR[0:11]</obj_property>
-      <obj_property name="ObjectShortName">C_HIGHADDR[0:11]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_FIFO_EXIST" type="logic">
-      <obj_property name="ElementShortName">C_FIFO_EXIST</obj_property>
-      <obj_property name="ObjectShortName">C_FIFO_EXIST</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_S_AXI_ADDR_WIDTH" type="other">
-      <obj_property name="ElementShortName">C_S_AXI_ADDR_WIDTH</obj_property>
-      <obj_property name="ObjectShortName">C_S_AXI_ADDR_WIDTH</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_S_AXI_DATA_WIDTH" type="other">
-      <obj_property name="ElementShortName">C_S_AXI_DATA_WIDTH</obj_property>
-      <obj_property name="ObjectShortName">C_S_AXI_DATA_WIDTH</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_NUM_TRANSFER_BITS" type="other">
-      <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
-      <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_NUM_SS_BITS" type="other">
-      <obj_property name="ElementShortName">C_NUM_SS_BITS</obj_property>
-      <obj_property name="ObjectShortName">C_NUM_SS_BITS</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/C_SCK_RATIO" type="other">
-      <obj_property name="ElementShortName">C_SCK_RATIO</obj_property>
-      <obj_property name="ObjectShortName">C_SCK_RATIO</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spissr_inst/spissr_reg" type="array">
-      <obj_property name="ElementShortName">spissr_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">spissr_reg[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidtr_inst/spidtr_reg" type="array">
-      <obj_property name="ElementShortName">spidtr_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">spidtr_reg[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/tx_fifo_ocy_inst/tx_fifo_ocy_reg" type="array">
-      <obj_property name="ElementShortName">tx_fifo_ocy_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tx_fifo_ocy_reg[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg" type="array">
-      <obj_property name="ElementShortName">spicr_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">spicr_reg[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_rdata" type="array">
-      <obj_property name="ElementShortName">reg_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg_rdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_wdata" type="array">
-      <obj_property name="ElementShortName">reg_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg_wdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_wack" type="logic">
-      <obj_property name="ElementShortName">reg_wack</obj_property>
-      <obj_property name="ObjectShortName">reg_wack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_werror" type="logic">
-      <obj_property name="ElementShortName">reg_werror</obj_property>
-      <obj_property name="ObjectShortName">reg_werror</obj_property>
+   <wvobject fp_name="group3562" type="group">
+      <obj_property name="label">test data</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spissr_inst/spissr_reg" type="array">
+         <obj_property name="ElementShortName">spissr_reg[31:0]</obj_property>
+         <obj_property name="ObjectShortName">spissr_reg[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidtr_inst/spidtr_reg" type="array">
+         <obj_property name="ElementShortName">spidtr_reg[31:0]</obj_property>
+         <obj_property name="ObjectShortName">spidtr_reg[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/tx_fifo_ocy_inst/tx_fifo_ocy_reg" type="array">
+         <obj_property name="ElementShortName">tx_fifo_ocy_reg[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tx_fifo_ocy_reg[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spicr_inst/spicr_reg" type="array">
+         <obj_property name="ElementShortName">spicr_reg[31:0]</obj_property>
+         <obj_property name="ObjectShortName">spicr_reg[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_rdata" type="array">
+         <obj_property name="ElementShortName">reg_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_wdata" type="array">
+         <obj_property name="ElementShortName">reg_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_wack" type="logic">
+         <obj_property name="ElementShortName">reg_wack</obj_property>
+         <obj_property name="ObjectShortName">reg_wack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/reg_werror" type="logic">
+         <obj_property name="ElementShortName">reg_werror</obj_property>
+         <obj_property name="ObjectShortName">reg_werror</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group396" type="group">
       <obj_property name="label">CS</obj_property>
@@ -264,8 +271,672 @@
          <obj_property name="ObjectShortName">ipier_cs</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/fifo" type="array">
-      <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
-      <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+   <wvobject fp_name="group3563" type="group">
+      <obj_property name="label">more testbench related data</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/reg_read_enable" type="logic">
+         <obj_property name="ElementShortName">reg_read_enable</obj_property>
+         <obj_property name="ObjectShortName">reg_read_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/spidtr_cs_temp" type="logic">
+         <obj_property name="ElementShortName">spidtr_cs_temp</obj_property>
+         <obj_property name="ObjectShortName">spidtr_cs_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/spidrr_cs_temp" type="logic">
+         <obj_property name="ElementShortName">spidrr_cs_temp</obj_property>
+         <obj_property name="ObjectShortName">spidrr_cs_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidrr_rack" type="logic">
+         <obj_property name="ElementShortName">spidrr_rack</obj_property>
+         <obj_property name="ObjectShortName">spidrr_rack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/spidtr_wack" type="logic">
+         <obj_property name="ElementShortName">spidtr_wack</obj_property>
+         <obj_property name="ObjectShortName">spidtr_wack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/tx_w_enable" type="logic">
+         <obj_property name="ElementShortName">tx_w_enable</obj_property>
+         <obj_property name="ObjectShortName">tx_w_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/tx_r_enable" type="logic">
+         <obj_property name="ElementShortName">tx_r_enable</obj_property>
+         <obj_property name="ObjectShortName">tx_r_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/rx_w_enable" type="logic">
+         <obj_property name="ElementShortName">rx_w_enable</obj_property>
+         <obj_property name="ObjectShortName">rx_w_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/rx_r_enable" type="logic">
+         <obj_property name="ElementShortName">rx_r_enable</obj_property>
+         <obj_property name="ObjectShortName">rx_r_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/AXI_IF_inst/reg_write_enable" type="logic">
+         <obj_property name="ElementShortName">reg_write_enable</obj_property>
+         <obj_property name="ObjectShortName">reg_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/spi_master_en" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">spi_master_en</obj_property>
+         <obj_property name="ObjectShortName">spi_master_en</obj_property>
+         <obj_property name="label">spi_master_en (SPI)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/spi_system_en" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">spi_system_en</obj_property>
+         <obj_property name="ObjectShortName">spi_system_en</obj_property>
+         <obj_property name="label">spi_system_en (SPI)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/loopback_en" type="logic">
+         <obj_property name="ElementShortName">loopback_en</obj_property>
+         <obj_property name="ObjectShortName">loopback_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/BRG_SCK_O" type="logic">
+         <obj_property name="ElementShortName">BRG_SCK_O</obj_property>
+         <obj_property name="ObjectShortName">BRG_SCK_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/resetn" type="logic">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/reg_reset" type="logic">
+         <obj_property name="ElementShortName">reg_reset</obj_property>
+         <obj_property name="ObjectShortName">reg_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/Spi_master_en" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">Spi_master_en</obj_property>
+         <obj_property name="ObjectShortName">Spi_master_en</obj_property>
+         <obj_property name="label">Spi_master_en (REG)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/REG_Wrapper_inst/Spi_system_en" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">Spi_system_en</obj_property>
+         <obj_property name="ObjectShortName">Spi_system_en</obj_property>
+         <obj_property name="label">Spi_system_en (REG)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_clk" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">int_clk</obj_property>
+         <obj_property name="ObjectShortName">int_clk</obj_property>
+         <obj_property name="label">int_clk (SPI CU)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/int_clk" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">int_clk</obj_property>
+         <obj_property name="ObjectShortName">int_clk</obj_property>
+         <obj_property name="label">int_clk (TOP)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/sck_origin" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">sck_origin</obj_property>
+         <obj_property name="ObjectShortName">sck_origin</obj_property>
+         <obj_property name="label">sck_origin (SPI CU)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/fifo" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="label">fifo[0:15][31:0] (TX)</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/fifo" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="label">fifo[0:15][31:0] (RX)</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group439" type="group">
+      <obj_property name="label">tx_fifo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/wdata" type="array">
+         <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/w_enable" type="logic">
+         <obj_property name="ElementShortName">w_enable</obj_property>
+         <obj_property name="ObjectShortName">w_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/r_enable" type="logic">
+         <obj_property name="ElementShortName">r_enable</obj_property>
+         <obj_property name="ObjectShortName">r_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/wclk" type="logic">
+         <obj_property name="ElementShortName">wclk</obj_property>
+         <obj_property name="ObjectShortName">wclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/rclk" type="logic">
+         <obj_property name="ElementShortName">rclk</obj_property>
+         <obj_property name="ObjectShortName">rclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/rdata" type="array">
+         <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/full_flag" type="logic">
+         <obj_property name="ElementShortName">full_flag</obj_property>
+         <obj_property name="ObjectShortName">full_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/empty_flag" type="logic">
+         <obj_property name="ElementShortName">empty_flag</obj_property>
+         <obj_property name="ObjectShortName">empty_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/occupancy" type="array">
+         <obj_property name="ElementShortName">occupancy[3:0]</obj_property>
+         <obj_property name="ObjectShortName">occupancy[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/fifo" type="array">
+         <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/wpointer" type="array">
+         <obj_property name="ElementShortName">wpointer[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wpointer[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/rpointer" type="array">
+         <obj_property name="ElementShortName">rpointer[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rpointer[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/wpointer_sync" type="array">
+         <obj_property name="ElementShortName">wpointer_sync[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wpointer_sync[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/rpointer_sync" type="array">
+         <obj_property name="ElementShortName">rpointer_sync[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rpointer_sync[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/Qr" type="array">
+         <obj_property name="ElementShortName">Qr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Qr[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/Qw" type="array">
+         <obj_property name="ElementShortName">Qw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Qw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/ptr_diff" type="array">
+         <obj_property name="ElementShortName">ptr_diff[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ptr_diff[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/r_round" type="logic">
+         <obj_property name="ElementShortName">r_round</obj_property>
+         <obj_property name="ObjectShortName">r_round</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/Qrr" type="logic">
+         <obj_property name="ElementShortName">Qrr</obj_property>
+         <obj_property name="ObjectShortName">Qrr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/r_round_sync" type="logic">
+         <obj_property name="ElementShortName">r_round_sync</obj_property>
+         <obj_property name="ObjectShortName">r_round_sync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/w_round" type="logic">
+         <obj_property name="ElementShortName">w_round</obj_property>
+         <obj_property name="ObjectShortName">w_round</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/Qrw" type="logic">
+         <obj_property name="ElementShortName">Qrw</obj_property>
+         <obj_property name="ObjectShortName">Qrw</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/w_round_sync" type="logic">
+         <obj_property name="ElementShortName">w_round_sync</obj_property>
+         <obj_property name="ObjectShortName">w_round_sync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/fflag_temp_s" type="logic">
+         <obj_property name="ElementShortName">fflag_temp_s</obj_property>
+         <obj_property name="ObjectShortName">fflag_temp_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/eflag_temp_s" type="logic">
+         <obj_property name="ElementShortName">eflag_temp_s</obj_property>
+         <obj_property name="ObjectShortName">eflag_temp_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/TX_FIFO_inst/C_NUM_TRANSFER_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2730" type="group">
+      <obj_property name="label">SPI_CU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/SCK_I" type="logic">
+         <obj_property name="ElementShortName">SCK_I</obj_property>
+         <obj_property name="ObjectShortName">SCK_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/SCK_O" type="logic">
+         <obj_property name="ElementShortName">SCK_O</obj_property>
+         <obj_property name="ObjectShortName">SCK_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/SCK_T" type="logic">
+         <obj_property name="ElementShortName">SCK_T</obj_property>
+         <obj_property name="ObjectShortName">SCK_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_MOSI_I" type="logic">
+         <obj_property name="ElementShortName">int_MOSI_I</obj_property>
+         <obj_property name="ObjectShortName">int_MOSI_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_MOSI_O" type="logic">
+         <obj_property name="ElementShortName">int_MOSI_O</obj_property>
+         <obj_property name="ObjectShortName">int_MOSI_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_MISO_I" type="logic">
+         <obj_property name="ElementShortName">int_MISO_I</obj_property>
+         <obj_property name="ObjectShortName">int_MISO_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_MISO_O" type="logic">
+         <obj_property name="ElementShortName">int_MISO_O</obj_property>
+         <obj_property name="ObjectShortName">int_MISO_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MOSI_I" type="logic">
+         <obj_property name="ElementShortName">MOSI_I</obj_property>
+         <obj_property name="ObjectShortName">MOSI_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MOSI_O" type="logic">
+         <obj_property name="ElementShortName">MOSI_O</obj_property>
+         <obj_property name="ObjectShortName">MOSI_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MOSI_T" type="logic">
+         <obj_property name="ElementShortName">MOSI_T</obj_property>
+         <obj_property name="ObjectShortName">MOSI_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MISO_I" type="logic">
+         <obj_property name="ElementShortName">MISO_I</obj_property>
+         <obj_property name="ObjectShortName">MISO_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MISO_O" type="logic">
+         <obj_property name="ElementShortName">MISO_O</obj_property>
+         <obj_property name="ObjectShortName">MISO_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/MISO_T" type="logic">
+         <obj_property name="ElementShortName">MISO_T</obj_property>
+         <obj_property name="ObjectShortName">MISO_T</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/SPISEL" type="logic">
+         <obj_property name="ElementShortName">SPISEL</obj_property>
+         <obj_property name="ObjectShortName">SPISEL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/IP2INTC_Irpt" type="logic">
+         <obj_property name="ElementShortName">IP2INTC_Irpt</obj_property>
+         <obj_property name="ObjectShortName">IP2INTC_Irpt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/resetn" type="logic">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/int_clk" type="logic">
+         <obj_property name="ElementShortName">int_clk</obj_property>
+         <obj_property name="ObjectShortName">int_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/BRG_SCK_O" type="logic">
+         <obj_property name="ElementShortName">BRG_SCK_O</obj_property>
+         <obj_property name="ObjectShortName">BRG_SCK_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/cpha" type="logic">
+         <obj_property name="ElementShortName">cpha</obj_property>
+         <obj_property name="ObjectShortName">cpha</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/cpol" type="logic">
+         <obj_property name="ElementShortName">cpol</obj_property>
+         <obj_property name="ObjectShortName">cpol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/spi_system_en" type="logic">
+         <obj_property name="ElementShortName">spi_system_en</obj_property>
+         <obj_property name="ObjectShortName">spi_system_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/spi_master_en" type="logic">
+         <obj_property name="ElementShortName">spi_master_en</obj_property>
+         <obj_property name="ObjectShortName">spi_master_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/slave_mode_select" type="logic">
+         <obj_property name="ElementShortName">slave_mode_select</obj_property>
+         <obj_property name="ObjectShortName">slave_mode_select</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/mode_fault_error" type="logic">
+         <obj_property name="ElementShortName">mode_fault_error</obj_property>
+         <obj_property name="ObjectShortName">mode_fault_error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/gi_en" type="logic">
+         <obj_property name="ElementShortName">gi_en</obj_property>
+         <obj_property name="ObjectShortName">gi_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/slave_mode_fault_error" type="logic">
+         <obj_property name="ElementShortName">slave_mode_fault_error</obj_property>
+         <obj_property name="ObjectShortName">slave_mode_fault_error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/mode_fault_error_en" type="logic">
+         <obj_property name="ElementShortName">mode_fault_error_en</obj_property>
+         <obj_property name="ObjectShortName">mode_fault_error_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/loopback_en" type="logic">
+         <obj_property name="ElementShortName">loopback_en</obj_property>
+         <obj_property name="ObjectShortName">loopback_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/slave_mode_fault_int_en" type="logic">
+         <obj_property name="ElementShortName">slave_mode_fault_int_en</obj_property>
+         <obj_property name="ObjectShortName">slave_mode_fault_int_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/sck_origin" type="logic">
+         <obj_property name="ElementShortName">sck_origin</obj_property>
+         <obj_property name="ObjectShortName">sck_origin</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/irpt_temp" type="logic">
+         <obj_property name="ElementShortName">irpt_temp</obj_property>
+         <obj_property name="ObjectShortName">irpt_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_CU_inst/mode_fault_error_temp" type="logic">
+         <obj_property name="ElementShortName">mode_fault_error_temp</obj_property>
+         <obj_property name="ObjectShortName">mode_fault_error_temp</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group3599" type="group">
+      <obj_property name="label">SPI_Master</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_rx" type="array">
+         <obj_property name="ElementShortName">shift_rx[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_rx[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_tx" type="array">
+         <obj_property name="ElementShortName">shift_tx[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_tx[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/MOSI_O" type="logic">
+         <obj_property name="ElementShortName">MOSI_O</obj_property>
+         <obj_property name="ObjectShortName">MOSI_O</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/MISO_I" type="logic">
+         <obj_property name="ElementShortName">MISO_I</obj_property>
+         <obj_property name="ObjectShortName">MISO_I</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/SS_O" type="array">
+         <obj_property name="ElementShortName">SS_O[7:0]</obj_property>
+         <obj_property name="ObjectShortName">SS_O[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/fifo_r" type="logic">
+         <obj_property name="ElementShortName">fifo_r</obj_property>
+         <obj_property name="ObjectShortName">fifo_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/fifo_w" type="logic">
+         <obj_property name="ElementShortName">fifo_w</obj_property>
+         <obj_property name="ObjectShortName">fifo_w</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/resetn" type="logic">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/int_clk" type="logic">
+         <obj_property name="ElementShortName">int_clk</obj_property>
+         <obj_property name="ObjectShortName">int_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inhibit" type="logic">
+         <obj_property name="ElementShortName">master_inhibit</obj_property>
+         <obj_property name="ObjectShortName">master_inhibit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/manual_ss_en" type="logic">
+         <obj_property name="ElementShortName">manual_ss_en</obj_property>
+         <obj_property name="ObjectShortName">manual_ss_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/spi_master_en" type="logic">
+         <obj_property name="ElementShortName">spi_master_en</obj_property>
+         <obj_property name="ObjectShortName">spi_master_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/tx_empty" type="logic">
+         <obj_property name="ElementShortName">tx_empty</obj_property>
+         <obj_property name="ObjectShortName">tx_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/rx_full" type="logic">
+         <obj_property name="ElementShortName">rx_full</obj_property>
+         <obj_property name="ObjectShortName">rx_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/slave_select" type="array">
+         <obj_property name="ElementShortName">slave_select[7:0]</obj_property>
+         <obj_property name="ObjectShortName">slave_select[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_state" type="other">
+         <obj_property name="ElementShortName">master_state</obj_property>
+         <obj_property name="ObjectShortName">master_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/nxt_state" type="other">
+         <obj_property name="ElementShortName">nxt_state</obj_property>
+         <obj_property name="ObjectShortName">nxt_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/MOSI_O_temp" type="logic">
+         <obj_property name="ElementShortName">MOSI_O_temp</obj_property>
+         <obj_property name="ObjectShortName">MOSI_O_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_enable_temp" type="logic">
+         <obj_property name="ElementShortName">shift_enable_temp</obj_property>
+         <obj_property name="ObjectShortName">shift_enable_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_rx_port_temp" type="logic">
+         <obj_property name="ElementShortName">shift_rx_port_temp</obj_property>
+         <obj_property name="ObjectShortName">shift_rx_port_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/ss_temp" type="array">
+         <obj_property name="ElementShortName">ss_temp[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ss_temp[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/slave_select_latch" type="array">
+         <obj_property name="ElementShortName">slave_select_latch[7:0]</obj_property>
+         <obj_property name="ObjectShortName">slave_select_latch[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/ss_t_temp" type="logic">
+         <obj_property name="ElementShortName">ss_t_temp</obj_property>
+         <obj_property name="ObjectShortName">ss_t_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/ss_count" type="other">
+         <obj_property name="ElementShortName">ss_count</obj_property>
+         <obj_property name="ObjectShortName">ss_count</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/element_count" type="other">
+         <obj_property name="ElementShortName">element_count</obj_property>
+         <obj_property name="ObjectShortName">element_count</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/reg_write" type="logic">
+         <obj_property name="ElementShortName">reg_write</obj_property>
+         <obj_property name="ObjectShortName">reg_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_rx_port" type="logic">
+         <obj_property name="ElementShortName">shift_rx_port</obj_property>
+         <obj_property name="ObjectShortName">shift_rx_port</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_tx_port" type="logic">
+         <obj_property name="ElementShortName">shift_tx_port</obj_property>
+         <obj_property name="ObjectShortName">shift_tx_port</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_enable" type="logic">
+         <obj_property name="ElementShortName">shift_enable</obj_property>
+         <obj_property name="ObjectShortName">shift_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/fifo_r_temp" type="logic">
+         <obj_property name="ElementShortName">fifo_r_temp</obj_property>
+         <obj_property name="ObjectShortName">fifo_r_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/fifo_w_temp" type="logic">
+         <obj_property name="ElementShortName">fifo_w_temp</obj_property>
+         <obj_property name="ObjectShortName">fifo_w_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_tx_temp" type="array">
+         <obj_property name="ElementShortName">shift_tx_temp[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_tx_temp[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/shift_rx_temp" type="array">
+         <obj_property name="ElementShortName">shift_rx_temp[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_rx_temp[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/C_NUM_TRANSFER_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/C_NUM_SS_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_SS_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_SS_BITS</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group4358" type="group">
+      <obj_property name="label">master_shift_reg</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/resetn" type="logic">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/shift_en" type="logic">
+         <obj_property name="ElementShortName">shift_en</obj_property>
+         <obj_property name="ObjectShortName">shift_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/reg_write" type="logic">
+         <obj_property name="ElementShortName">reg_write</obj_property>
+         <obj_property name="ObjectShortName">reg_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/shift_in" type="array">
+         <obj_property name="ElementShortName">shift_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/shift_out" type="array">
+         <obj_property name="ElementShortName">shift_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/Cin" type="logic">
+         <obj_property name="ElementShortName">Cin</obj_property>
+         <obj_property name="ObjectShortName">Cin</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/Cout" type="logic">
+         <obj_property name="ElementShortName">Cout</obj_property>
+         <obj_property name="ObjectShortName">Cout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/int_reg" type="array">
+         <obj_property name="ElementShortName">int_reg[31:0]</obj_property>
+         <obj_property name="ObjectShortName">int_reg[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/cout_temp" type="logic">
+         <obj_property name="ElementShortName">cout_temp</obj_property>
+         <obj_property name="ObjectShortName">cout_temp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/shift_out_temp" type="array">
+         <obj_property name="ElementShortName">shift_out_temp[31:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_out_temp[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SPI_IF_inst/SPI_Master_inst/master_inst_shift_reg/C_NUM_TRANSFER_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group4624" type="group">
+      <obj_property name="label">RX_FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/wdata" type="array">
+         <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/w_enable" type="logic">
+         <obj_property name="ElementShortName">w_enable</obj_property>
+         <obj_property name="ObjectShortName">w_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/r_enable" type="logic">
+         <obj_property name="ElementShortName">r_enable</obj_property>
+         <obj_property name="ObjectShortName">r_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/wclk" type="logic">
+         <obj_property name="ElementShortName">wclk</obj_property>
+         <obj_property name="ObjectShortName">wclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/rclk" type="logic">
+         <obj_property name="ElementShortName">rclk</obj_property>
+         <obj_property name="ObjectShortName">rclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/rdata" type="array">
+         <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/full_flag" type="logic">
+         <obj_property name="ElementShortName">full_flag</obj_property>
+         <obj_property name="ObjectShortName">full_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/empty_flag" type="logic">
+         <obj_property name="ElementShortName">empty_flag</obj_property>
+         <obj_property name="ObjectShortName">empty_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/occupancy" type="array">
+         <obj_property name="ElementShortName">occupancy[3:0]</obj_property>
+         <obj_property name="ObjectShortName">occupancy[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/fifo" type="array">
+         <obj_property name="ElementShortName">fifo[0:15][31:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo[0:15][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/wpointer" type="array">
+         <obj_property name="ElementShortName">wpointer[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wpointer[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/rpointer" type="array">
+         <obj_property name="ElementShortName">rpointer[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rpointer[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/wpointer_sync" type="array">
+         <obj_property name="ElementShortName">wpointer_sync[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wpointer_sync[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/rpointer_sync" type="array">
+         <obj_property name="ElementShortName">rpointer_sync[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rpointer_sync[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/Qr" type="array">
+         <obj_property name="ElementShortName">Qr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Qr[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/Qw" type="array">
+         <obj_property name="ElementShortName">Qw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Qw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/ptr_diff" type="array">
+         <obj_property name="ElementShortName">ptr_diff[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ptr_diff[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/r_round" type="logic">
+         <obj_property name="ElementShortName">r_round</obj_property>
+         <obj_property name="ObjectShortName">r_round</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/Qrr" type="logic">
+         <obj_property name="ElementShortName">Qrr</obj_property>
+         <obj_property name="ObjectShortName">Qrr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/r_round_sync" type="logic">
+         <obj_property name="ElementShortName">r_round_sync</obj_property>
+         <obj_property name="ObjectShortName">r_round_sync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/w_round" type="logic">
+         <obj_property name="ElementShortName">w_round</obj_property>
+         <obj_property name="ObjectShortName">w_round</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/Qrw" type="logic">
+         <obj_property name="ElementShortName">Qrw</obj_property>
+         <obj_property name="ObjectShortName">Qrw</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/w_round_sync" type="logic">
+         <obj_property name="ElementShortName">w_round_sync</obj_property>
+         <obj_property name="ObjectShortName">w_round_sync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/fflag_temp_s" type="logic">
+         <obj_property name="ElementShortName">fflag_temp_s</obj_property>
+         <obj_property name="ObjectShortName">fflag_temp_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/eflag_temp_s" type="logic">
+         <obj_property name="ElementShortName">eflag_temp_s</obj_property>
+         <obj_property name="ObjectShortName">eflag_temp_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_2_SPI_tb/AXI_2_SPI_inst/SYNCH_WRAPPER_inst/RX_FIFO_inst/C_NUM_TRANSFER_BITS" type="other">
+         <obj_property name="ElementShortName">C_NUM_TRANSFER_BITS</obj_property>
+         <obj_property name="ObjectShortName">C_NUM_TRANSFER_BITS</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

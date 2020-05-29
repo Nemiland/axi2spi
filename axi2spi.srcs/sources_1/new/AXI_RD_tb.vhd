@@ -162,6 +162,8 @@ axi_tb_inst: AXI_IF Port Map(
 	    wait until falling_edge(S_AXI_ACLK);
 	    report "AXI_RD_01_2 Check nxt_state signal to transition to state S1"
             severity warning;
+            
+        S_AXI_ARVALID <= '0';
         
         --Current State is S1
         --------------------------------------AXI_RD_02--------------------------------------------------
@@ -178,6 +180,8 @@ axi_tb_inst: AXI_IF Port Map(
 	    wait until falling_edge(S_AXI_ACLK);
 	    report "AXI_RD_02_2 Check nxt_state signal to transition to state S2"
             severity warning;
+            
+        reg_rack <= '0';
         
         --Current State is S2
         --------------------------------------AXI_RD_03--------------------------------------------------
@@ -219,7 +223,7 @@ axi_tb_inst: AXI_IF Port Map(
 	       report "AXI_RD_04_2 FAIL, reg_read_enable = 0"
 	       severity error;
 	       
-	    S_AXI_ARVALID <= '0';	       
+	    --S_AXI_ARVALID <= '0';	       
         
         wait until falling_edge(S_AXI_ACLK);
 	    --reset process
@@ -256,7 +260,7 @@ axi_tb_inst: AXI_IF Port Map(
 	    reg_rdata <= X"AAAAAAAA";
 	    reg_rack <= '0';
 	    wait until falling_edge(S_AXI_ACLK);
-	    report "AXI_RD_07_1 Check reg_rdata_latch is 0x00000000"
+	    report "AXI_RD_07_1 Check reg_rdata_latch is 0xZZZZZZZZ"
             severity warning;
 	       
 	    --AXI_RD_07_2
@@ -275,7 +279,7 @@ axi_tb_inst: AXI_IF Port Map(
         
         --AXI_RD_06_1
 	    wait until falling_edge(S_AXI_ACLK);
-	    S_AXI_ARREADY <= '0';
+	    --S_AXI_ARREADY <= '0';
 	    wait until falling_edge(S_AXI_ACLK);
 	    assert S_AXI_RDATA = X"00000000"
 	       report "AXI_RD_06_1 FAIL, S_AXI_RDATA = 0xAAAAAAAA"
@@ -283,7 +287,7 @@ axi_tb_inst: AXI_IF Port Map(
 	       
 	    --AXI_RD_06_2
 	    wait until falling_edge(S_AXI_ACLK);
-	    S_AXI_ARREADY <= '1';
+	    --S_AXI_ARREADY <= '1';
 	    wait until falling_edge(S_AXI_ACLK);
 	    assert S_AXI_RDATA = X"AAAAAAAA"
 	       report "AXI_RD_06_2 FAIL, S_AXI_RDATA != 0xAAAAAAAA"
@@ -291,7 +295,7 @@ axi_tb_inst: AXI_IF Port Map(
 
         reg_rdata <= (others => '0');
         S_AXI_RREADY <= '0';
-        S_AXI_ARREADY <= '0';
+        --S_AXI_ARREADY <= '0';
 	    
 	    wait until falling_edge(S_AXI_ACLK);
 	    --reset process
@@ -350,7 +354,7 @@ axi_tb_inst: AXI_IF Port Map(
     
     stop_sim : process
     begin
-        wait for 1000 ns; --run
+        wait for 1160 ns; --run
         assert false
             report "simulation ended"
             severity failure;

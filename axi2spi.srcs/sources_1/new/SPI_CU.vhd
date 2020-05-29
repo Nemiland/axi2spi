@@ -62,6 +62,7 @@ begin
                  
     --clock polarity and phase setup
     sck_origin <= '0'       when resetn = '0'        else
+                  BRG_SCK_O when spi_system_en = '0' else 
                   BRG_SCK_O when spi_master_en = '1' else 
                   SCK_I     when spi_master_en = '0' else
                   '0';

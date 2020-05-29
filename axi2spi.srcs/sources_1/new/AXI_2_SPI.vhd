@@ -376,7 +376,8 @@ component SPI_IF is
            slave_mode_fault_error : out STD_LOGIC;
            --ss_mode_fault_int_en : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
-           fifo_rw : out STD_LOGIC;
+           fifo_r : out STD_LOGIC;
+           fifo_w : out STD_LOGIC;
            slave_mode_fault_int_en : in STD_LOGIC);
 end component;
 
@@ -723,10 +724,10 @@ SPI_IF_inst: SPI_IF
                slave_mode_fault_error => slave_mode_fault_error,
                --ss_mode_fault_int_en => '0', --to-do
                mode_fault_error_en => Mode_fault_int_en,
-               fifo_rw => fifo_rw,
+               fifo_r => tx_r_enable,
+               fifo_w => rx_w_enable,
                slave_mode_fault_int_en => slave_mode_fault_int_en 
             );
-rx_w_enable <= fifo_rw;
-tx_r_enable <= fifo_rw;
+resetn <= not reg_reset;
 reg_reset <= (not S_AXI_ARESETN) or reg_soft_reset;
 end Behavioral;

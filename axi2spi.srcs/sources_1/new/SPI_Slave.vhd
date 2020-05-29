@@ -21,7 +21,8 @@ entity SPI_Slave is
            lsb_first : in STD_LOGIC;
            tx_empty : in STD_LOGIC;
            rx_full : in STD_LOGIC;
-		   fifo_rw : out STD_LOGIC
+		   fifo_r : out STD_LOGIC;
+		   fifo_w : out STD_LOGIC
 		   );
 end SPI_Slave;
 
@@ -34,6 +35,7 @@ architecture Behavioral of SPI_Slave is
 			clk			: in STD_LOGIC;
 			resetn 		: in STD_LOGIC;
 			shift_en	: in STD_LOGIC;
+			reg_write   : in STD_LOGIC;
 			shift_in 	: in STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 			shift_out 	: out STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
 			Cin 		: in STD_LOGIC;
@@ -42,7 +44,8 @@ architecture Behavioral of SPI_Slave is
 	end component shift_reg;
 
 	signal tx_buff, rx_buff : STD_LOGIC_VECTOR(C_NUM_TRANSFER_BITS -1 downto 0);
-	
+	signal reg_write : STD_LOGIC := '0';
+
 	signal ic : integer range 0 to C_NUM_TRANSFER_BITS := 0;
 
 begin
@@ -56,6 +59,7 @@ begin
 			clk			=> int_clk,
 			resetn 		=> resetn,
 			shift_en	=> SPISEL,
+			reg_write   => reg_write,
 			shift_in	=> tx_buff,
 			shift_out	=> rx_buff,
 			Cin 		=> MOSI_I,
@@ -65,17 +69,21 @@ begin
 	internal_counter : process (int_clk)
 	begin
 		if(int_clk'EVENT and int_clk = '1') then
-		fifo_rw <= '0';
+		fifo_r <= 'Z';
 			if(resetn = '0') then
 				ic <= 0;
 				tx_buff <= (others => 'Z');
 				rx_buff <= (others => 'Z');
+				fifo_r <= 'Z';
+				reg_write <= '0';
 			elsif(SPISEL = '1') then
+			    fifo_r <= '0';
+			    reg_write <= '0';
 				if(ic < C_NUM_TRANSFER_BITS) then
 					ic <= ic + 1;
 				elsif(ic = C_NUM_TRANSFER_BITS) then
-					fifo_rw <= '1';
-					
+					fifo_r <= '1';
+					reg_write <= '1';
 					if(tx_empty = '0') then
 						if(lsb_first = '0') then
 							tx_buff <= tx_data((C_NUM_TRANSFER_BITS - 1) downto 0);
@@ -92,6 +100,10 @@ begin
 				else
 					ic <= 0;
 				end if;
+			else
+			     rx_data <= (others => 'Z');
+			     fifo_r <= 'Z';
+		         fifo_w <= 'Z';
 			end if;
 		end if;
 	end process internal_counter;

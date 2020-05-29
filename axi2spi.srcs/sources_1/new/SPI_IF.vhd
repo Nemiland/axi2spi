@@ -58,7 +58,8 @@ entity SPI_IF is
            slave_mode_fault_error : out STD_LOGIC;
            --ss_mode_fault_int_en : in STD_LOGIC;
            mode_fault_error_en : in STD_LOGIC;
-           fifo_rw : out STD_LOGIC;
+           fifo_r : out STD_LOGIC;
+           fifo_w : out STD_LOGIC;
            slave_mode_fault_int_en : in STD_LOGIC);
 end SPI_IF;
 
@@ -115,7 +116,8 @@ component SPI_Master is
            MOSI_O : out STD_LOGIC;
            MISO_I : in STD_LOGIC := '0';
            SS_O : out STD_LOGIC_VECTOR ((C_NUM_SS_BITS - 1) downto 0);
-           fifo_rw : out STD_LOGIC := '0';
+           fifo_r : out STD_LOGIC := '0';
+           fifo_w : out STD_LOGIC := '0';
            resetn : in STD_LOGIC := '1';
            int_clk : in STD_LOGIC := '0';
            master_inhibit : in STD_LOGIC := '1';
@@ -141,7 +143,8 @@ component SPI_Slave
            lsb_first : in STD_LOGIC;
            tx_empty : in STD_LOGIC;
            rx_full : in STD_LOGIC;
-		   fifo_rw : out STD_LOGIC
+		   fifo_r : out STD_LOGIC := '0';
+           fifo_w : out STD_LOGIC := '0'
 		   );
 end component;
 
@@ -197,10 +200,11 @@ SPI_CU_inst: SPI_CU
                    )
         Port Map ( shift_rx => rx_data,
                    shift_tx => tx_data,
-                   MOSI_O => MOSI_O,
-                   MISO_I => MISO_I,
+                   MOSI_O => int_MOSI_O,
+                   MISO_I => int_MISO_I,
                    SS_O => SS_O,
-                   fifo_rw => fifo_rw,
+                   fifo_r => fifo_r,
+                   fifo_w => fifo_w,
                    resetn => resetn,
                    int_clk => int_clk_temp,
                    master_inhibit => master_inhibit,
@@ -218,8 +222,8 @@ SPI_CU_inst: SPI_CU
     Port Map ( 
                 tx_data => tx_data,
                 rx_data => rx_data,
-                MOSI_I => MOSI_I,
-                MISO_O => MISO_O,
+                MOSI_I => int_MOSI_I,
+                MISO_O => int_MISO_O,
                 SPISEL => SPISEL,
                 resetn => resetn,
                 S_AXI_ACLK => '0',
@@ -227,7 +231,8 @@ SPI_CU_inst: SPI_CU
                 lsb_first => lsb_first,
                 tx_empty => tx_empty,
                 rx_full => rx_full,
-                fifo_rw => fifo_rw
+                fifo_r => fifo_r,
+                fifo_w => fifo_w
 		     );
     
     int_clk <= int_clk_temp;

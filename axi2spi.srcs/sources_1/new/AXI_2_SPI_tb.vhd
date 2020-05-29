@@ -196,12 +196,12 @@ end process;
 	    S_AXI_BREADY <= '0';
 	    
 	    --Wait until interrupt and read data from receiver register
-	    wait for 11600 ns;
+	    wait for 116000 ns;
 	end process;
 
  stop_sim : process
    begin
-     wait for 11600 ns; --run
+     wait for 116000 ns; --run
      assert false
        report "simulation ended"
        severity failure;

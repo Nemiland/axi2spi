@@ -3,6 +3,39 @@ Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto d220ceb62744474398b86c17d8afd055 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot AXI_2_SPI_tb_behav xil_defaultlib.AXI_2_SPI_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-1378] slice direction differs from its index type range [C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Slave.vhd:83]
+WARNING: [VRFC 10-1378] slice direction differs from its index type range [C:/Users/40010377/Documents/GitHub/axi2spi/axi2spi.srcs/sources_1/new/SPI_Slave.vhd:91]
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling package ieee.math_real
+Compiling architecture behavioral of entity xil_defaultlib.AXI_IF [\AXI_IF(0,11)(0,11)\]
+Compiling architecture behave of entity xil_defaultlib.SRR [srr_default]
+Compiling architecture behave of entity xil_defaultlib.SPICR [spicr_default]
+Compiling architecture behave of entity xil_defaultlib.SPISR [spisr_default]
+Compiling architecture behave of entity xil_defaultlib.SPISSR [\SPISSR(c_num_ss_bits=8)\]
+Compiling architecture behave of entity xil_defaultlib.SPIDTR [spidtr_default]
+Compiling architecture behave of entity xil_defaultlib.SPIDRR [spidrr_default]
+Compiling architecture behave of entity xil_defaultlib.TX_FIFO_OCY [tx_fifo_ocy_default]
+Compiling architecture behave of entity xil_defaultlib.RX_FIFO_OCY [rx_fifo_ocy_default]
+Compiling architecture behave of entity xil_defaultlib.DGIER [dgier_default]
+Compiling architecture behave of entity xil_defaultlib.IPISR [ipisr_default]
+Compiling architecture behave of entity xil_defaultlib.IPIER [ipier_default]
+Compiling architecture behavioral of entity xil_defaultlib.REG_Wrapper [\REG_Wrapper(c_num_ss_bits=8)\]
+Compiling architecture behavior of entity xil_defaultlib.AXI2SPI_AFIFO [axi2spi_afifo_default]
+Compiling architecture behavior of entity xil_defaultlib.SYNCH_WRAPPER [\SYNCH_WRAPPER(c_num_ss_bits=8)\]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_BRG [spi_brg_default]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_CU [spi_cu_default]
+Compiling architecture behavioral of entity xil_defaultlib.shift_reg [shift_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_Master [spi_master_default]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_Slave [spi_slave_default]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_IF [spi_if_default]
+Compiling architecture behavioral of entity xil_defaultlib.AXI_2_SPI [\AXI_2_SPI(0,11)(0,11)\]
+Compiling architecture behave of entity xil_defaultlib.axi_2_spi_tb
+Built simulation snapshot AXI_2_SPI_tb_behav

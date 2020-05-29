@@ -148,6 +148,7 @@ end process;
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"AAAACCCC";
 	    S_AXI_AWADDR <= X"00000168"; --SPIDTR
+	    S_AXI_WSTB <= "1111";
 	    S_AXI_WVALID <= '1';
 	    S_AXI_AWVALID <= '1';
 	    S_AXI_BREADY <= '1';
@@ -155,13 +156,16 @@ end process;
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"00000000";
 	    S_AXI_AWADDR <= X"00000000";
+	    S_AXI_WSTB <= "0000";
 	    S_AXI_WVALID <= '0';
 	    S_AXI_AWVALID <= '0';
+	    S_AXI_BREADY <= '0';
 	    
 	    --Set up manual Slave select destinaiton
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"FFFFFF7F";
 	    S_AXI_AWADDR <= X"00000170"; --SPISSR
+	    S_AXI_WSTB <= "1111";
 	    S_AXI_WVALID <= '1';
 	    S_AXI_AWVALID <= '1';
 	    S_AXI_BREADY <= '1';
@@ -169,13 +173,16 @@ end process;
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"00000000";
 	    S_AXI_AWADDR <= X"00000000"; --SPIDTR
+	    S_AXI_WSTB <= "0000";
 	    S_AXI_WVALID <= '0';
 	    S_AXI_AWVALID <= '0';
+	    S_AXI_BREADY <= '0';
 	    
 	    --Update SPICR to setup loopback and start transmission
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"000000A7";
 	    S_AXI_AWADDR <= X"00000160"; --SPIDTR
+	    S_AXI_WSTB <= "1111";
 	    S_AXI_WVALID <= '1';
 	    S_AXI_AWVALID <= '1';
 	    S_AXI_BREADY <= '1';
@@ -183,8 +190,10 @@ end process;
 	    wait until falling_edge(S_AXI_ACLK);
 	    S_AXI_WDATA <= X"00000000";
 	    S_AXI_AWADDR <= X"00000000"; --SPIDTR
+	    S_AXI_WSTB <= "0000";
 	    S_AXI_WVALID <= '0';
 	    S_AXI_AWVALID <= '0';
+	    S_AXI_BREADY <= '0';
 	    
 	    --Wait until interrupt and read data from receiver register
 	    

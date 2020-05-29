@@ -3,8 +3,6 @@
   <File Type="PA-TCL" Name="SPI_BRG.tcl"/>
   <File Type="REPORTS-TCL" Name="SPI_BRG_reports.tcl"/>
   <File Type="RDS-RDS" Name="SPI_BRG.vds"/>
-  <File Type="RDS-UTIL" Name="SPI_BRG_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="SPI_BRG_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="SPI_BRG.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>

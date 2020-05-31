@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="AXI_GEN_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="AXI_GEN_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="166667fs"></ZoomStartTime>
+      <ZoomEndTime time="1166668fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="74"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="36" />
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_AWREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_AWREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_AWREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_WDATA" type="array">
+      <obj_property name="ElementShortName">S_AXI_WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_WSTB" type="array">
+      <obj_property name="ElementShortName">S_AXI_WSTB[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_WSTB[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_WREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_WREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_WREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_BVALID" type="logic">
+      <obj_property name="ElementShortName">S_AXI_BVALID</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_BVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_BREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_BREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_BREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_BRESP" type="array">
+      <obj_property name="ElementShortName">S_AXI_BRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_BRESP[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_RVALID" type="logic">
+      <obj_property name="ElementShortName">S_AXI_RVALID</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_RREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_RREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_ARREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_ARREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ARREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_RDATA" type="array">
+      <obj_property name="ElementShortName">S_AXI_RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/S_AXI_RRESP" type="array">
+      <obj_property name="ElementShortName">S_AXI_RRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RRESP[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/srr_cs" type="logic">
+      <obj_property name="ElementShortName">srr_cs</obj_property>
+      <obj_property name="ObjectShortName">srr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/spisr_cs" type="logic">
+      <obj_property name="ElementShortName">spisr_cs</obj_property>
+      <obj_property name="ObjectShortName">spisr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/spidtr_cs" type="logic">
+      <obj_property name="ElementShortName">spidtr_cs</obj_property>
+      <obj_property name="ObjectShortName">spidtr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/spidrr_cs" type="logic">
+      <obj_property name="ElementShortName">spidrr_cs</obj_property>
+      <obj_property name="ObjectShortName">spidrr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/spissr_cs" type="logic">
+      <obj_property name="ElementShortName">spissr_cs</obj_property>
+      <obj_property name="ObjectShortName">spissr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/tx_fifo_ocy_cs" type="logic">
+      <obj_property name="ElementShortName">tx_fifo_ocy_cs</obj_property>
+      <obj_property name="ObjectShortName">tx_fifo_ocy_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/rx_fifo_ocy_cs" type="logic">
+      <obj_property name="ElementShortName">rx_fifo_ocy_cs</obj_property>
+      <obj_property name="ObjectShortName">rx_fifo_ocy_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/dgier_cs" type="logic">
+      <obj_property name="ElementShortName">dgier_cs</obj_property>
+      <obj_property name="ObjectShortName">dgier_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/ipisr_cs" type="logic">
+      <obj_property name="ElementShortName">ipisr_cs</obj_property>
+      <obj_property name="ObjectShortName">ipisr_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/ipier_cs" type="logic">
+      <obj_property name="ElementShortName">ipier_cs</obj_property>
+      <obj_property name="ObjectShortName">ipier_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_rack" type="logic">
+      <obj_property name="ElementShortName">reg_rack</obj_property>
+      <obj_property name="ObjectShortName">reg_rack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_rerror" type="logic">
+      <obj_property name="ElementShortName">reg_rerror</obj_property>
+      <obj_property name="ObjectShortName">reg_rerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_rdata" type="array">
+      <obj_property name="ElementShortName">reg_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_wdata" type="array">
+      <obj_property name="ElementShortName">reg_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_wstr" type="array">
+      <obj_property name="ElementShortName">reg_wstr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_wstr[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_wack" type="logic">
+      <obj_property name="ElementShortName">reg_wack</obj_property>
+      <obj_property name="ObjectShortName">reg_wack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_write_data_en" type="logic">
+      <obj_property name="ElementShortName">reg_write_data_en</obj_property>
+      <obj_property name="ObjectShortName">reg_write_data_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="group442" type="group">
+      <obj_property name="label">test parameters</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_ACLK" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_ARESETN" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARESETN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_AWVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_AWADDR" type="array">
+         <obj_property name="ElementShortName">S_AXI_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_WVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_WVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_ARVALID" type="logic">
+         <obj_property name="ElementShortName">S_AXI_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/S_AXI_ARADDR" type="array">
+         <obj_property name="ElementShortName">S_AXI_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/spicr_cs" type="logic">
+         <obj_property name="ElementShortName">spicr_cs</obj_property>
+         <obj_property name="ObjectShortName">spicr_cs</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/reg_read_enable" type="logic">
+         <obj_property name="ElementShortName">reg_read_enable</obj_property>
+         <obj_property name="ObjectShortName">reg_read_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_GEN_tb/reg_write_enable" type="logic">
+         <obj_property name="ElementShortName">reg_write_enable</obj_property>
+         <obj_property name="ObjectShortName">reg_write_enable</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_werror" type="logic">
+      <obj_property name="ElementShortName">reg_werror</obj_property>
+      <obj_property name="ObjectShortName">reg_werror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/reg_to_test" type="array">
+      <obj_property name="ElementShortName">reg_to_test[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_to_test[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/C_BASEADDR" type="array">
+      <obj_property name="ElementShortName">C_BASEADDR[0:11]</obj_property>
+      <obj_property name="ObjectShortName">C_BASEADDR[0:11]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/C_HIGHADDR" type="array">
+      <obj_property name="ElementShortName">C_HIGHADDR[0:11]</obj_property>
+      <obj_property name="ObjectShortName">C_HIGHADDR[0:11]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/C_S_AXI_ADDR_WIDTH" type="other">
+      <obj_property name="ElementShortName">C_S_AXI_ADDR_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">C_S_AXI_ADDR_WIDTH</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_GEN_tb/C_S_AXI_DATA_WIDTH" type="other">
+      <obj_property name="ElementShortName">C_S_AXI_DATA_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">C_S_AXI_DATA_WIDTH</obj_property>
+   </wvobject>
+</wave_config>

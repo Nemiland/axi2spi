@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Fri May 29 15:47:11 2020
+# Process ID: 9928
+# Current directory: C:/Users/djste/Documents/GitHub/axi2spi
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19120 C:\Users\djste\Documents\GitHub\axi2spi\axi2spi.xpr
+# Log file: C:/Users/djste/Documents/GitHub/axi2spi/vivado.log
+# Journal file: C:/Users/djste/Documents/GitHub/axi2spi\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/djste/Documents/GitHub/axi2spi/axi2spi.xpr

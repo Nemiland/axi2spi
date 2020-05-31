@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="AXI_RD_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="AXI_RD_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="615001fs"></ZoomEndTime>
+      <Cursor1Time time="460000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="208"></NameColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_ACLK" type="logic">
+      <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_ARESETN" type="logic">
+      <obj_property name="ElementShortName">S_AXI_ARESETN</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ARESETN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_ARADDR" type="array">
+      <obj_property name="ElementShortName">S_AXI_ARADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ARADDR[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_ARVALID" type="logic">
+      <obj_property name="ElementShortName">S_AXI_ARVALID</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ARVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_RVALID" type="logic">
+      <obj_property name="ElementShortName">S_AXI_RVALID</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_RREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_RREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_ARREADY" type="logic">
+      <obj_property name="ElementShortName">S_AXI_ARREADY</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_ARREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_RDATA" type="array">
+      <obj_property name="ElementShortName">S_AXI_RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/S_AXI_RRESP" type="array">
+      <obj_property name="ElementShortName">S_AXI_RRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">S_AXI_RRESP[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/reg_rack" type="logic">
+      <obj_property name="ElementShortName">reg_rack</obj_property>
+      <obj_property name="ObjectShortName">reg_rack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/reg_read_enable" type="logic">
+      <obj_property name="ElementShortName">reg_read_enable</obj_property>
+      <obj_property name="ObjectShortName">reg_read_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/reg_rerror" type="logic">
+      <obj_property name="ElementShortName">reg_rerror</obj_property>
+      <obj_property name="ObjectShortName">reg_rerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/reg_rdata" type="array">
+      <obj_property name="ElementShortName">reg_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/axi_tb_inst/reg_rdata_latch" type="array">
+      <obj_property name="ElementShortName">reg_rdata_latch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rdata_latch[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/axi_tb_inst/axi_state" type="other">
+      <obj_property name="ElementShortName">axi_state</obj_property>
+      <obj_property name="ObjectShortName">axi_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_RD_tb/axi_tb_inst/nxt_state" type="other">
+      <obj_property name="ElementShortName">nxt_state</obj_property>
+      <obj_property name="ObjectShortName">nxt_state</obj_property>
+   </wvobject>
+</wave_config>
